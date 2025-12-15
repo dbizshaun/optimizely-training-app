@@ -1,13 +1,13 @@
 {
-  "name": "optimizely-saas-starter",
+  "name": "yasplaza-hotels",
   "version": "0.1.0",
   "private": true,
   "license": "Apache-2.0",
   "packageManager": "yarn@4.12.0",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && opti-graph webhook:create",
-    "build:full": "graphql-codegen && next build && opti-graph webhook:create",
+    "build": "next build",
+    "build:full": "graphql-codegen && next build",
     "start": "next start",
     "lint": "next lint",
     "compile": "graphql-codegen",
@@ -51,6 +51,9 @@
     "typescript": "^5.9.3"
   },
   "resolutions": {
-    "@graphql-codegen/visitor-plugin-common": "file:./packages/graphql-codegen-visitor-plugin-common-v5.8.0-patched.tgz"
+    "@graphql-codegen/visitor-plugin-common": "file:./packages/graphql-codegen-visitor-plugin-common-v5.8.0-patched.tgz",
+    "@remkoj/optimizely-cms-api": "file:./packages/@remkoj-optimizely-cms-api-v5.1.3-patched.tar.gz",
+    "@remkoj/optimizely-cms-cli": "file:./packages/@remkoj-optimizely-cms-cli-v5.1.3-patched.tar.gz",
+    "@remkoj/optimizely-graph-cli": "file:./packages/@remkoj-optimizely-graph-cli-v5.1.3-patched.tar.gz"
   }
 }
