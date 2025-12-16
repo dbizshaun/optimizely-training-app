@@ -5,6 +5,7 @@
  * and groups them by their functional context for better organization and maintainability.
  */
 
+import packageJson from '../../package.json';
 
 // =============================================================================
 // OPTIMIZELY CMS & GRAPHQL CONFIGURATION
@@ -32,8 +33,55 @@ export const optimizely = {
     },
 } as const;
 
+// =============================================================================
+// SITE & DOMAIN CONFIGURATION (Public/Client-side)
+// =============================================================================
+export const site = {
+    // Public site configuration (client-side accessible)
+    public: {
+        baseUrl: process.env.NEXT_PUBLIC_BASE_URL ?? '',
+        // cspHeaders: process.env.NEXT_PUBLIC_CSP_HEADERS ?? '',
+    },
+} as const;
+
+// =============================================================================
+// DATADOG MONITORING CONFIGURATION
+// =============================================================================
+export const datadog = {
+    // Client-side Datadog configuration (browser/RUM)
+    client: {
+        applicationId: process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID ?? '',
+        clientToken: process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN ?? '',
+        service: process.env.NEXT_PUBLIC_DATADOG_SERVICE ?? '',
+        env: process.env.NEXT_PUBLIC_DATADOG_ENV ?? '',
+        site: process.env.NEXT_PUBLIC_DATADOG_SITE ?? '',
+    },
+} as const;
+
+// =============================================================================
+// GOOGLE ANALYTICS & TAG MANAGER CONFIGURATION
+// =============================================================================
+export const analytics = {
+    google: {
+        tagManagerId: process.env.NEXT_PUBLIC_GOOGLE_ID ?? '',
+    },
+} as const;
+
+// =============================================================================
+// SYSTEM & BUILD CONFIGURATION
+// =============================================================================
+export const system = {
+    nodeEnv: process.env.NODE_ENV ?? 'development',
+    version: packageJson.version,
+} as const;
+
+
 const env = {
-    optimizely
+    optimizely,
+    site,
+    datadog,
+    analytics,
+    system
 }
 
 export default env;
