@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { RouteResolver } from '@remkoj/optimizely-graph-client';
+import { resolveHomePath } from '@/utils/CMSPitfallCompensations';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const domain =
@@ -10,11 +11,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const scheme =
     domain && (domain.startsWith('localhost') || domain.endsWith('.local')) ? 'http' : 'https';
   const host = domain ? new URL(`${scheme}://${domain}`) : undefined;
+  //to resolve only current project routes
+  const filterDomain = process.env.SITE_PRIMARY
+    ? process.env.SITE_PRIMARY.startsWith('http')
+      ? process.env.SITE_PRIMARY
+      : `https://${process.env.SITE_PRIMARY}`
+    : undefined;
   const resolver = new RouteResolver();
-  const routes = await resolver.getRoutes();
+  const routes = await resolver.getRoutes(filterDomain, true);
   return routes.map(r => {
+    const pathname = resolveHomePath(r.url.pathname);
     return {
-      url: new URL(r.url.pathname, host ?? r.url).href,
+      url: new URL(pathname, host ?? r.url).href,
       lastModified: r.changed ?? new Date(),
       changeFrequency: 'daily',
       priority: 1,

@@ -40,6 +40,7 @@ export const site = {
     // Public site configuration (client-side accessible)
     public: {
         baseUrl: process.env.NEXT_PUBLIC_BASE_URL ?? '',
+        siteDomain: process.env.NEXT_PUBLIC_SITE_DOMAIN ?? '',
         // cspHeaders: process.env.NEXT_PUBLIC_CSP_HEADERS ?? '',
     },
 } as const;
