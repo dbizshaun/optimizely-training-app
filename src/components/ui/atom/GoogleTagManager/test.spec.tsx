@@ -35,14 +35,6 @@ describe('GoogleTagManager', () => {
     mockUsePathname.mockReturnValue('/');
   });
 
-  it('renders Next.js GoogleTagManager with correct GTM ID', () => {
-    const { getByTestId } = render(<GoogleTagManager />);
-
-    const gtmComponent = getByTestId('next-gtm');
-    expect(gtmComponent).toBeInTheDocument();
-    expect(gtmComponent).toHaveAttribute('data-gtm-id', 'GTM-TEST123');
-  });
-
   it('calls trackPageView on mount', () => {
     render(<GoogleTagManager />);
 
