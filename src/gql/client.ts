@@ -9,6 +9,43 @@ export const LinkDataFragmentDoc = gql`
   default
 }
     `;
+export const ReferenceDataFragmentDoc = gql`
+    fragment ReferenceData on ContentReference {
+  key
+  url {
+    ...LinkData
+  }
+}
+    `;
+export const PublicImageAssetDataFragmentDoc = gql`
+    fragment PublicImageAssetData on cmp_PublicImageAsset {
+  __typename
+  url: Url
+  alt: AltText
+}
+    `;
+export const PublicImageReferenceDataFragmentDoc = gql`
+    fragment PublicImageReferenceData on ContentReference {
+  ...ReferenceData
+  item {
+    ...PublicImageAssetData
+  }
+}
+    `;
+export const PublicVideoAssetDataFragmentDoc = gql`
+    fragment PublicVideoAssetData on cmp_PublicVideoAsset {
+  __typename
+  url: Url
+}
+    `;
+export const PublicVideoReferenceDataFragmentDoc = gql`
+    fragment PublicVideoReferenceData on ContentReference {
+  ...ReferenceData
+  item {
+    ...PublicVideoAssetData
+  }
+}
+    `;
 export const IContentInfoFragmentDoc = gql`
     fragment IContentInfo on IContentMetadata {
   key
@@ -32,14 +69,6 @@ export const IContentDataFragmentDoc = gql`
 export const PageDataFragmentDoc = gql`
     fragment PageData on _IContent {
   ...IContentData
-}
-    `;
-export const ReferenceDataFragmentDoc = gql`
-    fragment ReferenceData on ContentReference {
-  key
-  url {
-    ...LinkData
-  }
 }
     `;
 export const IContentListItemFragmentDoc = gql`

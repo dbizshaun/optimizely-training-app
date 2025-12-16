@@ -44,6 +44,7 @@
     "@graphql-codegen/fragment-matcher": "^5.1.0",
     "@graphql-codegen/schema-ast": "^5.0.0",
     "@graphql-typed-document-node/core": "^3.2.0",
+    "@parcel/watcher": "^2.5.1",
     "@remkoj/optimizely-cms-api": "^5.1.6",
     "@remkoj/optimizely-cms-cli": "^5.1.6",
     "@remkoj/optimizely-graph-cli": "^5.1.6",
