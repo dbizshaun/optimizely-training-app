@@ -10,12 +10,12 @@ const GTM_ID = env.analytics.google.tagManagerId;
 
 function GoogleTagManager() {
   const pathname = usePathname();
-  if (!GTM_ID) return null;
-
+  
   React.useEffect(() => {
     trackPageView();
   }, [pathname]);
-
+  
+  if (!GTM_ID) return null;
   return <NxtGoogleTagManager gtmId={GTM_ID} />;
 }
 
