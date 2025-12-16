@@ -1,0 +1,44 @@
+# Generated GraphQL files - DO NOT FORMAT
+src/gql/
+src/cutom-gql-fragments/
+**/gql/
+**/*.generated.ts
+**/*.generated.js
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Dependencies
+node_modules/
+.yarn/
+.pnp.*
+
+# Generated schema files
+schema.graphql
+*.schema.json
+
+# Lock files
+yarn.lock
+package-lock.json
+
+# Environment files
+.env*
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Certificates and keys
+certificates/
+*.pem
+*.key
+*.crt
