@@ -1,7 +1,8 @@
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { DatadogInit } from '@/components/ui/atom/DatadogInit';
 import GoogleTagManager from '@/components/ui/atom/GoogleTagManager';
+
+import type { Metadata } from 'next';
 
 import './globals.css';
 

@@ -8,6 +8,9 @@ import factory from '@/components/factory';
 
 import { getSiteUrl } from '@/utils/APIResolvers';
 
+import type { GraphQLClient } from 'graphql-request';
+import type { getContentByPathQueryVariables } from '@/gql/graphql';
+
 const channelId = getSiteUrl() ?? undefined;
 
 // Deconstruct the created page in the constants Next.js needs
@@ -25,7 +28,14 @@ const { CmsPage, generateMetadata, generateStaticParams } = createPage(factory, 
    * resolve the content item and then use the CmsComponent from the
    * factory to load the content specifically for the resolved content item.
    */
-  getContentByPath,
+  getContentByPath: (
+    client: GraphQLClient,
+    variables: getContentByPathQueryVariables
+  ) => {
+    // Set the maximum sub-request size
+    (variables as any).maxSubRequestSize = 100;
+    return getContentByPath(client, variables);
+  },
 
   /**
    * The client factory to be used when a new GraphQL client is required
