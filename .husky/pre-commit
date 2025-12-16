@@ -1,0 +1,11 @@
+echo "🎨 Running Prettier..."
+yarn lint-staged
+
+echo "📊 Running test coverage..."
+yarn jest --coverage --passWithNoTests
+if [ $? -ne 0 ]; then
+  echo "❌ Test coverage check failed. Fix the issues before pushing."
+  exit 1
+fi
+
+echo "✅ All checks passed! Commiting..."

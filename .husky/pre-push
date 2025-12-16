@@ -1,0 +1,8 @@
+echo "🚀 Running Build Process..."
+yarn next build
+if [ $? -ne 0 ]; then
+  echo "❌ Build failed. Fix the errors before pushing."
+  exit 1
+fi
+
+echo "✅ All checks passed! Pushing..."

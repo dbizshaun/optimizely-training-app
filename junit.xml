@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="38" failures="0" errors="0" time="11.314">
+  <testsuite name="APIResolvers" errors="0" failures="0" skipped="0" timestamp="2025-12-16T10:40:11" time="4.876" tests="4">
+    <testcase classname="APIResolvers getSiteUrl should return sitePrimary with https when it starts with http" name="APIResolvers getSiteUrl should return sitePrimary with https when it starts with http" time="1.729">
+    </testcase>
+    <testcase classname="APIResolvers getSiteUrl should prepend https when sitePrimary does not start with http" name="APIResolvers getSiteUrl should prepend https when sitePrimary does not start with http" time="0.01">
+    </testcase>
+    <testcase classname="APIResolvers getSiteUrl should return localhost fallback when sitePrimary is empty" name="APIResolvers getSiteUrl should return localhost fallback when sitePrimary is empty" time="0.01">
+    </testcase>
+    <testcase classname="APIResolvers getSiteUrl should return localhost fallback when sitePrimary is undefined" name="APIResolvers getSiteUrl should return localhost fallback when sitePrimary is undefined" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="logEvent" errors="0" failures="0" skipped="0" timestamp="2025-12-16T10:40:11" time="4.897" tests="4">
+    <testcase classname="logEvent should call sendGTMEvent with event parameters and page URL" name="logEvent should call sendGTMEvent with event parameters and page URL" time="0.042">
+    </testcase>
+    <testcase classname="logEvent should include current page URL from window.location.href" name="logEvent should include current page URL from window.location.href" time="0.001">
+    </testcase>
+    <testcase classname="logEvent should handle event parameters with mixed string and number values" name="logEvent should handle event parameters with mixed string and number values" time="0.002">
+    </testcase>
+    <testcase classname="logEvent should handle empty event parameters object" name="logEvent should handle empty event parameters object" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="CMSPitfallCompensations" errors="0" failures="0" skipped="0" timestamp="2025-12-16T10:40:11" time="4.929" tests="12">
+    <testcase classname="CMSPitfallCompensations ResolveViewportSizeForPreview should return original size when not in edit mode" name="CMSPitfallCompensations ResolveViewportSizeForPreview should return original size when not in edit mode" time="0.026">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations ResolveViewportSizeForPreview should return original size when inEditMode is undefined" name="CMSPitfallCompensations ResolveViewportSizeForPreview should return original size when inEditMode is undefined" time="0">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations ResolveViewportSizeForPreview should convert viewport units to pixels in edit mode with default constant" name="CMSPitfallCompensations ResolveViewportSizeForPreview should convert viewport units to pixels in edit mode with default constant" time="0.001">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations ResolveViewportSizeForPreview should use custom sizeConstant when provided" name="CMSPitfallCompensations ResolveViewportSizeForPreview should use custom sizeConstant when provided" time="0.001">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations ResolveViewportSizeForPreview should throw error for non-numeric size strings" name="CMSPitfallCompensations ResolveViewportSizeForPreview should throw error for non-numeric size strings" time="0.03">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations ResolveViewportSizeForPreview should throw error for empty strings" name="CMSPitfallCompensations ResolveViewportSizeForPreview should throw error for empty strings" time="0.003">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations resolveHomePath should remove /en/ from URL path" name="CMSPitfallCompensations resolveHomePath should remove /en/ from URL path" time="0.001">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations resolveHomePath should handle multiple /en/ occurrences" name="CMSPitfallCompensations resolveHomePath should handle multiple /en/ occurrences" time="0">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations resolveHomePath should return original URL when no /en/ is present" name="CMSPitfallCompensations resolveHomePath should return original URL when no /en/ is present" time="0.002">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations resolveHomePath should handle root /en/ path" name="CMSPitfallCompensations resolveHomePath should handle root /en/ path" time="0.001">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations resolveHomePath should handle empty string" name="CMSPitfallCompensations resolveHomePath should handle empty string" time="0.001">
+    </testcase>
+    <testcase classname="CMSPitfallCompensations resolveHomePath should handle URLs with query parameters" name="CMSPitfallCompensations resolveHomePath should handle URLs with query parameters" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="datadogClient" errors="0" failures="0" skipped="0" timestamp="2025-12-16T10:40:11" time="4.983" tests="4">
+    <testcase classname="datadogClient should initialize datadogRum and datadogLogs when applicationId is present" name="datadogClient should initialize datadogRum and datadogLogs when applicationId is present" time="1.778">
+    </testcase>
+    <testcase classname="datadogClient should not initialize when applicationId is empty" name="datadogClient should not initialize when applicationId is empty" time="0.003">
+    </testcase>
+    <testcase classname="datadogClient should configure beforeSend to filter specific error messages" name="datadogClient should configure beforeSend to filter specific error messages" time="0.003">
+    </testcase>
+    <testcase classname="datadogClient should configure allowedTracingUrls correctly" name="datadogClient should configure allowedTracingUrls correctly" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Google Analytics Tracking Functions" errors="0" failures="0" skipped="0" timestamp="2025-12-16T10:40:11" time="4.986" tests="6">
+    <testcase classname="Google Analytics Tracking Functions trackPageView should call logEvent with page_view event" name="Google Analytics Tracking Functions trackPageView should call logEvent with page_view event" time="0.027">
+    </testcase>
+    <testcase classname="Google Analytics Tracking Functions trackCTA should call logEvent with cta_clicked event and label" name="Google Analytics Tracking Functions trackCTA should call logEvent with cta_clicked event and label" time="0.002">
+    </testcase>
+    <testcase classname="Google Analytics Tracking Functions trackCTA should include additional info when provided" name="Google Analytics Tracking Functions trackCTA should include additional info when provided" time="0.002">
+    </testcase>
+    <testcase classname="Google Analytics Tracking Functions trackFormEvents should call logEvent with form event and status" name="Google Analytics Tracking Functions trackFormEvents should call logEvent with form event and status" time="0">
+    </testcase>
+    <testcase classname="Google Analytics Tracking Functions trackFormEvents should handle success status with additional info" name="Google Analytics Tracking Functions trackFormEvents should handle success status with additional info" time="0.001">
+    </testcase>
+    <testcase classname="Google Analytics Tracking Functions trackFormEvents should handle failed status" name="Google Analytics Tracking Functions trackFormEvents should handle failed status" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="DatadogInit" errors="0" failures="0" skipped="0" timestamp="2025-12-16T10:40:11" time="5.08" tests="3">
+    <testcase classname="DatadogInit should call dataDogInitialisation on mount" name="DatadogInit should call dataDogInitialisation on mount" time="0.054">
+    </testcase>
+    <testcase classname="DatadogInit should render null" name="DatadogInit should render null" time="0.006">
+    </testcase>
+    <testcase classname="DatadogInit should only call dataDogInitialisation once" name="DatadogInit should only call dataDogInitialisation once" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="GoogleTagManager" errors="0" failures="0" skipped="0" timestamp="2025-12-16T10:40:11" time="5.137" tests="5">
+    <testcase classname="GoogleTagManager renders Next.js GoogleTagManager with correct GTM ID" name="GoogleTagManager renders Next.js GoogleTagManager with correct GTM ID" time="0.081">
+    </testcase>
+    <testcase classname="GoogleTagManager calls trackPageView on mount" name="GoogleTagManager calls trackPageView on mount" time="0.008">
+    </testcase>
+    <testcase classname="GoogleTagManager calls trackPageView when pathname changes" name="GoogleTagManager calls trackPageView when pathname changes" time="0.005">
+    </testcase>
+    <testcase classname="GoogleTagManager handles multiple pathname changes" name="GoogleTagManager handles multiple pathname changes" time="0.005">
+    </testcase>
+    <testcase classname="GoogleTagManager renders without errors when GTM ID is available" name="GoogleTagManager renders without errors when GTM ID is available" time="0.003">
+    </testcase>
+  </testsuite>
+</testsuites>

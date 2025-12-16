@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 
 // Mock Next.js router
 jest.mock('next/router', () => ({
@@ -20,9 +20,9 @@ jest.mock('next/router', () => ({
         emit: jest.fn(),
       },
       isFallback: false,
-    }
+    };
   },
-}))
+}));
 
 // Mock Next.js navigation
 jest.mock('next/navigation', () => ({
@@ -34,21 +34,21 @@ jest.mock('next/navigation', () => ({
       back: jest.fn(),
       forward: jest.fn(),
       refresh: jest.fn(),
-    }
+    };
   },
   useSearchParams() {
-    return new URLSearchParams()
+    return new URLSearchParams();
   },
   usePathname() {
-    return '/'
+    return '/';
   },
-}))
+}));
 
 // Mock server-only
-jest.mock('server-only', () => ({}))
+jest.mock('server-only', () => ({}));
 
 // Mock environment variables
-process.env.NODE_ENV = 'test'
+process.env.NODE_ENV = 'test';
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -63,18 +63,30 @@ Object.defineProperty(window, 'matchMedia', {
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
   })),
-})
+});
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
   constructor() {}
   observe() {
-    return null
+    return null;
   }
   disconnect() {
-    return null
+    return null;
   }
   unobserve() {
-    return null
+    return null;
   }
-}
+};
+
+// default environment mock
+jest.mock('@/config/environment', () => ({
+  __esModule: true,
+  default: {
+    datadog: { client: { applicationId: '', clientToken: '', service: '', env: '', site: '' } },
+    site: { public: { baseUrl: '' } },
+    optimizely: { cms: { sitePrimary: '' } },
+    analytics: { google: { tagManagerId: '' } },
+    system: { version: '1.0.0', nodeEnv: 'test' },
+  },
+}));

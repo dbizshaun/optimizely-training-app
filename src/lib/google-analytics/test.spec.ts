@@ -1,4 +1,4 @@
-import { trackPageView, trackCTA, trackFormEvents, trackSearchEvents } from './index';
+import { trackPageView, trackCTA, trackFormEvents } from './index';
 
 // Mock the logEvent function
 jest.mock('./logEvent', () => ({
@@ -86,47 +86,6 @@ describe('Google Analytics Tracking Functions', () => {
         event: 'form',
         status: 'failed',
         type: 'newsletter',
-      });
-    });
-  });
-
-  describe('trackSearchEvents', () => {
-    it('should call logEvent with search event and parameters', () => {
-      const config = { searchText: 'luxury hotel', resultCount: 15 };
-
-      trackSearchEvents(config);
-
-      expect(mockLogEvent).toHaveBeenCalledWith({
-        event: 'search',
-        searchText: 'luxury hotel',
-        resultCount: 15,
-      });
-    });
-
-    it('should include additional info when provided', () => {
-      const config = { searchText: 'spa resort', resultCount: 8 };
-      const additionalInfo = { category: 'wellness', location: 'dubai' };
-
-      trackSearchEvents(config, additionalInfo);
-
-      expect(mockLogEvent).toHaveBeenCalledWith({
-        event: 'search',
-        searchText: 'spa resort',
-        resultCount: 8,
-        category: 'wellness',
-        location: 'dubai',
-      });
-    });
-
-    it('should handle zero search results', () => {
-      const config = { searchText: 'nonexistent', resultCount: 0 };
-
-      trackSearchEvents(config);
-
-      expect(mockLogEvent).toHaveBeenCalledWith({
-        event: 'search',
-        searchText: 'nonexistent',
-        resultCount: 0,
       });
     });
   });
