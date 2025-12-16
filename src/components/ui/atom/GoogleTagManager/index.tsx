@@ -9,8 +9,8 @@ import env from '@/config/environment';
 const GTM_ID = env.analytics.google.tagManagerId;
 
 function GoogleTagManager() {
-  if (!GTM_ID) return null;
   const pathname = usePathname();
+  if (!GTM_ID) return null;
 
   React.useEffect(() => {
     trackPageView();
