@@ -1,0 +1,6 @@
+#DAM Image Asset fragment
+fragment PublicImageAssetData on cmp_PublicImageAsset {
+  __typename
+  url: Url
+  alt: AltText
+}

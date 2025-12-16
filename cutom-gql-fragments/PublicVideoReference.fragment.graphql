@@ -1,0 +1,7 @@
+#Use this for dam assets resolution. It has ReferenceData fallback
+fragment PublicVideoReferenceData on ContentReference {
+  ...ReferenceData
+  item {
+    ...PublicVideoAssetData
+  }
+}

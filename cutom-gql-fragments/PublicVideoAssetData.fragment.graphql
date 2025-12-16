@@ -1,0 +1,5 @@
+#DAM Video Asset fragment
+fragment PublicVideoAssetData on cmp_PublicVideoAsset {
+  __typename
+  url: Url
+}
