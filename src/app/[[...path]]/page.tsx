@@ -6,19 +6,9 @@ import { createClient, AuthMode } from '@remkoj/optimizely-graph-client';
 import { getContentByPath } from '@/gql/functions';
 import factory from '@/components/factory';
 
-// Read the URLs from the environment
-const netlifyUrl = process.env.URL;
-const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : undefined;
-const customUrl = process.env.SITE_DOMAIN
-  ? process.env.SITE_DOMAIN.startsWith('http')
-    ? process.env.SITE_DOMAIN
-    : `https://${process.env.SITE_DOMAIN}`
-  : undefined;
+import { getSiteUrl } from '@/utils/APIResolvers';
 
-// Determine the ChannelURL
-const channelId = customUrl || vercelUrl || netlifyUrl;
+const channelId = getSiteUrl() ?? undefined;
 
 // Deconstruct the created page in the constants Next.js needs
 const { CmsPage, generateMetadata, generateStaticParams } = createPage(factory, {
