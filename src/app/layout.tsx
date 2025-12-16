@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import { DatadogInit } from '@/components/ui/atom/DatadogInit';
 import GoogleTagManager from '@/components/ui/atom/GoogleTagManager';
+import ThemeRegistry from '@/components/ui/ThemeRegistry';
 
 import type { Metadata } from 'next';
 
@@ -21,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <DatadogInit />
-        <GoogleTagManager />
-        <main>{children}</main>
+        <ThemeRegistry>
+          <DatadogInit />
+          <GoogleTagManager />
+          <main>{children}</main>
+        </ThemeRegistry>
       </body>
     </html>
   );

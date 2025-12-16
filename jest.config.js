@@ -21,8 +21,11 @@ const customJestConfig = {
     '!src/**/*.config.{js,jsx,ts,tsx}',
     //files without business logic
     '!src/config/environment.ts',
+    '!src/config/theme.ts',
     '!src/components/cms/index.ts',
     '!src/components/factory.ts',
+    '!src/components/ui/ThemeRegistry/**',
+    '!src/lib/apiClient.ts',
     '!src/api.ts',
   ],
   coverageThreshold: {

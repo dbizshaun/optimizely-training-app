@@ -1,4 +1,4 @@
-echo "🎨 Running Prettier..."
+echo "🎨 Running Prettier and linting..."
 yarn lint-staged
 
 echo "📊 Running test coverage..."
