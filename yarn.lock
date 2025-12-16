@@ -1629,6 +1629,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graphql-codegen/plugin-helpers@npm:^6.0.0":
+  version: 6.1.0
+  resolution: "@graphql-codegen/plugin-helpers@npm:6.1.0"
+  dependencies:
+    "@graphql-tools/utils": "npm:^10.0.0"
+    change-case-all: "npm:1.0.15"
+    common-tags: "npm:1.8.2"
+    import-from: "npm:4.0.0"
+    lodash: "npm:~4.17.0"
+    tslib: "npm:~2.6.0"
+  peerDependencies:
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 10c0/6d19595cd89fed205576346677dab44a285312eff9a1842839aee33fcb9a7e4d4aa11e5892cf9a55e045d2f42545c8f66ed86c1a8557116a10c7129f277c963e
+  languageName: node
+  linkType: hard
+
 "@graphql-codegen/schema-ast@npm:^4.0.2":
   version: 4.0.2
   resolution: "@graphql-codegen/schema-ast@npm:4.0.2"
@@ -1639,6 +1655,19 @@ __metadata:
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
   checksum: 10c0/533b1bfa6c01d02ff2ec688a478e8daeb9bda1d69d63b1bca8adf9ab606a4a315da4e0f45444836646b8e539e8c76891af536afd9fb3a7e36d40f8bd04218748
+  languageName: node
+  linkType: hard
+
+"@graphql-codegen/schema-ast@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@graphql-codegen/schema-ast@npm:5.0.0"
+  dependencies:
+    "@graphql-codegen/plugin-helpers": "npm:^6.0.0"
+    "@graphql-tools/utils": "npm:^10.0.0"
+    tslib: "npm:~2.6.0"
+  peerDependencies:
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 10c0/d2eb0a72e74403fb144b278fb0769a2a949f8dc70f64992912826e42ca1f5e6bca3633cc625f3b9bb422bd7de97afeb21d3493887532f84dce9bf0d1bcd52523
   languageName: node
   linkType: hard
 
@@ -13072,6 +13101,7 @@ __metadata:
     "@datadog/datadog-ci": "npm:^4.4.0"
     "@graphql-codegen/cli": "npm:^5.0.7"
     "@graphql-codegen/fragment-matcher": "npm:^5.1.0"
+    "@graphql-codegen/schema-ast": "npm:^5.0.0"
     "@graphql-typed-document-node/core": "npm:^3.2.0"
     "@next/third-parties": "npm:^16.0.10"
     "@remkoj/optimizely-cms-api": "npm:^5.1.6"
