@@ -8,8 +8,7 @@
     "dev": "next dev",
     "build:dev": "next build",
     "build:full": "graphql-codegen && next build",
-    "build": "yarn compile && yarn build:dev && yarn postbuild:standalone",
-    "postbuild:standalone": "node scripts/postbuild.js",
+    "build": "yarn compile && yarn build:dev",
     "start": "next start",
     "lint": "next lint",
     "compile": "graphql-codegen",
@@ -101,7 +100,7 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
-      "prettier --write"
+      "yarn format"
     ]
   }
 }

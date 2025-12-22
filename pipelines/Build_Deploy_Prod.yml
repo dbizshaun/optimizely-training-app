@@ -1,0 +1,100 @@
+resources:
+  repositories:
+    - repository: Aldar.YamlTemplates
+      type: git
+      name: Aldar.YamlTemplates/Aldar.YamlTemplates
+      ref: refs/tags/template-latest
+
+trigger:
+  - main
+
+variables:
+  - name: DockerServiceConnection
+    value: "sc-ad-hsp-acr-prod-001"
+  - name: AppServiceConnectionName
+    value: "sc-ad-prod-001"
+  - name: DockerServiceConnection-staging
+    value: "sc-ad-hsp-acr-np-001"
+  - name: CentralDockerServiceConnection
+    value: "sc-ats-cmn-001"
+
+stages:
+  - stage: BuildStaging
+    variables:
+      - group: Staging_YasPlaza_WebApp
+      - group: Staging_ProjectConfig
+
+    jobs:
+      - template: /Build/BuildAndPushDockerCentralACR.yml@Aldar.YamlTemplates
+        parameters:
+          build_args: '$(build_args)'
+          DockerServiceConnection: "$(DockerServiceConnection-staging)"
+          CentralDockerServiceConnection: '$(CentralDockerServiceConnection)'
+
+  - stage: Staging
+    displayName: Deploying to Staging environment
+    dependsOn: BuildStaging
+    pool:
+      name: "vmss-ad-np"
+    variables:
+      - group: Staging_YasPlaza_WebApp
+      - group: Staging_ProjectConfig
+
+    jobs:
+      - template: /Release/AppServiceContainer.yml@Aldar.YamlTemplates
+        parameters:
+          Environment: "Staging_YasPlaza_WebApp"
+
+  - stage: Build_Preprod
+    displayName: Build and Produce the Artifact in Preprod
+    dependsOn: Staging
+    variables:
+      - group: Preprod_YasPlaza_WebApp
+      - group: Preprod_ProjectConfig
+     jobs:
+      - template: /Build/BuildAndPushDockerCentralACR.yml@Aldar.YamlTemplates
+        parameters:
+          build_args: '$(build_args)'
+          DockerServiceConnection: "$(DockerServiceConnection-staging)"
+          CentralDockerServiceConnection: '$(CentralDockerServiceConnection)'
+
+  - stage: Preprod_Deploy
+    displayName: Deploying to Preprod environment
+    dependsOn: Build_Preprod
+    pool:
+      name: 'vmss-ad-prod'
+
+    variables:
+      - group: Preprod_YasPlaza_WebApp
+      - group: Preprod_ProjectConfig
+    jobs:
+      - template: /Release/AppServiceContainer.yml@Aldar.YamlTemplates
+        parameters:
+          Environment: 'Preprod_YasPlaza_WebApp'
+  
+  - stage: Build_Prod
+    displayName: Build and Produce the Artifact in Preprod
+    dependsOn: Preprod_Deploy
+    variables:
+      - group: Prod_YasPlaza_WebApp
+      - group: Prod_ProjectConfig
+      jobs:
+      - template: /Build/BuildAndPushDockerCentralACR.yml@Aldar.YamlTemplates
+        parameters:
+          build_args: '$(build_args)'
+          DockerServiceConnection: "$(DockerServiceConnection-staging)"
+          CentralDockerServiceConnection: '$(CentralDockerServiceConnection)'
+
+  - stage: Prod
+    displayName: Deploying to Prod environment
+    dependsOn: Build_Prod
+    pool:
+      name: 'vmss-ad-prod'
+
+    variables:
+      - group: Prod_YasPlaza_WebApp
+      - group: Prod_ProjectConfig
+    jobs:
+      - template: /Release/AppServiceContainer.yml@Aldar.YamlTemplates
+        parameters:
+          Environment: 'Prod_YasPlaza_WebApp'

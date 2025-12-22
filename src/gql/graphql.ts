@@ -11866,6 +11866,9 @@ export type IceRidgeGeneralPage = IData & _IContent & _IItem & _IPage & {
   Status?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   TermsAndConditions?: Maybe<RichText>;
   Title?: Maybe<Scalars['String']['output']>;
+  VendorID?: Maybe<Scalars['String']['output']>;
+  VendorLogo?: Maybe<ContentReference>;
+  VendorName?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use `_link` field instead */
   _children?: Maybe<QueryRef>;
   _deleted?: Maybe<Scalars['Bool']['output']>;
@@ -11897,6 +11900,7 @@ export type IceRidgeGeneralPageAutocomplete = {
   Logo?: Maybe<ContentReferenceAutocomplete>;
   PackageOverview?: Maybe<ContentReferenceAutocomplete>;
   TermsAndConditions?: Maybe<RichTextAutocomplete>;
+  VendorLogo?: Maybe<ContentReferenceAutocomplete>;
   _itemMetadata?: Maybe<_MetadataAutocomplete>;
   _metadata?: Maybe<IContentMetadataAutocomplete>;
 };
@@ -11909,6 +11913,7 @@ export type IceRidgeGeneralPageFacet = {
   Logo?: Maybe<ContentReferenceFacet>;
   PackageOverview?: Maybe<ContentReferenceFacet>;
   TermsAndConditions?: Maybe<RichTextFacet>;
+  VendorLogo?: Maybe<ContentReferenceFacet>;
   _itemMetadata?: Maybe<_MetadataFacet>;
   _metadata?: Maybe<IContentMetadataFacet>;
 };
@@ -11920,6 +11925,7 @@ export type IceRidgeGeneralPageOrderByInput = {
   Logo?: InputMaybe<ContentReferenceOrderByInput>;
   PackageOverview?: InputMaybe<ContentReferenceOrderByInput>;
   TermsAndConditions?: InputMaybe<RichTextOrderByInput>;
+  VendorLogo?: InputMaybe<ContentReferenceOrderByInput>;
   _itemMetadata?: InputMaybe<_MetadataOrderByInput>;
   _metadata?: InputMaybe<IContentMetadataOrderByInput>;
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
@@ -11951,6 +11957,7 @@ export type IceRidgeGeneralPageWhereInput = {
   Logo?: InputMaybe<ContentReferenceWhereInput>;
   PackageOverview?: InputMaybe<ContentReferenceWhereInput>;
   TermsAndConditions?: InputMaybe<RichTextWhereInput>;
+  VendorLogo?: InputMaybe<ContentReferenceWhereInput>;
   _and?: InputMaybe<Array<InputMaybe<IceRidgeGeneralPageWhereInput>>>;
   _fulltext?: InputMaybe<SearchableStringFilterInput>;
   _itemMetadata?: InputMaybe<_MetadataWhereInput>;
@@ -11964,6 +11971,7 @@ export type IceRidgeLandingPage = IData & _IContent & _IItem & _IPage & {
   __typename?: 'IceRidgeLandingPage';
   Categories?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Items?: Maybe<Array<Maybe<ContentReference>>>;
+  Questions?: Maybe<ContentReference>;
   Title?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use `_link` field instead */
   _children?: Maybe<QueryRef>;
@@ -11991,6 +11999,7 @@ export type IceRidgeLandingPage_linkArgs = {
 export type IceRidgeLandingPageAutocomplete = {
   __typename?: 'IceRidgeLandingPageAutocomplete';
   Items?: Maybe<ContentReferenceAutocomplete>;
+  Questions?: Maybe<ContentReferenceAutocomplete>;
   _itemMetadata?: Maybe<_MetadataAutocomplete>;
   _metadata?: Maybe<IContentMetadataAutocomplete>;
 };
@@ -11998,12 +12007,14 @@ export type IceRidgeLandingPageAutocomplete = {
 export type IceRidgeLandingPageFacet = {
   __typename?: 'IceRidgeLandingPageFacet';
   Items?: Maybe<ContentReferenceFacet>;
+  Questions?: Maybe<ContentReferenceFacet>;
   _itemMetadata?: Maybe<_MetadataFacet>;
   _metadata?: Maybe<IContentMetadataFacet>;
 };
 
 export type IceRidgeLandingPageOrderByInput = {
   Items?: InputMaybe<ContentReferenceOrderByInput>;
+  Questions?: InputMaybe<ContentReferenceOrderByInput>;
   _itemMetadata?: InputMaybe<_MetadataOrderByInput>;
   _metadata?: InputMaybe<IContentMetadataOrderByInput>;
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
@@ -12030,6 +12041,7 @@ export type IceRidgeLandingPageOutputtotalArgs = {
 
 export type IceRidgeLandingPageWhereInput = {
   Items?: InputMaybe<ContentReferenceWhereInput>;
+  Questions?: InputMaybe<ContentReferenceWhereInput>;
   _and?: InputMaybe<Array<InputMaybe<IceRidgeLandingPageWhereInput>>>;
   _fulltext?: InputMaybe<SearchableStringFilterInput>;
   _itemMetadata?: InputMaybe<_MetadataWhereInput>;
@@ -12140,15 +12152,19 @@ export type IceRidgePackage = IData & _IComponent & _IContent & _IItem & {
   PackageDescription?: Maybe<RichText>;
   PackageFAQs?: Maybe<Array<Maybe<_IContent>>>;
   PackageImages?: Maybe<Array<Maybe<ContentReference>>>;
+  PackageImagesTheme?: Maybe<Array<Maybe<ContentReference>>>;
   PackageMedia?: Maybe<Array<Maybe<ContentReference>>>;
   PackageName?: Maybe<Scalars['String']['output']>;
   PackagePreviewImages?: Maybe<Array<Maybe<ContentReference>>>;
   PackageSKU?: Maybe<Scalars['String']['output']>;
   PackageType?: Maybe<Scalars['String']['output']>;
   Room?: Maybe<Array<Maybe<_IContent>>>;
+  Room360PreviewImages?: Maybe<Array<Maybe<ContentReference>>>;
   RoomType?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   ServiceCoverage?: Maybe<RichText>;
+  ServiceCoverageInfo?: Maybe<RichText>;
   WarrantyAndSupport?: Maybe<RichText>;
+  WarrantySupportInfo?: Maybe<RichText>;
   /** @deprecated Use `_link` field instead */
   _children?: Maybe<QueryRef>;
   _deleted?: Maybe<Scalars['Bool']['output']>;
@@ -12177,11 +12193,15 @@ export type IceRidgePackageAutocomplete = {
   PackageDescription?: Maybe<RichTextAutocomplete>;
   PackageFAQs?: Maybe<_IContentAutocomplete>;
   PackageImages?: Maybe<ContentReferenceAutocomplete>;
+  PackageImagesTheme?: Maybe<ContentReferenceAutocomplete>;
   PackageMedia?: Maybe<ContentReferenceAutocomplete>;
   PackagePreviewImages?: Maybe<ContentReferenceAutocomplete>;
   Room?: Maybe<_IContentAutocomplete>;
+  Room360PreviewImages?: Maybe<ContentReferenceAutocomplete>;
   ServiceCoverage?: Maybe<RichTextAutocomplete>;
+  ServiceCoverageInfo?: Maybe<RichTextAutocomplete>;
   WarrantyAndSupport?: Maybe<RichTextAutocomplete>;
+  WarrantySupportInfo?: Maybe<RichTextAutocomplete>;
   _itemMetadata?: Maybe<_MetadataAutocomplete>;
   _metadata?: Maybe<IContentMetadataAutocomplete>;
 };
@@ -12191,11 +12211,15 @@ export type IceRidgePackageFacet = {
   PackageDescription?: Maybe<RichTextFacet>;
   PackageFAQs?: Maybe<_IContentFacet>;
   PackageImages?: Maybe<ContentReferenceFacet>;
+  PackageImagesTheme?: Maybe<ContentReferenceFacet>;
   PackageMedia?: Maybe<ContentReferenceFacet>;
   PackagePreviewImages?: Maybe<ContentReferenceFacet>;
   Room?: Maybe<_IContentFacet>;
+  Room360PreviewImages?: Maybe<ContentReferenceFacet>;
   ServiceCoverage?: Maybe<RichTextFacet>;
+  ServiceCoverageInfo?: Maybe<RichTextFacet>;
   WarrantyAndSupport?: Maybe<RichTextFacet>;
+  WarrantySupportInfo?: Maybe<RichTextFacet>;
   _itemMetadata?: Maybe<_MetadataFacet>;
   _metadata?: Maybe<IContentMetadataFacet>;
 };
@@ -12204,11 +12228,15 @@ export type IceRidgePackageOrderByInput = {
   PackageDescription?: InputMaybe<RichTextOrderByInput>;
   PackageFAQs?: InputMaybe<_IContentOrderByInput>;
   PackageImages?: InputMaybe<ContentReferenceOrderByInput>;
+  PackageImagesTheme?: InputMaybe<ContentReferenceOrderByInput>;
   PackageMedia?: InputMaybe<ContentReferenceOrderByInput>;
   PackagePreviewImages?: InputMaybe<ContentReferenceOrderByInput>;
   Room?: InputMaybe<_IContentOrderByInput>;
+  Room360PreviewImages?: InputMaybe<ContentReferenceOrderByInput>;
   ServiceCoverage?: InputMaybe<RichTextOrderByInput>;
+  ServiceCoverageInfo?: InputMaybe<RichTextOrderByInput>;
   WarrantyAndSupport?: InputMaybe<RichTextOrderByInput>;
+  WarrantySupportInfo?: InputMaybe<RichTextOrderByInput>;
   _itemMetadata?: InputMaybe<_MetadataOrderByInput>;
   _metadata?: InputMaybe<IContentMetadataOrderByInput>;
   _minimumScore?: InputMaybe<Scalars['Float']['input']>;
@@ -12237,11 +12265,15 @@ export type IceRidgePackageWhereInput = {
   PackageDescription?: InputMaybe<RichTextWhereInput>;
   PackageFAQs?: InputMaybe<_IContentWhereInput>;
   PackageImages?: InputMaybe<ContentReferenceWhereInput>;
+  PackageImagesTheme?: InputMaybe<ContentReferenceWhereInput>;
   PackageMedia?: InputMaybe<ContentReferenceWhereInput>;
   PackagePreviewImages?: InputMaybe<ContentReferenceWhereInput>;
   Room?: InputMaybe<_IContentWhereInput>;
+  Room360PreviewImages?: InputMaybe<ContentReferenceWhereInput>;
   ServiceCoverage?: InputMaybe<RichTextWhereInput>;
+  ServiceCoverageInfo?: InputMaybe<RichTextWhereInput>;
   WarrantyAndSupport?: InputMaybe<RichTextWhereInput>;
+  WarrantySupportInfo?: InputMaybe<RichTextWhereInput>;
   _and?: InputMaybe<Array<InputMaybe<IceRidgePackageWhereInput>>>;
   _fulltext?: InputMaybe<SearchableStringFilterInput>;
   _itemMetadata?: InputMaybe<_MetadataWhereInput>;
@@ -14667,6 +14699,7 @@ export type OffersList = IData & _IComponent & _IContent & _IItem & {
   __typename?: 'OffersList';
   BackgroundImage?: Maybe<ContentReference>;
   Description?: Maybe<RichText>;
+  List?: Maybe<Array<Maybe<_IContent>>>;
   Offers?: Maybe<Array<Maybe<ContentReference>>>;
   Title?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use `_link` field instead */
@@ -14696,6 +14729,7 @@ export type OffersListAutocomplete = {
   __typename?: 'OffersListAutocomplete';
   BackgroundImage?: Maybe<ContentReferenceAutocomplete>;
   Description?: Maybe<RichTextAutocomplete>;
+  List?: Maybe<_IContentAutocomplete>;
   Offers?: Maybe<ContentReferenceAutocomplete>;
   Title?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   _itemMetadata?: Maybe<_MetadataAutocomplete>;
@@ -14712,6 +14746,7 @@ export type OffersListFacet = {
   __typename?: 'OffersListFacet';
   BackgroundImage?: Maybe<ContentReferenceFacet>;
   Description?: Maybe<RichTextFacet>;
+  List?: Maybe<_IContentFacet>;
   Offers?: Maybe<ContentReferenceFacet>;
   Title?: Maybe<Array<Maybe<StringFacet>>>;
   _itemMetadata?: Maybe<_MetadataFacet>;
@@ -14729,6 +14764,7 @@ export type OffersListFacetTitleArgs = {
 export type OffersListOrderByInput = {
   BackgroundImage?: InputMaybe<ContentReferenceOrderByInput>;
   Description?: InputMaybe<RichTextOrderByInput>;
+  List?: InputMaybe<_IContentOrderByInput>;
   Offers?: InputMaybe<ContentReferenceOrderByInput>;
   Title?: InputMaybe<OrderBy>;
   _itemMetadata?: InputMaybe<_MetadataOrderByInput>;
@@ -14758,6 +14794,7 @@ export type OffersListOutputtotalArgs = {
 export type OffersListWhereInput = {
   BackgroundImage?: InputMaybe<ContentReferenceWhereInput>;
   Description?: InputMaybe<RichTextWhereInput>;
+  List?: InputMaybe<_IContentWhereInput>;
   Offers?: InputMaybe<ContentReferenceWhereInput>;
   Title?: InputMaybe<StringFilterInput>;
   _and?: InputMaybe<Array<InputMaybe<OffersListWhereInput>>>;
@@ -15300,6 +15337,7 @@ export type OptiFormsChoiceElementWhereInput = {
 export type OptiFormsContainerData = IData & _IComponent & _IContent & _IItem & _ISection & {
   __typename?: 'OptiFormsContainerData';
   Description?: Maybe<Scalars['String']['output']>;
+  FormSubTitle?: Maybe<Scalars['String']['output']>;
   Image?: Maybe<ContentReference>;
   ResetConfirmationMessage?: Maybe<Scalars['String']['output']>;
   ShowSummaryMessageAfterSubmission?: Maybe<Scalars['Boolean']['output']>;
@@ -22816,8 +22854,10 @@ export type RedirectWhereInput = {
 export type Restaurant = IData & _IComponent & _IContent & _IItem & {
   __typename?: 'Restaurant';
   CTA?: Maybe<CallToActionProperty>;
+  Contents?: Maybe<Array<Maybe<_IContent>>>;
   Description?: Maybe<RichText>;
-  Details?: Maybe<Array<Maybe<ContentReference>>>;
+  Detail?: Maybe<Array<Maybe<ContentReference>>>;
+  Details?: Maybe<Array<Maybe<_IContent>>>;
   Images?: Maybe<Array<Maybe<ContentReference>>>;
   Location?: Maybe<Scalars['String']['output']>;
   Name?: Maybe<Scalars['String']['output']>;
@@ -22847,8 +22887,10 @@ export type Restaurant_linkArgs = {
 export type RestaurantAutocomplete = {
   __typename?: 'RestaurantAutocomplete';
   CTA?: Maybe<CallToActionPropertyAutocomplete>;
+  Contents?: Maybe<_IContentAutocomplete>;
   Description?: Maybe<RichTextAutocomplete>;
-  Details?: Maybe<ContentReferenceAutocomplete>;
+  Detail?: Maybe<ContentReferenceAutocomplete>;
+  Details?: Maybe<_IContentAutocomplete>;
   Images?: Maybe<ContentReferenceAutocomplete>;
   Location?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   Name?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -22871,8 +22913,10 @@ export type RestaurantAutocompleteNameArgs = {
 export type RestaurantFacet = {
   __typename?: 'RestaurantFacet';
   CTA?: Maybe<CallToActionPropertyFacet>;
+  Contents?: Maybe<_IContentFacet>;
   Description?: Maybe<RichTextFacet>;
-  Details?: Maybe<ContentReferenceFacet>;
+  Detail?: Maybe<ContentReferenceFacet>;
+  Details?: Maybe<_IContentFacet>;
   Images?: Maybe<ContentReferenceFacet>;
   Location?: Maybe<Array<Maybe<StringFacet>>>;
   Name?: Maybe<Array<Maybe<StringFacet>>>;
@@ -22898,8 +22942,10 @@ export type RestaurantFacetNameArgs = {
 
 export type RestaurantOrderByInput = {
   CTA?: InputMaybe<CallToActionPropertyOrderByInput>;
+  Contents?: InputMaybe<_IContentOrderByInput>;
   Description?: InputMaybe<RichTextOrderByInput>;
-  Details?: InputMaybe<ContentReferenceOrderByInput>;
+  Detail?: InputMaybe<ContentReferenceOrderByInput>;
+  Details?: InputMaybe<_IContentOrderByInput>;
   Images?: InputMaybe<ContentReferenceOrderByInput>;
   Location?: InputMaybe<OrderBy>;
   Name?: InputMaybe<OrderBy>;
@@ -22929,8 +22975,10 @@ export type RestaurantOutputtotalArgs = {
 
 export type RestaurantWhereInput = {
   CTA?: InputMaybe<CallToActionPropertyWhereInput>;
+  Contents?: InputMaybe<_IContentWhereInput>;
   Description?: InputMaybe<RichTextWhereInput>;
-  Details?: InputMaybe<ContentReferenceWhereInput>;
+  Detail?: InputMaybe<ContentReferenceWhereInput>;
+  Details?: InputMaybe<_IContentWhereInput>;
   Images?: InputMaybe<ContentReferenceWhereInput>;
   Location?: InputMaybe<StringFilterInput>;
   Name?: InputMaybe<StringFilterInput>;
@@ -22948,6 +22996,7 @@ export type RestaurantsList = IData & _IComponent & _IContent & _IItem & {
   CTA?: Maybe<Array<Maybe<CallToActionProperty>>>;
   Description?: Maybe<RichText>;
   Diners?: Maybe<Array<Maybe<ContentReference>>>;
+  List?: Maybe<Array<Maybe<_IContent>>>;
   Title?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use `_link` field instead */
   _children?: Maybe<QueryRef>;
@@ -22977,6 +23026,7 @@ export type RestaurantsListAutocomplete = {
   CTA?: Maybe<CallToActionPropertyAutocomplete>;
   Description?: Maybe<RichTextAutocomplete>;
   Diners?: Maybe<ContentReferenceAutocomplete>;
+  List?: Maybe<_IContentAutocomplete>;
   Title?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   _itemMetadata?: Maybe<_MetadataAutocomplete>;
   _metadata?: Maybe<IContentMetadataAutocomplete>;
@@ -22993,6 +23043,7 @@ export type RestaurantsListFacet = {
   CTA?: Maybe<CallToActionPropertyFacet>;
   Description?: Maybe<RichTextFacet>;
   Diners?: Maybe<ContentReferenceFacet>;
+  List?: Maybe<_IContentFacet>;
   Title?: Maybe<Array<Maybe<StringFacet>>>;
   _itemMetadata?: Maybe<_MetadataFacet>;
   _metadata?: Maybe<IContentMetadataFacet>;
@@ -23010,6 +23061,7 @@ export type RestaurantsListOrderByInput = {
   CTA?: InputMaybe<CallToActionPropertyOrderByInput>;
   Description?: InputMaybe<RichTextOrderByInput>;
   Diners?: InputMaybe<ContentReferenceOrderByInput>;
+  List?: InputMaybe<_IContentOrderByInput>;
   Title?: InputMaybe<OrderBy>;
   _itemMetadata?: InputMaybe<_MetadataOrderByInput>;
   _metadata?: InputMaybe<IContentMetadataOrderByInput>;
@@ -23039,6 +23091,7 @@ export type RestaurantsListWhereInput = {
   CTA?: InputMaybe<CallToActionPropertyWhereInput>;
   Description?: InputMaybe<RichTextWhereInput>;
   Diners?: InputMaybe<ContentReferenceWhereInput>;
+  List?: InputMaybe<_IContentWhereInput>;
   Title?: InputMaybe<StringFilterInput>;
   _and?: InputMaybe<Array<InputMaybe<RestaurantsListWhereInput>>>;
   _fulltext?: InputMaybe<SearchableStringFilterInput>;

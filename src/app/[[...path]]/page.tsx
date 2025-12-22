@@ -28,10 +28,7 @@ const { CmsPage, generateMetadata, generateStaticParams } = createPage(factory, 
    * resolve the content item and then use the CmsComponent from the
    * factory to load the content specifically for the resolved content item.
    */
-  getContentByPath: (
-    client: GraphQLClient,
-    variables: getContentByPathQueryVariables
-  ) => {
+  getContentByPath: (client: GraphQLClient, variables: getContentByPathQueryVariables) => {
     // Set the maximum sub-request size
     (variables as any).maxSubRequestSize = 100;
     return getContentByPath(client, variables);

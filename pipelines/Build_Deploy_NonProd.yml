@@ -1,0 +1,71 @@
+resources:
+  repositories:
+    - repository: Aldar.YamlTemplates
+      type: git
+      name: Aldar.YamlTemplates/Aldar.YamlTemplates
+      ref: refs/tags/template-nonprod
+      
+trigger:
+  - development
+
+
+variables:
+  - name: DockerServiceConnection
+    value: 'sc-ad-hsp-acr-np-001'
+  - name: AppServiceConnectionName
+    value: 'sc-ad-np-001'
+  - name: CentralDockerServiceConnection
+    value: 'sc-ats-cmn-001'
+
+stages:
+  - stage: BuildDev
+    variables:
+      - group: Dev_YasPlaza_WebApp
+      - group: Dev_ProjectConfig
+  
+    jobs:    
+      - template: /Build/BuildAndPushDockerCentralACR.yml@Aldar.YamlTemplates
+        parameters:
+          build_args: '$(build_args)'
+          DockerServiceConnection: '$(DockerServiceConnection)'
+          CentralDockerServiceConnection: '$(CentralDockerServiceConnection)'
+
+  - stage: Dev_Deploy
+    displayName: Deploying to Dev environment
+    dependsOn: BuildDev
+    pool:
+      name: "vmss-ad-np"
+    variables:
+      - group: Dev_YasPlaza_WebApp
+      - group: Dev_ProjectConfig
+    jobs:
+      - template: /Release/AppServiceContainer.yml@Aldar.YamlTemplates
+        parameters:
+          Environment: "DEV_YasPlaza_WebApp"
+
+  - stage: BuildQA
+    dependsOn: Dev_Deploy
+    variables:
+      - group: QA_YasPlaza_WebApp
+      - group: QA_ProjectConfig
+    jobs:
+      - template: /Build/BuildAndPushDockerCentralACR.yml@Aldar.YamlTemplates
+        parameters:
+          build_args: '$(build_args)'
+          DockerServiceConnection: '$(DockerServiceConnection)'
+          CentralDockerServiceConnection: '$(CentralDockerServiceConnection)'
+          
+  - stage: QA_Deploy
+    displayName: Deploying to QA environment
+    dependsOn: BuildQA
+    pool:
+      name: "vmss-ad-np"
+    variables:
+      - group: QA_YasPlaza_WebApp
+      - group: QA_ProjectConfig
+
+    jobs:
+      - template: /Release/AppServiceContainer.yml@Aldar.YamlTemplates
+        parameters:
+          Environment: "QA_YasPlaza_WebApp"
+  

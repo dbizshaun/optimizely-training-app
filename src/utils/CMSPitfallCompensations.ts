@@ -20,7 +20,6 @@ export const ResolveViewportSizeForPreview = (
   return `${(number * SIZE_CONSTANT) / 100}px`;
 };
 
-
 /**
  * CMS always returns base home path as /en. We need this to negate the effect if we don't need localization on urls
  */
