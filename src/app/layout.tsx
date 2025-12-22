@@ -1,13 +1,11 @@
-import { Inter } from 'next/font/google';
 import { DatadogInit } from '@/components/ui/atom/DatadogInit';
 import GoogleTagManager from '@/components/ui/atom/GoogleTagManager';
 import ThemeRegistry from '@/components/ui/ThemeRegistry';
+import { raleway } from '@/config/fonts';
 
 import type { Metadata } from 'next';
 
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Optimizely CMS Boilerplate - Create Next App',
@@ -21,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={raleway.className}>
         <ThemeRegistry>
           <DatadogInit />
           <GoogleTagManager />
