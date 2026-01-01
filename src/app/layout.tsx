@@ -1,6 +1,6 @@
 import { DatadogInit } from '@/components/ui/atom/DatadogInit';
 import GoogleTagManager from '@/components/ui/atom/GoogleTagManager';
-import ThemeRegistry from '@/components/ui/ThemeRegistry';
+import ThemeRegistry from '@/config/ThemeRegistry';
 import { raleway } from '@/config/fonts';
 
 import type { Metadata } from 'next';

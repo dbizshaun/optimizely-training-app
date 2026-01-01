@@ -1882,9 +1882,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/visitor-plugin-common@file:./packages/graphql-codegen-visitor-plugin-common-v5.8.0-patched.tgz::locator=yasplaza-hotels%40workspace%3A.":
+"@graphql-codegen/visitor-plugin-common@file:./packages/graphql-codegen-visitor-plugin-common-v5.8.0-patched.tgz::locator=optimizely-training-app%40workspace%3A.":
   version: 5.8.0
-  resolution: "@graphql-codegen/visitor-plugin-common@file:./packages/graphql-codegen-visitor-plugin-common-v5.8.0-patched.tgz#./packages/graphql-codegen-visitor-plugin-common-v5.8.0-patched.tgz::hash=1ef42c&locator=yasplaza-hotels%40workspace%3A."
+  resolution: "@graphql-codegen/visitor-plugin-common@file:./packages/graphql-codegen-visitor-plugin-common-v5.8.0-patched.tgz#./packages/graphql-codegen-visitor-plugin-common-v5.8.0-patched.tgz::hash=1ef42c&locator=optimizely-training-app%40workspace%3A."
   dependencies:
     "@graphql-codegen/plugin-helpers": "npm:^5.1.0"
     "@graphql-tools/optimize": "npm:^2.0.0"
@@ -3472,16 +3472,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remkoj/optimizely-cms-api@file:./packages/@remkoj-optimizely-cms-api-v5.1.3-patched.tar.gz::locator=yasplaza-hotels%40workspace%3A.":
+"@remkoj/optimizely-cms-api@file:./packages/@remkoj-optimizely-cms-api-v5.1.3-patched.tar.gz::locator=optimizely-training-app%40workspace%3A.":
   version: 5.1.3
-  resolution: "@remkoj/optimizely-cms-api@file:./packages/@remkoj-optimizely-cms-api-v5.1.3-patched.tar.gz#./packages/@remkoj-optimizely-cms-api-v5.1.3-patched.tar.gz::hash=4b5102&locator=yasplaza-hotels%40workspace%3A."
+  resolution: "@remkoj/optimizely-cms-api@file:./packages/@remkoj-optimizely-cms-api-v5.1.3-patched.tar.gz#./packages/@remkoj-optimizely-cms-api-v5.1.3-patched.tar.gz::hash=4b5102&locator=optimizely-training-app%40workspace%3A."
   checksum: 10c0/2a46846e83ab363ee0f06fe23d7979a366ed6851e031dc7d2cb5e95ad4d3c87f3f9ba13f73099a6caeeb3bd6bee6a7daaaf5de1cba9750ede96496ddefd87b20
   languageName: node
   linkType: hard
 
-"@remkoj/optimizely-cms-cli@file:./packages/@remkoj-optimizely-cms-cli-v5.1.3-patched.tar.gz::locator=yasplaza-hotels%40workspace%3A.":
+"@remkoj/optimizely-cms-cli@file:./packages/@remkoj-optimizely-cms-cli-v5.1.3-patched.tar.gz::locator=optimizely-training-app%40workspace%3A.":
   version: 5.1.3
-  resolution: "@remkoj/optimizely-cms-cli@file:./packages/@remkoj-optimizely-cms-cli-v5.1.3-patched.tar.gz#./packages/@remkoj-optimizely-cms-cli-v5.1.3-patched.tar.gz::hash=ccfd66&locator=yasplaza-hotels%40workspace%3A."
+  resolution: "@remkoj/optimizely-cms-cli@file:./packages/@remkoj-optimizely-cms-cli-v5.1.3-patched.tar.gz#./packages/@remkoj-optimizely-cms-cli-v5.1.3-patched.tar.gz::hash=ccfd66&locator=optimizely-training-app%40workspace%3A."
   dependencies:
     "@inquirer/prompts": "npm:^7.6.0"
     chalk: "npm:^5.4.1"
@@ -3535,9 +3535,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remkoj/optimizely-graph-cli@file:./packages/@remkoj-optimizely-graph-cli-v5.1.3-patched.tar.gz::locator=yasplaza-hotels%40workspace%3A.":
+"@remkoj/optimizely-graph-cli@file:./packages/@remkoj-optimizely-graph-cli-v5.1.3-patched.tar.gz::locator=optimizely-training-app%40workspace%3A.":
   version: 5.1.3
-  resolution: "@remkoj/optimizely-graph-cli@file:./packages/@remkoj-optimizely-graph-cli-v5.1.3-patched.tar.gz#./packages/@remkoj-optimizely-graph-cli-v5.1.3-patched.tar.gz::hash=a3771b&locator=yasplaza-hotels%40workspace%3A."
+  resolution: "@remkoj/optimizely-graph-cli@file:./packages/@remkoj-optimizely-graph-cli-v5.1.3-patched.tar.gz#./packages/@remkoj-optimizely-graph-cli-v5.1.3-patched.tar.gz::hash=a3771b&locator=optimizely-training-app%40workspace%3A."
   dependencies:
     chalk: "npm:^5.4.1"
     cli-table3: "npm:^0.6.5"
@@ -10816,6 +10816,69 @@ __metadata:
   languageName: node
   linkType: hard
 
+"optimizely-training-app@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "optimizely-training-app@workspace:."
+  dependencies:
+    "@datadog/browser-logs": "npm:^6.25.0"
+    "@datadog/browser-rum": "npm:^6.25.0"
+    "@datadog/datadog-ci": "npm:^4.4.0"
+    "@emotion/cache": "npm:^11.14.0"
+    "@emotion/react": "npm:^11.14.0"
+    "@emotion/styled": "npm:^11.14.1"
+    "@graphql-codegen/cli": "npm:^5.0.7"
+    "@graphql-codegen/fragment-matcher": "npm:^5.1.0"
+    "@graphql-codegen/schema-ast": "npm:^5.0.0"
+    "@graphql-typed-document-node/core": "npm:^3.2.0"
+    "@mui/material": "npm:^7.3.6"
+    "@next/third-parties": "npm:^16.0.10"
+    "@parcel/watcher": "npm:^2.5.1"
+    "@remkoj/optimizely-cms-api": "npm:^5.1.6"
+    "@remkoj/optimizely-cms-cli": "npm:^5.1.6"
+    "@remkoj/optimizely-cms-nextjs": "npm:^5.1.6"
+    "@remkoj/optimizely-cms-react": "npm:^5.1.6"
+    "@remkoj/optimizely-graph-cli": "npm:^5.1.6"
+    "@remkoj/optimizely-graph-client": "npm:^5.1.6"
+    "@remkoj/optimizely-graph-functions": "npm:^5.1.6"
+    "@tailwindcss/postcss": "npm:^4.1.17"
+    "@testing-library/dom": "npm:^10.4.1"
+    "@testing-library/jest-dom": "npm:^6.9.1"
+    "@testing-library/react": "npm:^16.3.1"
+    "@testing-library/user-event": "npm:^14.6.1"
+    "@types/jest": "npm:^30.0.0"
+    "@types/node": "npm:^22.19.2"
+    "@types/react": "npm:^18.3.27"
+    "@types/react-dom": "npm:^18.3.7"
+    "@yarnpkg/sdks": "npm:^3.2.3"
+    axios: "npm:^1.13.2"
+    chalk: "npm:^5.6.2"
+    dotenv: "npm:^17.2.3"
+    dotenv-expand: "npm:^12.0.3"
+    entities: "npm:^6.0.1"
+    eslint: "npm:^8.57.1"
+    eslint-config-next: "npm:14.2.33"
+    eslint-plugin-jest: "npm:^29.5.0"
+    figures: "npm:^6.1.0"
+    graphql: "npm:^16.12.0"
+    graphql-request: "npm:^6.1.0"
+    graphql-tag: "npm:^2.12.6"
+    husky: "npm:^9.1.7"
+    jest: "npm:^29.7.0"
+    jest-environment-jsdom: "npm:^29.7.0"
+    jest-junit: "npm:^16.0.0"
+    lint-staged: "npm:^16.2.7"
+    next: "npm:14.2.33"
+    postcss: "npm:^8.5.6"
+    prettier: "npm:^3.7.4"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
+    react-is: "npm:18.3.1"
+    tailwindcss: "npm:^4.1.17"
+    ts-jest: "npm:29.0.0-next.1"
+    typescript: "npm:^5.9.3"
+  languageName: unknown
+  linkType: soft
+
 "optionator@npm:^0.9.3":
   version: 0.9.4
   resolution: "optionator@npm:0.9.4"
@@ -13660,69 +13723,6 @@ __metadata:
   checksum: 10c0/ccd7e723e61ad5965fffbb791366db689572b80cca80e0f96aad968dfff4156cd7cd1ad18607afe1046d8241e6fb2d6c08bf7fa7bfb5eaec818735d8feac8f05
   languageName: node
   linkType: hard
-
-"yasplaza-hotels@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "yasplaza-hotels@workspace:."
-  dependencies:
-    "@datadog/browser-logs": "npm:^6.25.0"
-    "@datadog/browser-rum": "npm:^6.25.0"
-    "@datadog/datadog-ci": "npm:^4.4.0"
-    "@emotion/cache": "npm:^11.14.0"
-    "@emotion/react": "npm:^11.14.0"
-    "@emotion/styled": "npm:^11.14.1"
-    "@graphql-codegen/cli": "npm:^5.0.7"
-    "@graphql-codegen/fragment-matcher": "npm:^5.1.0"
-    "@graphql-codegen/schema-ast": "npm:^5.0.0"
-    "@graphql-typed-document-node/core": "npm:^3.2.0"
-    "@mui/material": "npm:^7.3.6"
-    "@next/third-parties": "npm:^16.0.10"
-    "@parcel/watcher": "npm:^2.5.1"
-    "@remkoj/optimizely-cms-api": "npm:^5.1.6"
-    "@remkoj/optimizely-cms-cli": "npm:^5.1.6"
-    "@remkoj/optimizely-cms-nextjs": "npm:^5.1.6"
-    "@remkoj/optimizely-cms-react": "npm:^5.1.6"
-    "@remkoj/optimizely-graph-cli": "npm:^5.1.6"
-    "@remkoj/optimizely-graph-client": "npm:^5.1.6"
-    "@remkoj/optimizely-graph-functions": "npm:^5.1.6"
-    "@tailwindcss/postcss": "npm:^4.1.17"
-    "@testing-library/dom": "npm:^10.4.1"
-    "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:^16.3.1"
-    "@testing-library/user-event": "npm:^14.6.1"
-    "@types/jest": "npm:^30.0.0"
-    "@types/node": "npm:^22.19.2"
-    "@types/react": "npm:^18.3.27"
-    "@types/react-dom": "npm:^18.3.7"
-    "@yarnpkg/sdks": "npm:^3.2.3"
-    axios: "npm:^1.13.2"
-    chalk: "npm:^5.6.2"
-    dotenv: "npm:^17.2.3"
-    dotenv-expand: "npm:^12.0.3"
-    entities: "npm:^6.0.1"
-    eslint: "npm:^8.57.1"
-    eslint-config-next: "npm:14.2.33"
-    eslint-plugin-jest: "npm:^29.5.0"
-    figures: "npm:^6.1.0"
-    graphql: "npm:^16.12.0"
-    graphql-request: "npm:^6.1.0"
-    graphql-tag: "npm:^2.12.6"
-    husky: "npm:^9.1.7"
-    jest: "npm:^29.7.0"
-    jest-environment-jsdom: "npm:^29.7.0"
-    jest-junit: "npm:^16.0.0"
-    lint-staged: "npm:^16.2.7"
-    next: "npm:14.2.33"
-    postcss: "npm:^8.5.6"
-    prettier: "npm:^3.7.4"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
-    react-is: "npm:18.3.1"
-    tailwindcss: "npm:^4.1.17"
-    ts-jest: "npm:29.0.0-next.1"
-    typescript: "npm:^5.9.3"
-  languageName: unknown
-  linkType: soft
 
 "yocto-queue@npm:^0.1.0":
   version: 0.1.0
