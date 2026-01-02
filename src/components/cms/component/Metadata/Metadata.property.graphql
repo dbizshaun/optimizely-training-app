@@ -1,0 +1,8 @@
+fragment MetadataPropertyData on MetadataProperty {
+  MetaDataTitle
+  MetaDataDescription
+  MetaDataKeyWords
+  MetaDataTags
+  OpenGraph { ...OpenGraphPropertyData }
+  Twitter { ...TwitterPropertyData }
+}

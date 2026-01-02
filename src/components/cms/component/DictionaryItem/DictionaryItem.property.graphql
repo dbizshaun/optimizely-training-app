@@ -1,0 +1,6 @@
+fragment DictionaryItemPropertyData on DictionaryItemProperty {
+  DictionaryKey
+  DictionaryValue
+  DictionaryIcon { ...ReferenceData }
+  DictionaryItemLink: Link { ...LinkData }
+}

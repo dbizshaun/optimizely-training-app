@@ -1,0 +1,15 @@
+fragment FooterData on Footer {
+  FooterNavigationMenu { ...IContentListItem }
+  FooterSocialMediaTitle
+  FooterNewsSubscriptionTitle
+  FooterSocialMediaIcons { ...IContentListItem }
+  FooterEmailTitle
+  FooterEmailID
+  FooterPhoneTitle
+  FooterPhoneNumber
+  FooterContactUs { ...IContentListItem }
+  FooterPrivacyPolicy { ...IContentListItem }
+  FooterTermsConditions { ...IContentListItem }
+  FooterCopyrightText
+  FooterRecaptchaText
+}

@@ -1,0 +1,193 @@
+{
+  "key": "Cards",
+  "displayName": "Cards",
+  "description": "Cards",
+  "baseType": "component",
+  "isContract": false,
+  "sortOrder": 0,
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "compositionBehaviors": [
+    "sectionEnabled"
+  ],
+  "contracts": [],
+  "properties": {
+    "Title": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Title",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "IconText": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "IconText",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "HyperLink": {
+      "type": "link",
+      "displayName": "HyperLink",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 50,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "Description": {
+      "type": "richText",
+      "displayName": "Description",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 100,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "CardList": {
+      "type": "array",
+      "displayName": "CardList",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 100,
+      "allowedTypes": [],
+      "restrictedTypes": [],
+      "items": {
+        "type": "content",
+        "allowedTypes": [
+          "Card"
+        ],
+        "restrictedTypes": []
+      }
+    },
+    "Image": {
+      "type": "contentReference",
+      "displayName": "Image",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 200,
+      "allowedTypes": [
+        "_image"
+      ],
+      "restrictedTypes": []
+    },
+    "Icon": {
+      "type": "contentReference",
+      "displayName": "Icon",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 250,
+      "allowedTypes": [
+        "_image"
+      ],
+      "restrictedTypes": []
+    },
+    "Link": {
+      "type": "array",
+      "displayName": "Link",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 300,
+      "allowedTypes": [],
+      "restrictedTypes": [],
+      "items": {
+        "type": "content",
+        "allowedTypes": [
+          "MenuItem"
+        ],
+        "restrictedTypes": []
+      }
+    },
+    "DetailPageStyle": {
+      "type": "string",
+      "format": "selectOne",
+      "displayName": "DetailPageStyle",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 400,
+      "enum": [
+        {
+          "value": "DiagnolCardsLight",
+          "displayName": "DiagnolCardsLight"
+        },
+        {
+          "value": "DiagnolCardsDark",
+          "displayName": "DiagnolCardsDark"
+        },
+        {
+          "value": "FlippedCards",
+          "displayName": "FlippedCards"
+        },
+        {
+          "value": "MediaListTwoColumn",
+          "displayName": "MediaListTwoColumn"
+        },
+        {
+          "value": "MediaListThreeColumn",
+          "displayName": "MediaListThreeColumn"
+        },
+        {
+          "value": "offers-page-experiences",
+          "displayName": "Offers Page Experiences"
+        }
+      ],
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "Filters": {
+      "type": "array",
+      "displayName": "Filters",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 500,
+      "allowedTypes": [],
+      "restrictedTypes": [],
+      "items": {
+        "type": "content",
+        "allowedTypes": [
+          "ClassFilters",
+          "BHKFilters"
+        ],
+        "restrictedTypes": []
+      }
+    },
+    "CardsStyle": {
+      "type": "component",
+      "contentType": "DictionaryBlock",
+      "displayName": "Cards Style",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 600,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    }
+  }
+}

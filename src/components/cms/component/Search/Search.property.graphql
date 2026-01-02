@@ -1,0 +1,6 @@
+fragment SearchPropertyData on SearchProperty {
+  SearchIcon { ...ReferenceData }
+  SearchDarkIcon { ...ReferenceData }
+  SearchButtonText
+  SearchBoxPlaceholderText
+}

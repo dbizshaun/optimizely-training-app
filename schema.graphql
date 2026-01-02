@@ -772,6 +772,71 @@ input AlJimiMallServicesListWhereInput {
   id: StringFilterInput
 }
 
+type AllowedOrigin implements IData & _IComponent & _IContent & _IItem {
+  CORS_ALLOWED_HEADERS: String
+  CORS_ALLOWED_METHODS: String
+  CORS_MAX_AGE: Int
+  Origin: String
+  _children: QueryRef @deprecated(reason: "Use `_link` field instead")
+  _deleted: Bool
+  _fulltext(highlight: HighlightOptions): [String]
+  _id: String
+  _itemMetadata: _Metadata
+  _json: JSON
+  _link(type: LinkTypes): QueryRef
+  _metadata: IContentMetadata
+  _modified: Date
+  _score: Float
+}
+
+type AllowedOriginAutocomplete {
+  _itemMetadata: _MetadataAutocomplete
+  _metadata: IContentMetadataAutocomplete
+}
+
+type AllowedOriginFacet {
+  _itemMetadata: _MetadataFacet
+  _metadata: IContentMetadataFacet
+}
+
+input AllowedOriginOrderByInput {
+  _itemMetadata: _MetadataOrderByInput
+  _metadata: IContentMetadataOrderByInput
+  _minimumScore: Float
+  _modified: OrderBy
+  _ranking: Ranking
+  """
+  The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled.
+  """
+  _semanticWeight: Float
+}
+
+type AllowedOriginOutput {
+  autocomplete: AllowedOriginAutocomplete
+  cursor: String
+  facets: AllowedOriginFacet
+  item: AllowedOrigin
+  items: [AllowedOrigin]
+  total(all: Boolean): Int
+}
+
+type AllowedOriginProperty {
+  CORS_ALLOWED_HEADERS: String
+  CORS_ALLOWED_METHODS: String
+  CORS_MAX_AGE: Int
+  Origin: String
+}
+
+input AllowedOriginWhereInput {
+  _and: [AllowedOriginWhereInput]
+  _fulltext: SearchableStringFilterInput
+  _itemMetadata: _MetadataWhereInput
+  _metadata: IContentMetadataWhereInput
+  _modified: DateFilterInput
+  _not: [AllowedOriginWhereInput]
+  _or: [AllowedOriginWhereInput]
+}
+
 type AmenitiesList implements IData & _IComponent & _IContent & _IItem {
   Amenities: [_IContent]
   AmenitiesDescription: RichText
@@ -5055,6 +5120,91 @@ input EducationSchoolSearchWhereInput {
   _or: [EducationSchoolSearchWhereInput]
 }
 
+type EgateTerms implements IData & _IComponent & _IContent & _IItem {
+  _children: QueryRef @deprecated(reason: "Use `_link` field instead")
+  _deleted: Bool
+  _fulltext(highlight: HighlightOptions): [String]
+  _id: String
+  _itemMetadata: _Metadata
+  _json: JSON
+  _link(type: LinkTypes): QueryRef
+  _metadata: IContentMetadata
+  _modified: Date
+  _score: Float
+  termsAcceptButton: String
+  termsBody: RichText
+  termsDeclineButton: String
+  termsTitle: String
+}
+
+type EgateTermsAutocomplete {
+  _itemMetadata: _MetadataAutocomplete
+  _metadata: IContentMetadataAutocomplete
+  termsBody: RichTextAutocomplete
+}
+
+type EgateTermsFacet {
+  _itemMetadata: _MetadataFacet
+  _metadata: IContentMetadataFacet
+  termsBody: RichTextFacet
+}
+
+input EgateTermsOrderByInput {
+  _itemMetadata: _MetadataOrderByInput
+  _metadata: IContentMetadataOrderByInput
+  _minimumScore: Float
+  _modified: OrderBy
+  _ranking: Ranking
+  """
+  The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled.
+  """
+  _semanticWeight: Float
+  termsBody: RichTextOrderByInput
+}
+
+type EgateTermsOutput {
+  autocomplete: EgateTermsAutocomplete
+  cursor: String
+  facets: EgateTermsFacet
+  item: EgateTerms
+  items: [EgateTerms]
+  total(all: Boolean): Int
+}
+
+type EgateTermsProperty {
+  termsAcceptButton: String
+  termsBody: RichText
+  termsDeclineButton: String
+  termsTitle: String
+}
+
+type EgateTermsPropertyAutocomplete {
+  termsBody: RichTextAutocomplete
+}
+
+type EgateTermsPropertyFacet {
+  termsBody: RichTextFacet
+}
+
+input EgateTermsPropertyOrderByInput {
+  termsBody: RichTextOrderByInput
+}
+
+input EgateTermsPropertyWhereInput {
+  termsBody: RichTextWhereInput
+}
+
+input EgateTermsWhereInput {
+  _and: [EgateTermsWhereInput]
+  _fulltext: SearchableStringFilterInput
+  _itemMetadata: _MetadataWhereInput
+  _metadata: IContentMetadataWhereInput
+  _modified: DateFilterInput
+  _not: [EgateTermsWhereInput]
+  _or: [EgateTermsWhereInput]
+  termsBody: RichTextWhereInput
+}
+
 type ExperienceDestinationFilter implements IData & _IComponent & _IContent & _IItem {
   DestinationFilter(highlight: HighlightOptions): [String]
   Label: String
@@ -6672,6 +6822,7 @@ input GraphqlSearchWhereInput {
 }
 
 type Header implements IData & _IComponent & _IContent & _IItem {
+  EgateTerms: EgateTermsProperty
   GlobalScript: String
   GlobalSearch: SearchProperty
   HeaderLogo: ContentReference
@@ -6697,6 +6848,7 @@ type Header implements IData & _IComponent & _IContent & _IItem {
 }
 
 type HeaderAutocomplete {
+  EgateTerms: EgateTermsPropertyAutocomplete
   GlobalSearch: SearchPropertyAutocomplete
   HeaderLogo: ContentReferenceAutocomplete
   HeaderLogoDark: ContentReferenceAutocomplete
@@ -6711,6 +6863,7 @@ type HeaderAutocomplete {
 }
 
 type HeaderFacet {
+  EgateTerms: EgateTermsPropertyFacet
   GlobalSearch: SearchPropertyFacet
   HeaderLogo: ContentReferenceFacet
   HeaderLogoDark: ContentReferenceFacet
@@ -6725,6 +6878,7 @@ type HeaderFacet {
 }
 
 input HeaderOrderByInput {
+  EgateTerms: EgateTermsPropertyOrderByInput
   GlobalSearch: SearchPropertyOrderByInput
   HeaderLogo: ContentReferenceOrderByInput
   HeaderLogoDark: ContentReferenceOrderByInput
@@ -6755,6 +6909,7 @@ type HeaderOutput {
 }
 
 type HeaderProperty {
+  EgateTerms: EgateTermsProperty
   GlobalScript: String
   GlobalSearch: SearchProperty
   HeaderLogo: ContentReference
@@ -6770,6 +6925,7 @@ type HeaderProperty {
 }
 
 type HeaderPropertyAutocomplete {
+  EgateTerms: EgateTermsPropertyAutocomplete
   GlobalSearch: SearchPropertyAutocomplete
   HeaderLogo: ContentReferenceAutocomplete
   HeaderLogoDark: ContentReferenceAutocomplete
@@ -6778,6 +6934,7 @@ type HeaderPropertyAutocomplete {
 }
 
 type HeaderPropertyFacet {
+  EgateTerms: EgateTermsPropertyFacet
   GlobalSearch: SearchPropertyFacet
   HeaderLogo: ContentReferenceFacet
   HeaderLogoDark: ContentReferenceFacet
@@ -6790,6 +6947,7 @@ type HeaderPropertyFacet {
 }
 
 input HeaderPropertyOrderByInput {
+  EgateTerms: EgateTermsPropertyOrderByInput
   GlobalSearch: SearchPropertyOrderByInput
   HeaderLogo: ContentReferenceOrderByInput
   HeaderLogoDark: ContentReferenceOrderByInput
@@ -6802,6 +6960,7 @@ input HeaderPropertyOrderByInput {
 }
 
 input HeaderPropertyWhereInput {
+  EgateTerms: EgateTermsPropertyWhereInput
   GlobalSearch: SearchPropertyWhereInput
   HeaderLogo: ContentReferenceWhereInput
   HeaderLogoDark: ContentReferenceWhereInput
@@ -6814,6 +6973,7 @@ input HeaderPropertyWhereInput {
 }
 
 input HeaderWhereInput {
+  EgateTerms: EgateTermsPropertyWhereInput
   GlobalSearch: SearchPropertyWhereInput
   HeaderLogo: ContentReferenceWhereInput
   HeaderLogoDark: ContentReferenceWhereInput
@@ -6900,6 +7060,7 @@ input HighlightOptions {
 }
 
 type HomeExperience implements IData & _IContent & _IExperience & _IItem & _IPage {
+  AllowedOrigins: [AllowedOriginProperty]
   Breadcrumb: BreadcrumbNavigationProperty
   Content: RichText
   Footer: SiteFooterProperty
@@ -6913,6 +7074,7 @@ type HomeExperience implements IData & _IContent & _IExperience & _IItem & _IPag
   Thumbnail: ContentReference
   Title: String
   Twitter: TwitterProperty
+  WHITELIST_DOMAINS: String
   _children: QueryRef @deprecated(reason: "Use `_link` field instead")
   _deleted: Bool
   _fulltext(highlight: HighlightOptions): [String]
@@ -6939,6 +7101,7 @@ type HomeExperienceAutocomplete {
 }
 
 type HomeExperienceFacet {
+  AllowedOrigins(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
   Breadcrumb(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
   Content: RichTextFacet
   Footer: SiteFooterPropertyFacet
@@ -6956,6 +7119,7 @@ type HomeExperienceFacet {
 }
 
 input HomeExperienceOrderByInput {
+  AllowedOrigins: OrderBy
   Breadcrumb: OrderBy
   Content: RichTextOrderByInput
   Footer: SiteFooterPropertyOrderByInput
@@ -6989,6 +7153,7 @@ type HomeExperienceOutput {
 }
 
 input HomeExperienceWhereInput {
+  AllowedOrigins: StringFilterInput
   Breadcrumb: StringFilterInput
   Content: RichTextWhereInput
   Footer: SiteFooterPropertyWhereInput
@@ -8172,6 +8337,9 @@ type IceRidgeGeneralPage implements IData & _IContent & _IItem & _IPage {
   Status: [String]
   TermsAndConditions: RichText
   Title: String
+  VendorID: String
+  VendorLogo: ContentReference
+  VendorName: String
   _children: QueryRef @deprecated(reason: "Use `_link` field instead")
   _deleted: Bool
   _fulltext(highlight: HighlightOptions): [String]
@@ -8191,6 +8359,7 @@ type IceRidgeGeneralPageAutocomplete {
   Logo: ContentReferenceAutocomplete
   PackageOverview: ContentReferenceAutocomplete
   TermsAndConditions: RichTextAutocomplete
+  VendorLogo: ContentReferenceAutocomplete
   _itemMetadata: _MetadataAutocomplete
   _metadata: IContentMetadataAutocomplete
 }
@@ -8202,6 +8371,7 @@ type IceRidgeGeneralPageFacet {
   Logo: ContentReferenceFacet
   PackageOverview: ContentReferenceFacet
   TermsAndConditions: RichTextFacet
+  VendorLogo: ContentReferenceFacet
   _itemMetadata: _MetadataFacet
   _metadata: IContentMetadataFacet
 }
@@ -8213,6 +8383,7 @@ input IceRidgeGeneralPageOrderByInput {
   Logo: ContentReferenceOrderByInput
   PackageOverview: ContentReferenceOrderByInput
   TermsAndConditions: RichTextOrderByInput
+  VendorLogo: ContentReferenceOrderByInput
   _itemMetadata: _MetadataOrderByInput
   _metadata: IContentMetadataOrderByInput
   _minimumScore: Float
@@ -8240,6 +8411,7 @@ input IceRidgeGeneralPageWhereInput {
   Logo: ContentReferenceWhereInput
   PackageOverview: ContentReferenceWhereInput
   TermsAndConditions: RichTextWhereInput
+  VendorLogo: ContentReferenceWhereInput
   _and: [IceRidgeGeneralPageWhereInput]
   _fulltext: SearchableStringFilterInput
   _itemMetadata: _MetadataWhereInput
@@ -8252,6 +8424,7 @@ input IceRidgeGeneralPageWhereInput {
 type IceRidgeLandingPage implements IData & _IContent & _IItem & _IPage {
   Categories: [String]
   Items: [ContentReference]
+  Questions: ContentReference
   Title: String
   _children: QueryRef @deprecated(reason: "Use `_link` field instead")
   _deleted: Bool
@@ -8267,18 +8440,21 @@ type IceRidgeLandingPage implements IData & _IContent & _IItem & _IPage {
 
 type IceRidgeLandingPageAutocomplete {
   Items: ContentReferenceAutocomplete
+  Questions: ContentReferenceAutocomplete
   _itemMetadata: _MetadataAutocomplete
   _metadata: IContentMetadataAutocomplete
 }
 
 type IceRidgeLandingPageFacet {
   Items: ContentReferenceFacet
+  Questions: ContentReferenceFacet
   _itemMetadata: _MetadataFacet
   _metadata: IContentMetadataFacet
 }
 
 input IceRidgeLandingPageOrderByInput {
   Items: ContentReferenceOrderByInput
+  Questions: ContentReferenceOrderByInput
   _itemMetadata: _MetadataOrderByInput
   _metadata: IContentMetadataOrderByInput
   _minimumScore: Float
@@ -8301,6 +8477,7 @@ type IceRidgeLandingPageOutput {
 
 input IceRidgeLandingPageWhereInput {
   Items: ContentReferenceWhereInput
+  Questions: ContentReferenceWhereInput
   _and: [IceRidgeLandingPageWhereInput]
   _fulltext: SearchableStringFilterInput
   _itemMetadata: _MetadataWhereInput
@@ -8392,15 +8569,19 @@ type IceRidgePackage implements IData & _IComponent & _IContent & _IItem {
   PackageDescription: RichText
   PackageFAQs: [_IContent]
   PackageImages: [ContentReference]
+  PackageImagesTheme: [ContentReference]
   PackageMedia: [ContentReference]
   PackageName: String
   PackagePreviewImages: [ContentReference]
   PackageSKU: String
   PackageType: String
   Room: [_IContent]
+  Room360PreviewImages: [ContentReference]
   RoomType: [String]
   ServiceCoverage: RichText
+  ServiceCoverageInfo: RichText
   WarrantyAndSupport: RichText
+  WarrantySupportInfo: RichText
   _children: QueryRef @deprecated(reason: "Use `_link` field instead")
   _deleted: Bool
   _fulltext(highlight: HighlightOptions): [String]
@@ -8417,11 +8598,15 @@ type IceRidgePackageAutocomplete {
   PackageDescription: RichTextAutocomplete
   PackageFAQs: _IContentAutocomplete
   PackageImages: ContentReferenceAutocomplete
+  PackageImagesTheme: ContentReferenceAutocomplete
   PackageMedia: ContentReferenceAutocomplete
   PackagePreviewImages: ContentReferenceAutocomplete
   Room: _IContentAutocomplete
+  Room360PreviewImages: ContentReferenceAutocomplete
   ServiceCoverage: RichTextAutocomplete
+  ServiceCoverageInfo: RichTextAutocomplete
   WarrantyAndSupport: RichTextAutocomplete
+  WarrantySupportInfo: RichTextAutocomplete
   _itemMetadata: _MetadataAutocomplete
   _metadata: IContentMetadataAutocomplete
 }
@@ -8430,11 +8615,15 @@ type IceRidgePackageFacet {
   PackageDescription: RichTextFacet
   PackageFAQs: _IContentFacet
   PackageImages: ContentReferenceFacet
+  PackageImagesTheme: ContentReferenceFacet
   PackageMedia: ContentReferenceFacet
   PackagePreviewImages: ContentReferenceFacet
   Room: _IContentFacet
+  Room360PreviewImages: ContentReferenceFacet
   ServiceCoverage: RichTextFacet
+  ServiceCoverageInfo: RichTextFacet
   WarrantyAndSupport: RichTextFacet
+  WarrantySupportInfo: RichTextFacet
   _itemMetadata: _MetadataFacet
   _metadata: IContentMetadataFacet
 }
@@ -8443,11 +8632,15 @@ input IceRidgePackageOrderByInput {
   PackageDescription: RichTextOrderByInput
   PackageFAQs: _IContentOrderByInput
   PackageImages: ContentReferenceOrderByInput
+  PackageImagesTheme: ContentReferenceOrderByInput
   PackageMedia: ContentReferenceOrderByInput
   PackagePreviewImages: ContentReferenceOrderByInput
   Room: _IContentOrderByInput
+  Room360PreviewImages: ContentReferenceOrderByInput
   ServiceCoverage: RichTextOrderByInput
+  ServiceCoverageInfo: RichTextOrderByInput
   WarrantyAndSupport: RichTextOrderByInput
+  WarrantySupportInfo: RichTextOrderByInput
   _itemMetadata: _MetadataOrderByInput
   _metadata: IContentMetadataOrderByInput
   _minimumScore: Float
@@ -8472,11 +8665,15 @@ input IceRidgePackageWhereInput {
   PackageDescription: RichTextWhereInput
   PackageFAQs: _IContentWhereInput
   PackageImages: ContentReferenceWhereInput
+  PackageImagesTheme: ContentReferenceWhereInput
   PackageMedia: ContentReferenceWhereInput
   PackagePreviewImages: ContentReferenceWhereInput
   Room: _IContentWhereInput
+  Room360PreviewImages: ContentReferenceWhereInput
   ServiceCoverage: RichTextWhereInput
+  ServiceCoverageInfo: RichTextWhereInput
   WarrantyAndSupport: RichTextWhereInput
+  WarrantySupportInfo: RichTextWhereInput
   _and: [IceRidgePackageWhereInput]
   _fulltext: SearchableStringFilterInput
   _itemMetadata: _MetadataWhereInput
@@ -10317,7 +10514,7 @@ type OffersFacet {
 type OffersList implements IData & _IComponent & _IContent & _IItem {
   BackgroundImage: ContentReference
   Description: RichText
-  Offers: [ContentReference]
+  List: [_IContent]
   Title: String
   _children: QueryRef @deprecated(reason: "Use `_link` field instead")
   _deleted: Bool
@@ -10334,7 +10531,7 @@ type OffersList implements IData & _IComponent & _IContent & _IItem {
 type OffersListAutocomplete {
   BackgroundImage: ContentReferenceAutocomplete
   Description: RichTextAutocomplete
-  Offers: ContentReferenceAutocomplete
+  List: _IContentAutocomplete
   Title(limit: Int! = 10, value: String!): [String]
   _itemMetadata: _MetadataAutocomplete
   _metadata: IContentMetadataAutocomplete
@@ -10343,7 +10540,7 @@ type OffersListAutocomplete {
 type OffersListFacet {
   BackgroundImage: ContentReferenceFacet
   Description: RichTextFacet
-  Offers: ContentReferenceFacet
+  List: _IContentFacet
   Title(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
   _itemMetadata: _MetadataFacet
   _metadata: IContentMetadataFacet
@@ -10352,7 +10549,7 @@ type OffersListFacet {
 input OffersListOrderByInput {
   BackgroundImage: ContentReferenceOrderByInput
   Description: RichTextOrderByInput
-  Offers: ContentReferenceOrderByInput
+  List: _IContentOrderByInput
   Title: OrderBy
   _itemMetadata: _MetadataOrderByInput
   _metadata: IContentMetadataOrderByInput
@@ -10377,7 +10574,7 @@ type OffersListOutput {
 input OffersListWhereInput {
   BackgroundImage: ContentReferenceWhereInput
   Description: RichTextWhereInput
-  Offers: ContentReferenceWhereInput
+  List: _IContentWhereInput
   Title: StringFilterInput
   _and: [OffersListWhereInput]
   _fulltext: SearchableStringFilterInput
@@ -10732,6 +10929,7 @@ input OptiFormsChoiceElementWhereInput {
 
 type OptiFormsContainerData implements IData & _IComponent & _IContent & _IItem & _ISection {
   Description: String
+  FormSubTitle: String
   Image: ContentReference
   ResetConfirmationMessage: String
   ShowSummaryMessageAfterSubmission: Boolean
@@ -11786,6 +11984,7 @@ type Query {
   AlJimiMallEventList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AlJimiMallEventListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AlJimiMallEventListWhereInput): AlJimiMallEventListOutput
   AlJimiMallServicesDetails(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AlJimiMallServicesDetailsOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AlJimiMallServicesDetailsWhereInput): AlJimiMallServicesDetailsOutput
   AlJimiMallServicesList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AlJimiMallServicesListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AlJimiMallServicesListWhereInput): AlJimiMallServicesListOutput
+  AllowedOrigin(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AllowedOriginOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AllowedOriginWhereInput): AllowedOriginOutput
   AmenitiesList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AmenitiesListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AmenitiesListWhereInput): AmenitiesListOutput
   AppPromo(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AppPromoOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AppPromoWhereInput): AppPromoOutput
   ArticleDetailsPage(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: ArticleDetailsPageOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: ArticleDetailsPageWhereInput): ArticleDetailsPageOutput
@@ -11839,6 +12038,7 @@ type Query {
   EducationSchoolFilters(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: EducationSchoolFiltersOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: EducationSchoolFiltersWhereInput): EducationSchoolFiltersOutput
   EducationSchoolPage(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: EducationSchoolPageOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: EducationSchoolPageWhereInput): EducationSchoolPageOutput
   EducationSchoolSearch(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: EducationSchoolSearchOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: EducationSchoolSearchWhereInput): EducationSchoolSearchOutput
+  EgateTerms(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: EgateTermsOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: EgateTermsWhereInput): EgateTermsOutput
   ExperienceDestinationFilter(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: ExperienceDestinationFilterOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: ExperienceDestinationFilterWhereInput): ExperienceDestinationFilterOutput
   ExperienceFilters(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: ExperienceFiltersOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: ExperienceFiltersWhereInput): ExperienceFiltersOutput
   ExperienceLocationFilters(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: ExperienceLocationFiltersOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: ExperienceLocationFiltersWhereInput): ExperienceLocationFiltersOutput
@@ -11921,6 +12121,8 @@ type Query {
   Pagination(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: PaginationOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: PaginationWhereInput): PaginationOutput
   Redirect(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RedirectOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RedirectWhereInput): RedirectOutput
   Restaurant(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantWhereInput): RestaurantOutput
+  RestaurantDetails(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantDetailsOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantDetailsWhereInput): RestaurantDetailsOutput
+  RestaurantFilter(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantFilterOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantFilterWhereInput): RestaurantFilterOutput
   RestaurantsList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantsListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantsListWhereInput): RestaurantsListOutput
   RetailMallDetailsPage(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RetailMallDetailsPageOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RetailMallDetailsPageWhereInput): RetailMallDetailsPageOutput
   RichTextElement(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RichTextElementOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RichTextElementWhereInput): RichTextElementOutput
@@ -12000,6 +12202,7 @@ type QueryRef {
   AlJimiMallEventList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AlJimiMallEventListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AlJimiMallEventListWhereInput): AlJimiMallEventListOutput
   AlJimiMallServicesDetails(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AlJimiMallServicesDetailsOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AlJimiMallServicesDetailsWhereInput): AlJimiMallServicesDetailsOutput
   AlJimiMallServicesList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AlJimiMallServicesListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AlJimiMallServicesListWhereInput): AlJimiMallServicesListOutput
+  AllowedOrigin(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AllowedOriginOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AllowedOriginWhereInput): AllowedOriginOutput
   AmenitiesList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AmenitiesListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AmenitiesListWhereInput): AmenitiesListOutput
   AppPromo(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: AppPromoOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: AppPromoWhereInput): AppPromoOutput
   ArticleDetailsPage(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: ArticleDetailsPageOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: ArticleDetailsPageWhereInput): ArticleDetailsPageOutput
@@ -12053,6 +12256,7 @@ type QueryRef {
   EducationSchoolFilters(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: EducationSchoolFiltersOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: EducationSchoolFiltersWhereInput): EducationSchoolFiltersOutput
   EducationSchoolPage(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: EducationSchoolPageOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: EducationSchoolPageWhereInput): EducationSchoolPageOutput
   EducationSchoolSearch(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: EducationSchoolSearchOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: EducationSchoolSearchWhereInput): EducationSchoolSearchOutput
+  EgateTerms(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: EgateTermsOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: EgateTermsWhereInput): EgateTermsOutput
   ExperienceDestinationFilter(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: ExperienceDestinationFilterOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: ExperienceDestinationFilterWhereInput): ExperienceDestinationFilterOutput
   ExperienceFilters(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: ExperienceFiltersOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: ExperienceFiltersWhereInput): ExperienceFiltersOutput
   ExperienceLocationFilters(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: ExperienceLocationFiltersOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: ExperienceLocationFiltersWhereInput): ExperienceLocationFiltersOutput
@@ -12135,6 +12339,8 @@ type QueryRef {
   Pagination(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: PaginationOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: PaginationWhereInput): PaginationOutput
   Redirect(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RedirectOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RedirectWhereInput): RedirectOutput
   Restaurant(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantWhereInput): RestaurantOutput
+  RestaurantDetails(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantDetailsOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantDetailsWhereInput): RestaurantDetailsOutput
+  RestaurantFilter(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantFilterOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantFilterWhereInput): RestaurantFilterOutput
   RestaurantsList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantsListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantsListWhereInput): RestaurantsListOutput
   RetailMallDetailsPage(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RetailMallDetailsPageOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RetailMallDetailsPageWhereInput): RetailMallDetailsPageOutput
   RichTextElement(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RichTextElementOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RichTextElementWhereInput): RichTextElementOutput
@@ -12279,11 +12485,12 @@ input RedirectWhereInput {
 
 type Restaurant implements IData & _IComponent & _IContent & _IItem {
   CTA: CallToActionProperty
+  Contents: [_IContent]
   Description: RichText
-  Details: [ContentReference]
   Images: [ContentReference]
   Location: String
   Name: String
+  Restaurantsfilter: [String]
   _children: QueryRef @deprecated(reason: "Use `_link` field instead")
   _deleted: Bool
   _fulltext(highlight: HighlightOptions): [String]
@@ -12298,33 +12505,155 @@ type Restaurant implements IData & _IComponent & _IContent & _IItem {
 
 type RestaurantAutocomplete {
   CTA: CallToActionPropertyAutocomplete
+  Contents: _IContentAutocomplete
   Description: RichTextAutocomplete
-  Details: ContentReferenceAutocomplete
   Images: ContentReferenceAutocomplete
   Location(limit: Int! = 10, value: String!): [String]
   Name(limit: Int! = 10, value: String!): [String]
+  Restaurantsfilter(limit: Int! = 10, value: String!): [String]
   _itemMetadata: _MetadataAutocomplete
   _metadata: IContentMetadataAutocomplete
 }
 
+type RestaurantDetails implements IData & _IContent & _IExperience & _IItem & _IPage {
+  Retaurant: [_IContent]
+  _children: QueryRef @deprecated(reason: "Use `_link` field instead")
+  _deleted: Bool
+  _fulltext(highlight: HighlightOptions): [String]
+  _id: String
+  _itemMetadata: _Metadata
+  _json: JSON
+  _link(type: LinkTypes): QueryRef
+  _metadata: IContentMetadata
+  _modified: Date
+  _score: Float
+  composition: CompositionStructureNode
+}
+
+type RestaurantDetailsAutocomplete {
+  Retaurant: _IContentAutocomplete
+  _itemMetadata: _MetadataAutocomplete
+  _metadata: IContentMetadataAutocomplete
+  composition: CompositionStructureNodeAutocomplete
+}
+
+type RestaurantDetailsFacet {
+  Retaurant: _IContentFacet
+  _itemMetadata: _MetadataFacet
+  _metadata: IContentMetadataFacet
+  composition: CompositionStructureNodeFacet
+}
+
+input RestaurantDetailsOrderByInput {
+  Retaurant: _IContentOrderByInput
+  _itemMetadata: _MetadataOrderByInput
+  _metadata: IContentMetadataOrderByInput
+  _minimumScore: Float
+  _modified: OrderBy
+  _ranking: Ranking
+  """
+  The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled.
+  """
+  _semanticWeight: Float
+  composition: CompositionStructureNodeOrderByInput
+}
+
+type RestaurantDetailsOutput {
+  autocomplete: RestaurantDetailsAutocomplete
+  cursor: String
+  facets: RestaurantDetailsFacet
+  item: RestaurantDetails
+  items: [RestaurantDetails]
+  total(all: Boolean): Int
+}
+
+input RestaurantDetailsWhereInput {
+  Retaurant: _IContentWhereInput
+  _and: [RestaurantDetailsWhereInput]
+  _fulltext: SearchableStringFilterInput
+  _itemMetadata: _MetadataWhereInput
+  _metadata: IContentMetadataWhereInput
+  _modified: DateFilterInput
+  _not: [RestaurantDetailsWhereInput]
+  _or: [RestaurantDetailsWhereInput]
+  composition: CompositionStructureNodeWhereInput
+}
+
 type RestaurantFacet {
   CTA: CallToActionPropertyFacet
+  Contents: _IContentFacet
   Description: RichTextFacet
-  Details: ContentReferenceFacet
   Images: ContentReferenceFacet
   Location(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
   Name(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
+  Restaurantsfilter(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
   _itemMetadata: _MetadataFacet
   _metadata: IContentMetadataFacet
 }
 
+type RestaurantFilter implements IData & _IComponent & _IContent & _IItem {
+  RestaurantFilter: String
+  _children: QueryRef @deprecated(reason: "Use `_link` field instead")
+  _deleted: Bool
+  _fulltext(highlight: HighlightOptions): [String]
+  _id: String
+  _itemMetadata: _Metadata
+  _json: JSON
+  _link(type: LinkTypes): QueryRef
+  _metadata: IContentMetadata
+  _modified: Date
+  _score: Float
+}
+
+type RestaurantFilterAutocomplete {
+  _itemMetadata: _MetadataAutocomplete
+  _metadata: IContentMetadataAutocomplete
+}
+
+type RestaurantFilterFacet {
+  _itemMetadata: _MetadataFacet
+  _metadata: IContentMetadataFacet
+}
+
+input RestaurantFilterOrderByInput {
+  _itemMetadata: _MetadataOrderByInput
+  _metadata: IContentMetadataOrderByInput
+  _minimumScore: Float
+  _modified: OrderBy
+  _ranking: Ranking
+  """
+  The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled.
+  """
+  _semanticWeight: Float
+}
+
+type RestaurantFilterOutput {
+  autocomplete: RestaurantFilterAutocomplete
+  cursor: String
+  facets: RestaurantFilterFacet
+  item: RestaurantFilter
+  items: [RestaurantFilter]
+  total(all: Boolean): Int
+}
+
+input RestaurantFilterWhereInput {
+  _and: [RestaurantFilterWhereInput]
+  _fulltext: SearchableStringFilterInput
+  _itemMetadata: _MetadataWhereInput
+  _metadata: IContentMetadataWhereInput
+  _modified: DateFilterInput
+  _not: [RestaurantFilterWhereInput]
+  _or: [RestaurantFilterWhereInput]
+}
+
 input RestaurantOrderByInput {
   CTA: CallToActionPropertyOrderByInput
+  Contents: _IContentOrderByInput
   Description: RichTextOrderByInput
-  Details: ContentReferenceOrderByInput
   Images: ContentReferenceOrderByInput
   Location: OrderBy
   Name: OrderBy
+  Restaurantsfilter: OrderBy
   _itemMetadata: _MetadataOrderByInput
   _metadata: IContentMetadataOrderByInput
   _minimumScore: Float
@@ -12347,11 +12676,12 @@ type RestaurantOutput {
 
 input RestaurantWhereInput {
   CTA: CallToActionPropertyWhereInput
+  Contents: _IContentWhereInput
   Description: RichTextWhereInput
-  Details: ContentReferenceWhereInput
   Images: ContentReferenceWhereInput
   Location: StringFilterInput
   Name: StringFilterInput
+  Restaurantsfilter: StringFilterInput
   _and: [RestaurantWhereInput]
   _fulltext: SearchableStringFilterInput
   _itemMetadata: _MetadataWhereInput
@@ -12364,7 +12694,7 @@ input RestaurantWhereInput {
 type RestaurantsList implements IData & _IComponent & _IContent & _IItem {
   CTA: [CallToActionProperty]
   Description: RichText
-  Diners: [ContentReference]
+  List: [_IContent]
   Title: String
   _children: QueryRef @deprecated(reason: "Use `_link` field instead")
   _deleted: Bool
@@ -12381,7 +12711,7 @@ type RestaurantsList implements IData & _IComponent & _IContent & _IItem {
 type RestaurantsListAutocomplete {
   CTA: CallToActionPropertyAutocomplete
   Description: RichTextAutocomplete
-  Diners: ContentReferenceAutocomplete
+  List: _IContentAutocomplete
   Title(limit: Int! = 10, value: String!): [String]
   _itemMetadata: _MetadataAutocomplete
   _metadata: IContentMetadataAutocomplete
@@ -12390,7 +12720,7 @@ type RestaurantsListAutocomplete {
 type RestaurantsListFacet {
   CTA: CallToActionPropertyFacet
   Description: RichTextFacet
-  Diners: ContentReferenceFacet
+  List: _IContentFacet
   Title(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
   _itemMetadata: _MetadataFacet
   _metadata: IContentMetadataFacet
@@ -12399,7 +12729,7 @@ type RestaurantsListFacet {
 input RestaurantsListOrderByInput {
   CTA: CallToActionPropertyOrderByInput
   Description: RichTextOrderByInput
-  Diners: ContentReferenceOrderByInput
+  List: _IContentOrderByInput
   Title: OrderBy
   _itemMetadata: _MetadataOrderByInput
   _metadata: IContentMetadataOrderByInput
@@ -12424,7 +12754,7 @@ type RestaurantsListOutput {
 input RestaurantsListWhereInput {
   CTA: CallToActionPropertyWhereInput
   Description: RichTextWhereInput
-  Diners: ContentReferenceWhereInput
+  List: _IContentWhereInput
   Title: StringFilterInput
   _and: [RestaurantsListWhereInput]
   _fulltext: SearchableStringFilterInput

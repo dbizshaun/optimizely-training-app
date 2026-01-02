@@ -1,0 +1,13 @@
+fragment BannerData on Banner {
+  BannerTitle
+  BannerType
+  BannerSubTitle
+  BannerDescription
+  BannerMedia { ...ReferenceData }
+  BannerMobileMedia { ...ReferenceData }
+  BannerLinkLabel
+  BannerLink { ...LinkData }
+  BannerIcon { ...ReferenceData }
+  BannerVideoURL
+  BannerStyle { ...DictionaryBlockPropertyData }
+}

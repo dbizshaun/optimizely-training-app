@@ -1,0 +1,77 @@
+{
+  "key": "GraphqlListing",
+  "displayName": "Graphql Listing",
+  "description": "Graphql Listing",
+  "baseType": "component",
+  "isContract": false,
+  "sortOrder": 0,
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "compositionBehaviors": [
+    "sectionEnabled",
+    "elementEnabled"
+  ],
+  "contracts": [],
+  "properties": {
+    "ID": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "ID",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "Title": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Title",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "Category": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Category",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 100,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "SubCategory": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "SubCategory",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 200,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "Status": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Status",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 300,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    }
+  }
+}

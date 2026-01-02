@@ -1,0 +1,15 @@
+fragment HeaderData on Header {
+  HeaderLogo { ...ReferenceData }
+  NavigationMenu { ...IContentListItem }
+  LogoURL { ...LinkData }
+  UtilityMenu { ...IContentListItem }
+  HeaderLogoDark { ...ReferenceData }
+  LanguagesLabel
+  Languages { ...IContentListItem }
+  GlobalSearch { ...SearchPropertyData }
+  QuickLinksLabel
+  QuickLinks { __typename }
+  MobileQuickLinks { ...IContentListItem }
+  GlobalScript
+  EgateTerms { ...EgateTermsPropertyData }
+}

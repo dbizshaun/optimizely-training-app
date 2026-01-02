@@ -1,0 +1,27 @@
+{
+  "key": "CarouselMainImage",
+  "displayName": "CarouselMainImage",
+  "contentType": "Carousel",
+  "isDefault": false,
+  "settings": {
+    "Usage": {
+      "displayName": "Usage",
+      "editor": "",
+      "sortOrder": 30,
+      "choices": {
+        "all": {
+          "displayName": "All-Default",
+          "sortOrder": 10
+        },
+        "desktopOnly": {
+          "displayName": "Desktop Only",
+          "sortOrder": 20
+        },
+        "mobileOnly": {
+          "displayName": "Mobile Only",
+          "sortOrder": 30
+        }
+      }
+    }
+  }
+}

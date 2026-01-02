@@ -1,0 +1,10 @@
+fragment CarouselData on Carousel {
+  Carousel { ...IContentListItem }
+  CarouselTitle
+  DetailPageStyle
+  CarouselSubTitle
+  Description
+  CarouselLogo { ...ReferenceData }
+  CarouselLink
+  CarouselStyle { ...DictionaryBlockPropertyData }
+}

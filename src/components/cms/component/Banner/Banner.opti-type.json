@@ -1,0 +1,171 @@
+{
+  "key": "Banner",
+  "displayName": "Banner",
+  "description": "Banner",
+  "baseType": "component",
+  "isContract": false,
+  "sortOrder": 0,
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "compositionBehaviors": [
+    "sectionEnabled"
+  ],
+  "contracts": [],
+  "properties": {
+    "BannerTitle": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Title",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "BannerType": {
+      "type": "string",
+      "format": "selectOne",
+      "displayName": "Type",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "enum": [
+        {
+          "value": "home",
+          "displayName": "Home Banner"
+        },
+        {
+          "value": "property",
+          "displayName": "Property Banner"
+        },
+        {
+          "value": "fullwidth",
+          "displayName": "Fullwidth Image Banner"
+        },
+        {
+          "value": "experience",
+          "displayName": "Experience Banner"
+        },
+        {
+          "value": "Shoplisting",
+          "displayName": "Shop Listing"
+        }
+      ],
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "BannerSubTitle": {
+      "type": "string",
+      "displayName": "SubTitle",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 50,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "BannerDescription": {
+      "type": "richText",
+      "displayName": "Description",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 100,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "BannerMedia": {
+      "type": "contentReference",
+      "displayName": "Media",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 200,
+      "allowedTypes": [
+        "_image",
+        "_video"
+      ],
+      "restrictedTypes": []
+    },
+    "BannerMobileMedia": {
+      "type": "contentReference",
+      "displayName": "MobileMedia",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 225,
+      "allowedTypes": [
+        "_image",
+        "_video"
+      ],
+      "restrictedTypes": []
+    },
+    "BannerLinkLabel": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "LinkLabel",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 250,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "BannerLink": {
+      "type": "url",
+      "displayName": "Link",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 300,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "BannerIcon": {
+      "type": "contentReference",
+      "displayName": "Icon",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 400,
+      "allowedTypes": [
+        "_image"
+      ],
+      "restrictedTypes": []
+    },
+    "BannerVideoURL": {
+      "type": "string",
+      "displayName": "VideoURL",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 500,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "BannerStyle": {
+      "type": "component",
+      "contentType": "DictionaryBlock",
+      "displayName": "Banner Style",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 600,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    }
+  }
+}

@@ -1,0 +1,4 @@
+fragment DictionaryBlockPropertyData on DictionaryBlockProperty {
+  DictionaryName
+  DictionaryItem { ...DictionaryItemPropertyData }
+}

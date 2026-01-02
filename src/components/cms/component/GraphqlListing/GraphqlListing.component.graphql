@@ -1,0 +1,7 @@
+fragment GraphqlListingData on GraphqlListing {
+  ID
+  Title
+  Category
+  SubCategory
+  Status
+}

@@ -1,0 +1,8 @@
+fragment OpenGraphPropertyData on OpenGraphProperty {
+  OGTitle
+  OGDescription
+  OGImage { ...ReferenceData }
+  OGType
+  OGSiteName
+  OGAdmin
+}

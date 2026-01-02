@@ -1,0 +1,163 @@
+{
+  "key": "BannerSlide",
+  "displayName": "BannerSlide",
+  "description": "",
+  "baseType": "component",
+  "isContract": false,
+  "sortOrder": 0,
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "compositionBehaviors": [
+    "sectionEnabled"
+  ],
+  "contracts": [],
+  "properties": {
+    "Title": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Title",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": -100,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "TitleStyle": {
+      "type": "string",
+      "format": "selectOne",
+      "displayName": "Title Style",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": -50,
+      "enum": [
+        {
+          "value": "h1",
+          "displayName": "H1"
+        },
+        {
+          "value": "h2",
+          "displayName": "H2"
+        },
+        {
+          "value": "h3",
+          "displayName": "H3"
+        },
+        {
+          "value": "h4",
+          "displayName": "H4"
+        },
+        {
+          "value": "h5",
+          "displayName": "H5"
+        }
+      ],
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "Description": {
+      "type": "richText",
+      "displayName": "Description",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "Image": {
+      "type": "contentReference",
+      "displayName": "Image",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [
+        "_image"
+      ],
+      "restrictedTypes": []
+    },
+    "SlideVideo": {
+      "type": "contentReference",
+      "displayName": "Video",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [
+        "_video"
+      ],
+      "restrictedTypes": []
+    },
+    "MobileImage": {
+      "type": "contentReference",
+      "displayName": "MobileImage",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "allowedTypes": [
+        "_image"
+      ],
+      "restrictedTypes": []
+    },
+    "Iframe": {
+      "type": "string",
+      "displayName": "Iframe",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 100,
+      "allowedTypes": [],
+      "restrictedTypes": []
+    },
+    "Buttons": {
+      "type": "array",
+      "displayName": "Buttons",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 200,
+      "allowedTypes": [],
+      "restrictedTypes": [],
+      "items": {
+        "type": "content",
+        "allowedTypes": [
+          "CallToAction"
+        ],
+        "restrictedTypes": []
+      }
+    },
+    "Aligment": {
+      "type": "string",
+      "format": "selectOne",
+      "displayName": "Aligment",
+      "description": "",
+      "localized": true,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 300,
+      "enum": [
+        {
+          "value": "left",
+          "displayName": "Start"
+        },
+        {
+          "value": "center",
+          "displayName": "Center"
+        }
+      ],
+      "allowedTypes": [],
+      "restrictedTypes": []
+    }
+  }
+}

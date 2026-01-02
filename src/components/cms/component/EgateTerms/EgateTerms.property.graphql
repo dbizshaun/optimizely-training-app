@@ -1,0 +1,6 @@
+fragment EgateTermsPropertyData on EgateTermsProperty {
+  termsBody
+  termsTitle
+  termsAcceptButton
+  termsDeclineButton
+}
