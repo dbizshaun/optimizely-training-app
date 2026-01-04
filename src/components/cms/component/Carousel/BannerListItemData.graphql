@@ -1,13 +1,13 @@
-fragment BannerData on Banner {
+fragment BannerListItemData on Banner {
   title: BannerTitle
   # BannerType
   # BannerSubTitle
   # BannerDescription
   media: BannerMedia { ...PublicImageReferenceData }
   # BannerMobileMedia { ...ReferenceData }
-  # BannerLinkLabel
-  # BannerLink { ...LinkData }
-  # BannerIcon { ...ReferenceData }
+  buttonLabel: BannerLinkLabel
+  buttonLink: BannerLink { ...LinkData }
+  icon: BannerIcon { ...PublicImageReferenceData }
   # BannerVideoURL
   # BannerStyle { ...DictionaryBlockPropertyData }
 }

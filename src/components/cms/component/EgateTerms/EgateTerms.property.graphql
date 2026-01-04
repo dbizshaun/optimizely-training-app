@@ -1,5 +1,5 @@
 fragment EgateTermsPropertyData on EgateTermsProperty {
-  termsBody
+  termsBody {json}
   termsTitle
   termsAcceptButton
   termsDeclineButton

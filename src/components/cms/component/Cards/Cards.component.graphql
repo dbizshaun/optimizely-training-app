@@ -1,13 +1,13 @@
 fragment CardsData on Cards {
   Title
-  IconText
-  HyperLink
-  Description
-  CardList { ...IContentListItem }
-  Image { ...ReferenceData }
-  Icon { ...ReferenceData }
-  Link { ...IContentListItem }
-  DetailPageStyle
-  Filters { ...IContentListItem }
-  CardsStyle { ...DictionaryBlockPropertyData }
+  # IconText
+  # HyperLink
+  # Description
+  # CardList { ...IContentListItem }
+  # Image { ...ReferenceData }
+  # Icon { ...ReferenceData }
+  # Link { ...IContentListItem }
+  # DetailPageStyle
+  # Filters { ...IContentListItem }
+  # CardsStyle { ...DictionaryBlockPropertyData }
 }

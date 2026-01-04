@@ -1,15 +1,15 @@
 fragment HeaderData on Header {
-  HeaderLogo { ...ReferenceData }
-  NavigationMenu { ...IContentListItem }
-  LogoURL { ...LinkData }
-  UtilityMenu { ...IContentListItem }
-  HeaderLogoDark { ...ReferenceData }
-  LanguagesLabel
-  Languages { ...IContentListItem }
-  GlobalSearch { ...SearchPropertyData }
-  QuickLinksLabel
-  QuickLinks { __typename }
-  MobileQuickLinks { ...IContentListItem }
-  GlobalScript
-  EgateTerms { ...EgateTermsPropertyData }
+  logo: HeaderLogo { ...PublicImageReferenceData }
+  navMenuList: NavigationMenu { ...IContentListItem, ...NavListMenuItemData }
+  logoUrl: LogoURL { ...LinkData }
+  buttonsList: UtilityMenu { ...IContentListItem, ...MenuItemData }
+  # HeaderLogoDark { ...PublicImageReferenceData }
+  # LanguagesLabel
+  # Languages { ...IContentListItem }
+  # GlobalSearch { ...SearchPropertyData }
+  # QuickLinksLabel
+  # QuickLinks { __typename }
+  # MobileQuickLinks { ...IContentListItem }
+  # GlobalScript
+  # EgateTerms { ...EgateTermsPropertyData }
 }

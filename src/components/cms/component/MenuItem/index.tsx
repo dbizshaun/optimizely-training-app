@@ -1,13 +1,13 @@
 import { type CmsComponent } from "@remkoj/optimizely-cms-react";
-import { CardsDataFragmentDoc, type CardsDataFragment } from "@/gql/graphql";
+import { MenuItemDataFragmentDoc, type MenuItemDataFragment } from "@/gql/graphql";
 
 /**
- * Cards
- * Cards
+ * MenuItem
+ * Menu Item
  */
-export const CardsComponent : CmsComponent<CardsDataFragment> = ({ data, children }) => {
-    const componentName = 'Cards'
-    const componentInfo = 'Cards'
+export const MenuItemComponent : CmsComponent<MenuItemDataFragment> = ({ data, children }) => {
+    const componentName = 'MenuItem'
+    const componentInfo = 'Menu Item'
     return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">
         <div className="font-bold italic">{ componentName }</div>
         <div>{ componentInfo }</div>
@@ -15,7 +15,7 @@ export const CardsComponent : CmsComponent<CardsDataFragment> = ({ data, childre
         { children && <div className="mt-4 mx-4 flex flex-col">{ children }</div>}
     </div>
 }
-CardsComponent.displayName = "Cards (Component/Cards)"
-CardsComponent.getDataFragment = () => ['CardsData', CardsDataFragmentDoc]
+MenuItemComponent.displayName = "MenuItem (Component/MenuItem)"
+MenuItemComponent.getDataFragment = () => ['MenuItemData', MenuItemDataFragmentDoc]
 
-export default CardsComponent
+export default MenuItemComponent

@@ -1,12 +1,11 @@
 import { type CmsComponent } from "@remkoj/optimizely-cms-react";
 import { BannerSlideDataFragmentDoc, type BannerSlideDataFragment } from "@/gql/graphql";
-import { BannerSlideLayoutProps } from "./displayTemplates";
 
 /**
  * BannerSlide
  * 
  */
-export const BannerSlideComponent : CmsComponent<BannerSlideDataFragment, BannerSlideLayoutProps> = ({ data, layoutProps, children }) => {
+export const BannerSlideComponent : CmsComponent<BannerSlideDataFragment> = ({ data, children }) => {
     const componentName = 'BannerSlide'
     const componentInfo = ''
     return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">

@@ -1,12 +1,11 @@
 import { type CmsComponent } from "@remkoj/optimizely-cms-react";
 import { CarouselDataFragmentDoc, type CarouselDataFragment } from "@/gql/graphql";
-import { CarouselLayoutProps } from "./displayTemplates";
 
 /**
  * Carousel
  * Carousel
  */
-export const CarouselComponent : CmsComponent<CarouselDataFragment, CarouselLayoutProps> = ({ data, layoutProps, children }) => {
+export const CarouselComponent : CmsComponent<CarouselDataFragment> = ({ data, children }) => {
     const componentName = 'Carousel'
     const componentInfo = 'Carousel'
     return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">

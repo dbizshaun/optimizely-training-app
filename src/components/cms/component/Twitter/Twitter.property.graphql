@@ -2,5 +2,5 @@ fragment TwitterPropertyData on TwitterProperty {
   TwitterText
   TwitterSite
   TwitterDescription
-  TwitterImage { ...ReferenceData }
+  TwitterImage { ...PublicImageReferenceData }
 }

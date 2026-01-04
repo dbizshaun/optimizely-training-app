@@ -1,7 +1,7 @@
 fragment OpenGraphPropertyData on OpenGraphProperty {
   OGTitle
   OGDescription
-  OGImage { ...ReferenceData }
+  OGImage { ...PublicImageReferenceData }
   OGType
   OGSiteName
   OGAdmin

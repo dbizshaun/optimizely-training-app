@@ -1,11 +1,11 @@
 fragment BannerSlideData on BannerSlide {
   Title
-  TitleStyle
-  Description
-  Image { ...ReferenceData }
-  SlideVideo { ...ReferenceData }
-  MobileImage { ...ReferenceData }
-  Iframe
-  Buttons { ...IContentListItem }
-  Aligment
+  # TitleStyle
+  # Description
+  # Image { ...ReferenceData }
+  # SlideVideo { ...ReferenceData }
+  # MobileImage { ...ReferenceData }
+  # Iframe
+  # Buttons { ...IContentListItem }
+  # Aligment
 }

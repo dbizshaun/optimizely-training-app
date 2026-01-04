@@ -1,12 +1,12 @@
 fragment AppPromoData on AppPromo {
   Title
-  Description
-  Image { ...ReferenceData }
-  QRCodeImage { ...ReferenceData }
-  QRCodeText
-  AppStoreButtonLink
-  GooglePlayButtonLink
-  AppStoreImage { ...ReferenceData }
-  GooglePlayImage { ...ReferenceData }
-  CTAButton
+  # Description {json}
+  # Image { ...PublicImageReferenceData }
+  # QRCodeImage { ...PublicImageReferenceData }
+  # QRCodeText
+  # AppStoreButtonLink
+  # GooglePlayButtonLink
+  # AppStoreImage { ...ReferenceData }
+  # GooglePlayImage { ...ReferenceData }
+  # CTAButton
 }

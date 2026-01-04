@@ -14,6 +14,26 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
+    "fragment AppPromoData on AppPromo {\n  Title\n}": typeof types.AppPromoDataFragmentDoc,
+    "fragment BannerData on Banner {\n  title: BannerTitle\n  media: BannerMedia {\n    ...PublicImageReferenceData\n  }\n}": typeof types.BannerDataFragmentDoc,
+    "fragment BannerSlideData on BannerSlide {\n  Title\n}": typeof types.BannerSlideDataFragmentDoc,
+    "fragment CardsData on Cards {\n  Title\n}": typeof types.CardsDataFragmentDoc,
+    "fragment BannerListItemData on Banner {\n  title: BannerTitle\n  media: BannerMedia {\n    ...PublicImageReferenceData\n  }\n  buttonLabel: BannerLinkLabel\n  buttonLink: BannerLink {\n    ...LinkData\n  }\n  icon: BannerIcon {\n    ...PublicImageReferenceData\n  }\n}": typeof types.BannerListItemDataFragmentDoc,
+    "fragment CarouselData on Carousel {\n  bannerList: Carousel {\n    ...IContentListItem\n    ...BannerListItemData\n  }\n}": typeof types.CarouselDataFragmentDoc,
+    "fragment DictionaryBlockPropertyData on DictionaryBlockProperty {\n  DictionaryName\n  DictionaryItem {\n    ...DictionaryItemPropertyData\n  }\n}": typeof types.DictionaryBlockPropertyDataFragmentDoc,
+    "fragment DictionaryItemPropertyData on DictionaryItemProperty {\n  DictionaryKey\n  DictionaryValue\n  DictionaryIcon {\n    ...PublicImageReferenceData\n  }\n}": typeof types.DictionaryItemPropertyDataFragmentDoc,
+    "fragment EgateTermsPropertyData on EgateTermsProperty {\n  termsBody {\n    json\n  }\n  termsTitle\n  termsAcceptButton\n  termsDeclineButton\n}": typeof types.EgateTermsPropertyDataFragmentDoc,
+    "fragment FooterData on Footer {\n  FooterSocialMediaTitle\n}": typeof types.FooterDataFragmentDoc,
+    "fragment GraphqlListingData on GraphqlListing {\n  ID\n  Title\n  Category\n  SubCategory\n  Status\n}": typeof types.GraphqlListingDataFragmentDoc,
+    "fragment HeaderData on Header {\n  logo: HeaderLogo {\n    ...PublicImageReferenceData\n  }\n  navMenuList: NavigationMenu {\n    ...IContentListItem\n    ...NavListMenuItemData\n  }\n  logoUrl: LogoURL {\n    ...LinkData\n  }\n  buttonsList: UtilityMenu {\n    ...IContentListItem\n    ...MenuItemData\n  }\n}": typeof types.HeaderDataFragmentDoc,
+    "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n}": typeof types.NavListMenuItemDataFragmentDoc,
+    "fragment MenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  icon: MenuIcon {\n    ...PublicImageReferenceData\n  }\n}": typeof types.MenuItemDataFragmentDoc,
+    "fragment MetadataPropertyData on MetadataProperty {\n  MetaDataTitle\n  MetaDataDescription\n  MetaDataKeyWords\n  MetaDataTags\n  OpenGraph {\n    ...OpenGraphPropertyData\n  }\n  Twitter {\n    ...TwitterPropertyData\n  }\n}": typeof types.MetadataPropertyDataFragmentDoc,
+    "fragment OpenGraphPropertyData on OpenGraphProperty {\n  OGTitle\n  OGDescription\n  OGImage {\n    ...PublicImageReferenceData\n  }\n  OGType\n  OGSiteName\n  OGAdmin\n}": typeof types.OpenGraphPropertyDataFragmentDoc,
+    "fragment SearchPropertyData on SearchProperty {\n  SearchIcon {\n    ...PublicImageReferenceData\n  }\n  SearchDarkIcon {\n    ...PublicImageReferenceData\n  }\n  SearchButtonText\n  SearchBoxPlaceholderText\n}": typeof types.SearchPropertyDataFragmentDoc,
+    "fragment TwitterPropertyData on TwitterProperty {\n  TwitterText\n  TwitterSite\n  TwitterDescription\n  TwitterImage {\n    ...PublicImageReferenceData\n  }\n}": typeof types.TwitterPropertyDataFragmentDoc,
+    "fragment BlankExperienceData on BlankExperience {\n  MetaData {\n    ...MetadataPropertyData\n  }\n  ...ExperienceData\n}": typeof types.BlankExperienceDataFragmentDoc,
+    "query getBlankExperienceMetadata($key: String!, $version: String, $locale: [Locales!]) {\n  page: BlankExperience(\n    where: {_metadata: {key: {eq: $key}, version: {eq: $version}}}\n    locale: $locale\n  ) {\n    item {\n      MetaData {\n        title: MetaDataTitle\n        description: MetaDataDescription\n        OpenGraph {\n          ogTitle: OGTitle\n          ogDescription: OGDescription\n          ogSiteName: OGSiteName\n          ogType: OGType\n          ogImage: OGImage {\n            ...PublicImageReferenceData\n          }\n        }\n      }\n      site: _metadata {\n        url {\n          base\n          default\n        }\n      }\n    }\n  }\n}": typeof types.getBlankExperienceMetadataDocument,
     "fragment PublicImageAssetData on cmp_PublicImageAsset {\n  __typename\n  url: Url\n  alt: AltText\n}": typeof types.PublicImageAssetDataFragmentDoc,
     "fragment PublicImageReferenceData on ContentReference {\n  ...ReferenceData\n  item {\n    ...PublicImageAssetData\n  }\n}": typeof types.PublicImageReferenceDataFragmentDoc,
     "fragment PublicVideoAssetData on cmp_PublicVideoAsset {\n  __typename\n  url: Url\n}": typeof types.PublicVideoAssetDataFragmentDoc,
@@ -22,6 +42,26 @@ type Documents = {
     "query getContentById($key: String!, $version: String, $locale: [Locales!], $path: String = \"-\", $domain: String, $changeset: String) {\n      content: _Content(\n        variation: { include: ALL }\n        where: {\n          _or: [\n            { _metadata: { key: { eq: $key }, version: { eq: $version } } }\n            {\n              _metadata: {\n                url: { default: { eq: $path }, base: { eq: $domain } }\n                version: { eq: $version }\n              }\n            }\n          ]\n          _metadata: { changeset: { eq: $changeset } }\n        }\n        locale: $locale\n      ) {\n        total\n        items: item {\n          ...IContentData\n          ...BlockData\n          ...PageData\n        }\n      }\n    }\n\nquery getContentByPath($path: [String!]!, $locale: [Locales!], $siteId: String, $changeset: String = null) {\n      content: _Content(\n        where: {\n          _metadata: {\n            url: { default: { in: $path }, base: { eq: $siteId } }\n            changeset: { eq: $changeset }\n          }\n        }\n        locale: $locale\n      ) {\n        total\n        items: item {\n          ...IContentData\n          ...PageData\n        }\n      }\n    }\n\nquery getContentType($key: String!, $version: String, $locale: [Locales!], $path: String = \"-\", $domain: String) {\n        content: _Content(\n            variation: { include: ALL }\n            where: {\n                _or: [\n                    { _metadata: { key: { eq: $key }, version: { eq: $version } } }\n                    { _metadata: { url: { hierarchical: { eq: $path }, base: { eq: $domain } }, version: { eq: $version } } }\n                ]\n            }\n            locale: $locale\n        ) {\n            total\n            items: item {\n                _metadata {\n                    types\n                }\n            }\n        }\n    }": typeof types.getContentByIdDocument,
 };
 const documents: Documents = {
+    "fragment AppPromoData on AppPromo {\n  Title\n}": types.AppPromoDataFragmentDoc,
+    "fragment BannerData on Banner {\n  title: BannerTitle\n  media: BannerMedia {\n    ...PublicImageReferenceData\n  }\n}": types.BannerDataFragmentDoc,
+    "fragment BannerSlideData on BannerSlide {\n  Title\n}": types.BannerSlideDataFragmentDoc,
+    "fragment CardsData on Cards {\n  Title\n}": types.CardsDataFragmentDoc,
+    "fragment BannerListItemData on Banner {\n  title: BannerTitle\n  media: BannerMedia {\n    ...PublicImageReferenceData\n  }\n  buttonLabel: BannerLinkLabel\n  buttonLink: BannerLink {\n    ...LinkData\n  }\n  icon: BannerIcon {\n    ...PublicImageReferenceData\n  }\n}": types.BannerListItemDataFragmentDoc,
+    "fragment CarouselData on Carousel {\n  bannerList: Carousel {\n    ...IContentListItem\n    ...BannerListItemData\n  }\n}": types.CarouselDataFragmentDoc,
+    "fragment DictionaryBlockPropertyData on DictionaryBlockProperty {\n  DictionaryName\n  DictionaryItem {\n    ...DictionaryItemPropertyData\n  }\n}": types.DictionaryBlockPropertyDataFragmentDoc,
+    "fragment DictionaryItemPropertyData on DictionaryItemProperty {\n  DictionaryKey\n  DictionaryValue\n  DictionaryIcon {\n    ...PublicImageReferenceData\n  }\n}": types.DictionaryItemPropertyDataFragmentDoc,
+    "fragment EgateTermsPropertyData on EgateTermsProperty {\n  termsBody {\n    json\n  }\n  termsTitle\n  termsAcceptButton\n  termsDeclineButton\n}": types.EgateTermsPropertyDataFragmentDoc,
+    "fragment FooterData on Footer {\n  FooterSocialMediaTitle\n}": types.FooterDataFragmentDoc,
+    "fragment GraphqlListingData on GraphqlListing {\n  ID\n  Title\n  Category\n  SubCategory\n  Status\n}": types.GraphqlListingDataFragmentDoc,
+    "fragment HeaderData on Header {\n  logo: HeaderLogo {\n    ...PublicImageReferenceData\n  }\n  navMenuList: NavigationMenu {\n    ...IContentListItem\n    ...NavListMenuItemData\n  }\n  logoUrl: LogoURL {\n    ...LinkData\n  }\n  buttonsList: UtilityMenu {\n    ...IContentListItem\n    ...MenuItemData\n  }\n}": types.HeaderDataFragmentDoc,
+    "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n}": types.NavListMenuItemDataFragmentDoc,
+    "fragment MenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  icon: MenuIcon {\n    ...PublicImageReferenceData\n  }\n}": types.MenuItemDataFragmentDoc,
+    "fragment MetadataPropertyData on MetadataProperty {\n  MetaDataTitle\n  MetaDataDescription\n  MetaDataKeyWords\n  MetaDataTags\n  OpenGraph {\n    ...OpenGraphPropertyData\n  }\n  Twitter {\n    ...TwitterPropertyData\n  }\n}": types.MetadataPropertyDataFragmentDoc,
+    "fragment OpenGraphPropertyData on OpenGraphProperty {\n  OGTitle\n  OGDescription\n  OGImage {\n    ...PublicImageReferenceData\n  }\n  OGType\n  OGSiteName\n  OGAdmin\n}": types.OpenGraphPropertyDataFragmentDoc,
+    "fragment SearchPropertyData on SearchProperty {\n  SearchIcon {\n    ...PublicImageReferenceData\n  }\n  SearchDarkIcon {\n    ...PublicImageReferenceData\n  }\n  SearchButtonText\n  SearchBoxPlaceholderText\n}": types.SearchPropertyDataFragmentDoc,
+    "fragment TwitterPropertyData on TwitterProperty {\n  TwitterText\n  TwitterSite\n  TwitterDescription\n  TwitterImage {\n    ...PublicImageReferenceData\n  }\n}": types.TwitterPropertyDataFragmentDoc,
+    "fragment BlankExperienceData on BlankExperience {\n  MetaData {\n    ...MetadataPropertyData\n  }\n  ...ExperienceData\n}": types.BlankExperienceDataFragmentDoc,
+    "query getBlankExperienceMetadata($key: String!, $version: String, $locale: [Locales!]) {\n  page: BlankExperience(\n    where: {_metadata: {key: {eq: $key}, version: {eq: $version}}}\n    locale: $locale\n  ) {\n    item {\n      MetaData {\n        title: MetaDataTitle\n        description: MetaDataDescription\n        OpenGraph {\n          ogTitle: OGTitle\n          ogDescription: OGDescription\n          ogSiteName: OGSiteName\n          ogType: OGType\n          ogImage: OGImage {\n            ...PublicImageReferenceData\n          }\n        }\n      }\n      site: _metadata {\n        url {\n          base\n          default\n        }\n      }\n    }\n  }\n}": types.getBlankExperienceMetadataDocument,
     "fragment PublicImageAssetData on cmp_PublicImageAsset {\n  __typename\n  url: Url\n  alt: AltText\n}": types.PublicImageAssetDataFragmentDoc,
     "fragment PublicImageReferenceData on ContentReference {\n  ...ReferenceData\n  item {\n    ...PublicImageAssetData\n  }\n}": types.PublicImageReferenceDataFragmentDoc,
     "fragment PublicVideoAssetData on cmp_PublicVideoAsset {\n  __typename\n  url: Url\n}": types.PublicVideoAssetDataFragmentDoc,
@@ -44,6 +84,86 @@ const documents: Documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment AppPromoData on AppPromo {\n  Title\n}"): (typeof documents)["fragment AppPromoData on AppPromo {\n  Title\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment BannerData on Banner {\n  title: BannerTitle\n  media: BannerMedia {\n    ...PublicImageReferenceData\n  }\n}"): (typeof documents)["fragment BannerData on Banner {\n  title: BannerTitle\n  media: BannerMedia {\n    ...PublicImageReferenceData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment BannerSlideData on BannerSlide {\n  Title\n}"): (typeof documents)["fragment BannerSlideData on BannerSlide {\n  Title\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment CardsData on Cards {\n  Title\n}"): (typeof documents)["fragment CardsData on Cards {\n  Title\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment BannerListItemData on Banner {\n  title: BannerTitle\n  media: BannerMedia {\n    ...PublicImageReferenceData\n  }\n  buttonLabel: BannerLinkLabel\n  buttonLink: BannerLink {\n    ...LinkData\n  }\n  icon: BannerIcon {\n    ...PublicImageReferenceData\n  }\n}"): (typeof documents)["fragment BannerListItemData on Banner {\n  title: BannerTitle\n  media: BannerMedia {\n    ...PublicImageReferenceData\n  }\n  buttonLabel: BannerLinkLabel\n  buttonLink: BannerLink {\n    ...LinkData\n  }\n  icon: BannerIcon {\n    ...PublicImageReferenceData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment CarouselData on Carousel {\n  bannerList: Carousel {\n    ...IContentListItem\n    ...BannerListItemData\n  }\n}"): (typeof documents)["fragment CarouselData on Carousel {\n  bannerList: Carousel {\n    ...IContentListItem\n    ...BannerListItemData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment DictionaryBlockPropertyData on DictionaryBlockProperty {\n  DictionaryName\n  DictionaryItem {\n    ...DictionaryItemPropertyData\n  }\n}"): (typeof documents)["fragment DictionaryBlockPropertyData on DictionaryBlockProperty {\n  DictionaryName\n  DictionaryItem {\n    ...DictionaryItemPropertyData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment DictionaryItemPropertyData on DictionaryItemProperty {\n  DictionaryKey\n  DictionaryValue\n  DictionaryIcon {\n    ...PublicImageReferenceData\n  }\n}"): (typeof documents)["fragment DictionaryItemPropertyData on DictionaryItemProperty {\n  DictionaryKey\n  DictionaryValue\n  DictionaryIcon {\n    ...PublicImageReferenceData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment EgateTermsPropertyData on EgateTermsProperty {\n  termsBody {\n    json\n  }\n  termsTitle\n  termsAcceptButton\n  termsDeclineButton\n}"): (typeof documents)["fragment EgateTermsPropertyData on EgateTermsProperty {\n  termsBody {\n    json\n  }\n  termsTitle\n  termsAcceptButton\n  termsDeclineButton\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment FooterData on Footer {\n  FooterSocialMediaTitle\n}"): (typeof documents)["fragment FooterData on Footer {\n  FooterSocialMediaTitle\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment GraphqlListingData on GraphqlListing {\n  ID\n  Title\n  Category\n  SubCategory\n  Status\n}"): (typeof documents)["fragment GraphqlListingData on GraphqlListing {\n  ID\n  Title\n  Category\n  SubCategory\n  Status\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment HeaderData on Header {\n  logo: HeaderLogo {\n    ...PublicImageReferenceData\n  }\n  navMenuList: NavigationMenu {\n    ...IContentListItem\n    ...NavListMenuItemData\n  }\n  logoUrl: LogoURL {\n    ...LinkData\n  }\n  buttonsList: UtilityMenu {\n    ...IContentListItem\n    ...MenuItemData\n  }\n}"): (typeof documents)["fragment HeaderData on Header {\n  logo: HeaderLogo {\n    ...PublicImageReferenceData\n  }\n  navMenuList: NavigationMenu {\n    ...IContentListItem\n    ...NavListMenuItemData\n  }\n  logoUrl: LogoURL {\n    ...LinkData\n  }\n  buttonsList: UtilityMenu {\n    ...IContentListItem\n    ...MenuItemData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n}"): (typeof documents)["fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment MenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  icon: MenuIcon {\n    ...PublicImageReferenceData\n  }\n}"): (typeof documents)["fragment MenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  icon: MenuIcon {\n    ...PublicImageReferenceData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment MetadataPropertyData on MetadataProperty {\n  MetaDataTitle\n  MetaDataDescription\n  MetaDataKeyWords\n  MetaDataTags\n  OpenGraph {\n    ...OpenGraphPropertyData\n  }\n  Twitter {\n    ...TwitterPropertyData\n  }\n}"): (typeof documents)["fragment MetadataPropertyData on MetadataProperty {\n  MetaDataTitle\n  MetaDataDescription\n  MetaDataKeyWords\n  MetaDataTags\n  OpenGraph {\n    ...OpenGraphPropertyData\n  }\n  Twitter {\n    ...TwitterPropertyData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment OpenGraphPropertyData on OpenGraphProperty {\n  OGTitle\n  OGDescription\n  OGImage {\n    ...PublicImageReferenceData\n  }\n  OGType\n  OGSiteName\n  OGAdmin\n}"): (typeof documents)["fragment OpenGraphPropertyData on OpenGraphProperty {\n  OGTitle\n  OGDescription\n  OGImage {\n    ...PublicImageReferenceData\n  }\n  OGType\n  OGSiteName\n  OGAdmin\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment SearchPropertyData on SearchProperty {\n  SearchIcon {\n    ...PublicImageReferenceData\n  }\n  SearchDarkIcon {\n    ...PublicImageReferenceData\n  }\n  SearchButtonText\n  SearchBoxPlaceholderText\n}"): (typeof documents)["fragment SearchPropertyData on SearchProperty {\n  SearchIcon {\n    ...PublicImageReferenceData\n  }\n  SearchDarkIcon {\n    ...PublicImageReferenceData\n  }\n  SearchButtonText\n  SearchBoxPlaceholderText\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment TwitterPropertyData on TwitterProperty {\n  TwitterText\n  TwitterSite\n  TwitterDescription\n  TwitterImage {\n    ...PublicImageReferenceData\n  }\n}"): (typeof documents)["fragment TwitterPropertyData on TwitterProperty {\n  TwitterText\n  TwitterSite\n  TwitterDescription\n  TwitterImage {\n    ...PublicImageReferenceData\n  }\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "fragment BlankExperienceData on BlankExperience {\n  MetaData {\n    ...MetadataPropertyData\n  }\n  ...ExperienceData\n}"): (typeof documents)["fragment BlankExperienceData on BlankExperience {\n  MetaData {\n    ...MetadataPropertyData\n  }\n  ...ExperienceData\n}"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "query getBlankExperienceMetadata($key: String!, $version: String, $locale: [Locales!]) {\n  page: BlankExperience(\n    where: {_metadata: {key: {eq: $key}, version: {eq: $version}}}\n    locale: $locale\n  ) {\n    item {\n      MetaData {\n        title: MetaDataTitle\n        description: MetaDataDescription\n        OpenGraph {\n          ogTitle: OGTitle\n          ogDescription: OGDescription\n          ogSiteName: OGSiteName\n          ogType: OGType\n          ogImage: OGImage {\n            ...PublicImageReferenceData\n          }\n        }\n      }\n      site: _metadata {\n        url {\n          base\n          default\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query getBlankExperienceMetadata($key: String!, $version: String, $locale: [Locales!]) {\n  page: BlankExperience(\n    where: {_metadata: {key: {eq: $key}, version: {eq: $version}}}\n    locale: $locale\n  ) {\n    item {\n      MetaData {\n        title: MetaDataTitle\n        description: MetaDataDescription\n        OpenGraph {\n          ogTitle: OGTitle\n          ogDescription: OGDescription\n          ogSiteName: OGSiteName\n          ogType: OGType\n          ogImage: OGImage {\n            ...PublicImageReferenceData\n          }\n        }\n      }\n      site: _metadata {\n        url {\n          base\n          default\n        }\n      }\n    }\n  }\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

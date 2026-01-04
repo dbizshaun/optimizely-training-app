@@ -1,10 +1,10 @@
 fragment CarouselData on Carousel {
-  Carousel { ...IContentListItem }
-  CarouselTitle
-  DetailPageStyle
-  CarouselSubTitle
-  Description
-  CarouselLogo { ...ReferenceData }
-  CarouselLink
-  CarouselStyle { ...DictionaryBlockPropertyData }
+  bannerList: Carousel { ...IContentListItem, ...BannerListItemData }
+  # CarouselTitle
+  # DetailPageStyle
+  # CarouselSubTitle
+  # Description
+  # CarouselLogo { ...ReferenceData }
+  # CarouselLink
+  # CarouselStyle { ...DictionaryBlockPropertyData }
 }

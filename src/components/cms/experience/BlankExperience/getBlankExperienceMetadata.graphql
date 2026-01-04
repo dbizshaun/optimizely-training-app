@@ -1,0 +1,28 @@
+query getBlankExperienceMetadata($key: String!, $version: String, $locale: [Locales!]) {
+  page: BlankExperience(
+    where: { _metadata: { key: { eq: $key }, version: { eq: $version } } }
+    locale: $locale
+  ) {
+    item {
+      MetaData {
+        title: MetaDataTitle
+        description: MetaDataDescription
+        OpenGraph {
+          ogTitle: OGTitle
+          ogDescription: OGDescription
+          ogSiteName: OGSiteName
+          ogType: OGType
+          ogImage: OGImage {
+            ...PublicImageReferenceData
+          }
+        }
+      }
+      site: _metadata {
+        url {
+          base
+          default
+        }
+      }
+    }
+  }
+}

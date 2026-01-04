@@ -1,0 +1,10 @@
+fragment MenuItemData on MenuItem {
+  label: MenuItemLabel
+  link: MenuLink { ...LinkData }
+  # MenuSummary
+  icon: MenuIcon { ...PublicImageReferenceData }
+  # IsExternalLink
+  # Class
+  # SubMenu { ...IContentListItem }
+  # VideoURL { ...ReferenceData }
+}

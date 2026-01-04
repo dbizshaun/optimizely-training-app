@@ -32,17 +32,91 @@ export const PublicImageReferenceDataFragmentDoc = gql`
   }
 }
     `;
-export const PublicVideoAssetDataFragmentDoc = gql`
-    fragment PublicVideoAssetData on cmp_PublicVideoAsset {
-  __typename
-  url: Url
+export const DictionaryItemPropertyDataFragmentDoc = gql`
+    fragment DictionaryItemPropertyData on DictionaryItemProperty {
+  DictionaryKey
+  DictionaryValue
+  DictionaryIcon {
+    ...PublicImageReferenceData
+  }
 }
     `;
-export const PublicVideoReferenceDataFragmentDoc = gql`
-    fragment PublicVideoReferenceData on ContentReference {
-  ...ReferenceData
-  item {
-    ...PublicVideoAssetData
+export const DictionaryBlockPropertyDataFragmentDoc = gql`
+    fragment DictionaryBlockPropertyData on DictionaryBlockProperty {
+  DictionaryName
+  DictionaryItem {
+    ...DictionaryItemPropertyData
+  }
+}
+    `;
+export const EgateTermsPropertyDataFragmentDoc = gql`
+    fragment EgateTermsPropertyData on EgateTermsProperty {
+  termsBody {
+    json
+  }
+  termsTitle
+  termsAcceptButton
+  termsDeclineButton
+}
+    `;
+export const SearchPropertyDataFragmentDoc = gql`
+    fragment SearchPropertyData on SearchProperty {
+  SearchIcon {
+    ...PublicImageReferenceData
+  }
+  SearchDarkIcon {
+    ...PublicImageReferenceData
+  }
+  SearchButtonText
+  SearchBoxPlaceholderText
+}
+    `;
+export const OpenGraphPropertyDataFragmentDoc = gql`
+    fragment OpenGraphPropertyData on OpenGraphProperty {
+  OGTitle
+  OGDescription
+  OGImage {
+    ...PublicImageReferenceData
+  }
+  OGType
+  OGSiteName
+  OGAdmin
+}
+    `;
+export const TwitterPropertyDataFragmentDoc = gql`
+    fragment TwitterPropertyData on TwitterProperty {
+  TwitterText
+  TwitterSite
+  TwitterDescription
+  TwitterImage {
+    ...PublicImageReferenceData
+  }
+}
+    `;
+export const MetadataPropertyDataFragmentDoc = gql`
+    fragment MetadataPropertyData on MetadataProperty {
+  MetaDataTitle
+  MetaDataDescription
+  MetaDataKeyWords
+  MetaDataTags
+  OpenGraph {
+    ...OpenGraphPropertyData
+  }
+  Twitter {
+    ...TwitterPropertyData
+  }
+}
+    `;
+export const CompositionNodeDataFragmentDoc = gql`
+    fragment CompositionNodeData on ICompositionNode {
+  name: displayName
+  layoutType: nodeType
+  type
+  key
+  template: displayTemplateKey
+  settings: displaySettings {
+    key
+    value
   }
 }
     `;
@@ -66,29 +140,6 @@ export const IContentDataFragmentDoc = gql`
   _type: __typename
 }
     `;
-export const PageDataFragmentDoc = gql`
-    fragment PageData on _IContent {
-  ...IContentData
-}
-    `;
-export const IContentListItemFragmentDoc = gql`
-    fragment IContentListItem on _IContent {
-  ...IContentData
-}
-    `;
-export const CompositionNodeDataFragmentDoc = gql`
-    fragment CompositionNodeData on ICompositionNode {
-  name: displayName
-  layoutType: nodeType
-  type
-  key
-  template: displayTemplateKey
-  settings: displaySettings {
-    key
-    value
-  }
-}
-    `;
 export const BlockDataFragmentDoc = gql`
     fragment BlockData on _IComponent {
   ...IContentData
@@ -107,11 +158,122 @@ export const ElementDataFragmentDoc = gql`
   ...IElementData
 }
     `;
+export const AppPromoDataFragmentDoc = gql`
+    fragment AppPromoData on AppPromo {
+  Title
+}
+    `;
+export const BannerDataFragmentDoc = gql`
+    fragment BannerData on Banner {
+  title: BannerTitle
+  media: BannerMedia {
+    ...PublicImageReferenceData
+  }
+}
+    `;
+export const BannerSlideDataFragmentDoc = gql`
+    fragment BannerSlideData on BannerSlide {
+  Title
+}
+    `;
+export const CardsDataFragmentDoc = gql`
+    fragment CardsData on Cards {
+  Title
+}
+    `;
+export const IContentListItemFragmentDoc = gql`
+    fragment IContentListItem on _IContent {
+  ...IContentData
+}
+    `;
+export const BannerListItemDataFragmentDoc = gql`
+    fragment BannerListItemData on Banner {
+  title: BannerTitle
+  media: BannerMedia {
+    ...PublicImageReferenceData
+  }
+  buttonLabel: BannerLinkLabel
+  buttonLink: BannerLink {
+    ...LinkData
+  }
+  icon: BannerIcon {
+    ...PublicImageReferenceData
+  }
+}
+    `;
+export const CarouselDataFragmentDoc = gql`
+    fragment CarouselData on Carousel {
+  bannerList: Carousel {
+    ...IContentListItem
+    ...BannerListItemData
+  }
+}
+    `;
+export const FooterDataFragmentDoc = gql`
+    fragment FooterData on Footer {
+  FooterSocialMediaTitle
+}
+    `;
+export const GraphqlListingDataFragmentDoc = gql`
+    fragment GraphqlListingData on GraphqlListing {
+  ID
+  Title
+  Category
+  SubCategory
+  Status
+}
+    `;
+export const NavListMenuItemDataFragmentDoc = gql`
+    fragment NavListMenuItemData on MenuItem {
+  label: MenuItemLabel
+  link: MenuLink {
+    ...LinkData
+  }
+}
+    `;
+export const MenuItemDataFragmentDoc = gql`
+    fragment MenuItemData on MenuItem {
+  label: MenuItemLabel
+  link: MenuLink {
+    ...LinkData
+  }
+  icon: MenuIcon {
+    ...PublicImageReferenceData
+  }
+}
+    `;
+export const HeaderDataFragmentDoc = gql`
+    fragment HeaderData on Header {
+  logo: HeaderLogo {
+    ...PublicImageReferenceData
+  }
+  navMenuList: NavigationMenu {
+    ...IContentListItem
+    ...NavListMenuItemData
+  }
+  logoUrl: LogoURL {
+    ...LinkData
+  }
+  buttonsList: UtilityMenu {
+    ...IContentListItem
+    ...MenuItemData
+  }
+}
+    `;
 export const CompositionComponentNodeDataFragmentDoc = gql`
     fragment CompositionComponentNodeData on ICompositionComponentNode {
   component {
     ...BlockData
     ...ElementData
+    ...AppPromoData
+    ...BannerData
+    ...BannerSlideData
+    ...CardsData
+    ...CarouselData
+    ...FooterData
+    ...GraphqlListingData
+    ...HeaderData
+    ...MenuItemData
   }
 }
     `;
@@ -148,6 +310,33 @@ export const ExperienceDataFragmentDoc = gql`
   }
 }
     `;
+export const BlankExperienceDataFragmentDoc = gql`
+    fragment BlankExperienceData on BlankExperience {
+  MetaData {
+    ...MetadataPropertyData
+  }
+  ...ExperienceData
+}
+    `;
+export const PublicVideoAssetDataFragmentDoc = gql`
+    fragment PublicVideoAssetData on cmp_PublicVideoAsset {
+  __typename
+  url: Url
+}
+    `;
+export const PublicVideoReferenceDataFragmentDoc = gql`
+    fragment PublicVideoReferenceData on ContentReference {
+  ...ReferenceData
+  item {
+    ...PublicVideoAssetData
+  }
+}
+    `;
+export const PageDataFragmentDoc = gql`
+    fragment PageData on _IContent {
+  ...IContentData
+}
+    `;
 export const LinkItemDataFragmentDoc = gql`
     fragment LinkItemData on Link {
   title
@@ -158,6 +347,39 @@ export const LinkItemDataFragmentDoc = gql`
   }
 }
     `;
+export const getBlankExperienceMetadataDocument = gql`
+    query getBlankExperienceMetadata($key: String!, $version: String, $locale: [Locales!]) {
+  page: BlankExperience(
+    where: {_metadata: {key: {eq: $key}, version: {eq: $version}}}
+    locale: $locale
+  ) {
+    item {
+      MetaData {
+        title: MetaDataTitle
+        description: MetaDataDescription
+        OpenGraph {
+          ogTitle: OGTitle
+          ogDescription: OGDescription
+          ogSiteName: OGSiteName
+          ogType: OGType
+          ogImage: OGImage {
+            ...PublicImageReferenceData
+          }
+        }
+      }
+      site: _metadata {
+        url {
+          base
+          default
+        }
+      }
+    }
+  }
+}
+    ${PublicImageReferenceDataFragmentDoc}
+${ReferenceDataFragmentDoc}
+${LinkDataFragmentDoc}
+${PublicImageAssetDataFragmentDoc}`;
 export const getContentByIdDocument = gql`
     query getContentById($key: String!, $version: String, $locale: [Locales!], $path: String = "-", $domain: String, $changeset: String) {
   content: _Content(
@@ -170,6 +392,16 @@ export const getContentByIdDocument = gql`
       ...IContentData
       ...BlockData
       ...PageData
+      ...AppPromoData
+      ...BannerData
+      ...BannerSlideData
+      ...CardsData
+      ...CarouselData
+      ...FooterData
+      ...GraphqlListingData
+      ...HeaderData
+      ...MenuItemData
+      ...BlankExperienceData
     }
   }
 }
@@ -177,7 +409,31 @@ export const getContentByIdDocument = gql`
 ${IContentInfoFragmentDoc}
 ${LinkDataFragmentDoc}
 ${BlockDataFragmentDoc}
-${PageDataFragmentDoc}`;
+${PageDataFragmentDoc}
+${AppPromoDataFragmentDoc}
+${BannerDataFragmentDoc}
+${PublicImageReferenceDataFragmentDoc}
+${ReferenceDataFragmentDoc}
+${PublicImageAssetDataFragmentDoc}
+${BannerSlideDataFragmentDoc}
+${CardsDataFragmentDoc}
+${CarouselDataFragmentDoc}
+${IContentListItemFragmentDoc}
+${BannerListItemDataFragmentDoc}
+${FooterDataFragmentDoc}
+${GraphqlListingDataFragmentDoc}
+${HeaderDataFragmentDoc}
+${NavListMenuItemDataFragmentDoc}
+${MenuItemDataFragmentDoc}
+${BlankExperienceDataFragmentDoc}
+${MetadataPropertyDataFragmentDoc}
+${OpenGraphPropertyDataFragmentDoc}
+${TwitterPropertyDataFragmentDoc}
+${ExperienceDataFragmentDoc}
+${CompositionNodeDataFragmentDoc}
+${CompositionComponentNodeDataFragmentDoc}
+${ElementDataFragmentDoc}
+${IElementDataFragmentDoc}`;
 export const getContentByPathDocument = gql`
     query getContentByPath($path: [String!]!, $locale: [Locales!], $siteId: String, $changeset: String = null) {
   content: _Content(
@@ -188,13 +444,39 @@ export const getContentByPathDocument = gql`
     items: item {
       ...IContentData
       ...PageData
+      ...BlankExperienceData
     }
   }
 }
     ${IContentDataFragmentDoc}
 ${IContentInfoFragmentDoc}
 ${LinkDataFragmentDoc}
-${PageDataFragmentDoc}`;
+${PageDataFragmentDoc}
+${BlankExperienceDataFragmentDoc}
+${MetadataPropertyDataFragmentDoc}
+${OpenGraphPropertyDataFragmentDoc}
+${PublicImageReferenceDataFragmentDoc}
+${ReferenceDataFragmentDoc}
+${PublicImageAssetDataFragmentDoc}
+${TwitterPropertyDataFragmentDoc}
+${ExperienceDataFragmentDoc}
+${CompositionNodeDataFragmentDoc}
+${CompositionComponentNodeDataFragmentDoc}
+${BlockDataFragmentDoc}
+${ElementDataFragmentDoc}
+${IElementDataFragmentDoc}
+${AppPromoDataFragmentDoc}
+${BannerDataFragmentDoc}
+${BannerSlideDataFragmentDoc}
+${CardsDataFragmentDoc}
+${CarouselDataFragmentDoc}
+${IContentListItemFragmentDoc}
+${BannerListItemDataFragmentDoc}
+${FooterDataFragmentDoc}
+${GraphqlListingDataFragmentDoc}
+${HeaderDataFragmentDoc}
+${NavListMenuItemDataFragmentDoc}
+${MenuItemDataFragmentDoc}`;
 export const getContentTypeDocument = gql`
     query getContentType($key: String!, $version: String, $locale: [Locales!], $path: String = "-", $domain: String) {
   content: _Content(
@@ -219,6 +501,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    getBlankExperienceMetadata(variables: Schema.getBlankExperienceMetadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<Schema.getBlankExperienceMetadataQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Schema.getBlankExperienceMetadataQuery>({ document: getBlankExperienceMetadataDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'getBlankExperienceMetadata', 'query', variables);
+    },
     getContentById(variables: Schema.getContentByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<Schema.getContentByIdQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<Schema.getContentByIdQuery>({ document: getContentByIdDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'getContentById', 'query', variables);
     },

@@ -1,12 +1,11 @@
 import { type CmsComponent } from "@remkoj/optimizely-cms-react";
 import { HeaderDataFragmentDoc, type HeaderDataFragment } from "@/gql/graphql";
-import { HeaderLayoutProps } from "./displayTemplates";
 
 /**
  * Header
  * Header
  */
-export const HeaderComponent : CmsComponent<HeaderDataFragment, HeaderLayoutProps> = ({ data, layoutProps, children }) => {
+export const HeaderComponent : CmsComponent<HeaderDataFragment> = ({ data, children }) => {
     const componentName = 'Header'
     const componentInfo = 'Header'
     return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">

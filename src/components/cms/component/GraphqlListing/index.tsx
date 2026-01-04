@@ -1,12 +1,11 @@
 import { type CmsComponent } from "@remkoj/optimizely-cms-react";
 import { GraphqlListingDataFragmentDoc, type GraphqlListingDataFragment } from "@/gql/graphql";
-import { GraphqlListingLayoutProps } from "./displayTemplates";
 
 /**
  * Graphql Listing
  * Graphql Listing
  */
-export const GraphqlListingComponent : CmsComponent<GraphqlListingDataFragment, GraphqlListingLayoutProps> = ({ data, layoutProps, children }) => {
+export const GraphqlListingComponent : CmsComponent<GraphqlListingDataFragment> = ({ data, children }) => {
     const componentName = 'Graphql Listing'
     const componentInfo = 'Graphql Listing'
     return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">

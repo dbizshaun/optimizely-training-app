@@ -1,12 +1,11 @@
 import { type CmsComponent } from "@remkoj/optimizely-cms-react";
 import { AppPromoDataFragmentDoc, type AppPromoDataFragment } from "@/gql/graphql";
-import { AppPromoLayoutProps } from "./displayTemplates";
 
 /**
  * App Promo
  * 
  */
-export const AppPromoComponent : CmsComponent<AppPromoDataFragment, AppPromoLayoutProps> = ({ data, layoutProps, children }) => {
+export const AppPromoComponent : CmsComponent<AppPromoDataFragment> = ({ data, children }) => {
     const componentName = 'App Promo'
     const componentInfo = ''
     return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">
