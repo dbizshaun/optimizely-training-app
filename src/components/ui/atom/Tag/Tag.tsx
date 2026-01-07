@@ -6,7 +6,7 @@ type Props = Pick<BoxProps, 'sx'> & {
   variant?: 'primary' | 'secondary' | 'error' | 'warning';
 };
 export const Tag = styled(Box, {
-  shouldForwardProp: (prop) => prop !== 'variant',
+  shouldForwardProp: prop => prop !== 'variant',
 })<Props>(({ theme, variant }) => {
   const variantStyles = {
     primary: {

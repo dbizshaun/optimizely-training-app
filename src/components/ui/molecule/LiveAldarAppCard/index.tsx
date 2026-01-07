@@ -77,12 +77,7 @@ export const LiveAldarAppCard: React.FC<LiveAldarAppCardProps> = React.memo(
               </svg>
             </Desktop>
           </BgImageOverlay>
-          <Image
-            src={props.bgImage.url}
-            layout="fill"
-            objectFit="cover"
-            alt={props.bgImage.alt}
-          />
+          <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
         </BgImageWrapper>
         <ContentWrapper>
           <Caption>
@@ -100,22 +95,8 @@ export const LiveAldarAppCard: React.FC<LiveAldarAppCardProps> = React.memo(
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect
-                    x="0.5"
-                    y="0.5"
-                    width="119"
-                    height="39"
-                    rx="5.5"
-                    fill="black"
-                  />
-                  <rect
-                    x="0.5"
-                    y="0.5"
-                    width="119"
-                    height="39"
-                    rx="5.5"
-                    stroke="#A6A6A6"
-                  />
+                  <rect x="0.5" y="0.5" width="119" height="39" rx="5.5" fill="black" />
+                  <rect x="0.5" y="0.5" width="119" height="39" rx="5.5" stroke="#A6A6A6" />
                   <path
                     d="M24.7045 20.7632C24.7166 19.8433 24.9669 18.9414 25.4321 18.1413C25.8972 17.3412 26.5621 16.6689 27.3648 16.1871C26.8548 15.4761 26.1821 14.8909 25.4 14.4781C24.6178 14.0653 23.7479 13.8362 22.8592 13.8091C20.9635 13.6148 19.1258 14.9165 18.1598 14.9165C17.1751 14.9165 15.6878 13.8284 14.0862 13.8605C13.0502 13.8932 12.0406 14.1873 11.1557 14.7142C10.2708 15.2411 9.54075 15.9828 9.03674 16.867C6.85352 20.5574 8.48201 25.981 10.5734 28.9641C11.6197 30.4248 12.8426 32.0565 14.4428 31.9986C16.0086 31.9352 16.5934 31.0238 18.4835 31.0238C20.3561 31.0238 20.9048 31.9986 22.5374 31.9618C24.2176 31.9352 25.2762 30.4946 26.2859 29.0201C27.0377 27.9793 27.6162 26.8289 28 25.6117C27.0238 25.2086 26.1908 24.5339 25.6048 23.6717C25.0187 22.8095 24.7056 21.798 24.7045 20.7632Z"
                     fill="white"
@@ -142,22 +123,8 @@ export const LiveAldarAppCard: React.FC<LiveAldarAppCardProps> = React.memo(
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect
-                    x="0.5"
-                    y="0.5"
-                    width="119"
-                    height="39"
-                    rx="5.5"
-                    fill="black"
-                  />
-                  <rect
-                    x="0.5"
-                    y="0.5"
-                    width="119"
-                    height="39"
-                    rx="5.5"
-                    stroke="#A6A6A6"
-                  />
+                  <rect x="0.5" y="0.5" width="119" height="39" rx="5.5" fill="black" />
+                  <rect x="0.5" y="0.5" width="119" height="39" rx="5.5" stroke="#A6A6A6" />
                   <path
                     d="M17.8048 19.4617L8.0896 30.0059C8.09051 30.0078 8.09051 30.0106 8.09142 30.0125C8.38981 31.1574 9.41179 32 10.6254 32C11.1108 32 11.5662 31.8656 11.9567 31.6305L11.9877 31.6118L22.9229 25.1593L17.8048 19.4617Z"
                     fill="#EA4335"

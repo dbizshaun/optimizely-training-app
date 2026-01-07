@@ -19,8 +19,7 @@ const BgImageWrapper = styled('div')(({ theme }) => ({
 }));
 
 const ContentWrapper = styled('div')(({ theme }) => ({
-  background:
-    ' linear-gradient(0deg, rgba(68, 46, 2, 0.80) 0%, rgba(68, 46, 2, 0.32) 100%)',
+  background: ' linear-gradient(0deg, rgba(68, 46, 2, 0.80) 0%, rgba(68, 46, 2, 0.32) 100%)',
   position: 'absolute',
   inset: 0,
   zIndex: 9,

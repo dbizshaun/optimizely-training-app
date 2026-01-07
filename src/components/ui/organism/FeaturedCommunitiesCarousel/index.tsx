@@ -1,10 +1,13 @@
+'use client';
+
 import React from 'react';
 import { Settings } from 'react-slick';
+import Box from '@mui/material/Box';
 
-import { ImageObj } from '@/types/ImageObj.types';
+import { ImgObject } from '@/types/ImgObject';
 
 import { FeaturedCommunitySlide } from '../../molecule/FeaturedCommunitySlide';
-import { StyledSlickSlider } from './styledComponents';
+import { SlickCarousel } from '../../atom/SlickCarousel';
 
 const carouselSettings: Settings = {
   dots: true,
@@ -48,28 +51,57 @@ const carouselSettings: Settings = {
 
 export interface FeaturedCommunitiesCarouselProps {
   communities: Array<{
-    bgImg: ImageObj;
-    logoImg: ImageObj;
+    bgImg: ImgObject;
+    logoImg: ImgObject;
     name: string;
     caption: string;
     link: string;
   }>;
 }
-export const FeaturedCommunitiesCarousel: React.FC<FeaturedCommunitiesCarouselProps> = (
-  props
-) => {
+export const FeaturedCommunitiesCarousel: React.FC<FeaturedCommunitiesCarouselProps> = props => {
   return (
-    <StyledSlickSlider {...carouselSettings}>
-      {props.communities.map((image, index) => (
-        <FeaturedCommunitySlide
-          key={index}
-          bgImg={image.bgImg}
-          logoImg={image.logoImg}
-          name={image.name}
-          caption={image.caption}
-          link={image.link}
-        />
-      ))}
-    </StyledSlickSlider>
+    <Box
+      sx={{
+        '& .slick-slide': {
+          opacity: '0.4',
+        },
+        '& .slick-slide.slick-active': {
+          opacity: 1,
+        },
+        '& .slick-dots li': {
+          width: '10px',
+          height: '10px',
+        },
+        '& .slick-dots li button': {
+          width: '8px',
+          height: '8px',
+          borderRadius: '100%',
+          backgroundColor: '#D9D9D9',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+        },
+        '& .slick-dots li.slick-active button': {
+          backgroundColor: '#A3A3A3',
+        },
+        '& .slick-dots li button::before': {
+          display: 'none',
+        },
+        marginBlock: 6,
+      }}
+    >
+      <SlickCarousel {...carouselSettings}>
+        {props.communities.map((community, index) => (
+          <FeaturedCommunitySlide
+            key={index}
+            bgImg={community.bgImg}
+            logoImg={community.logoImg}
+            name={community.name}
+            caption={community.caption}
+            link={community.link}
+          />
+        ))}
+      </SlickCarousel>
+    </Box>
   );
 };

@@ -28,8 +28,7 @@ export type Props = {
 };
 
 export function TrendingHighlights(props: Props) {
-  if (props.highlights.length === 1)
-    return <Highlight {...props.highlights[0]} />;
+  if (props.highlights.length === 1) return <Highlight {...props.highlights[0]} />;
 
   return (
     <CustomCarousel dots dotsClass="slick-dots" autoplay autoplaySpeed={4000}>
@@ -53,12 +52,7 @@ function Highlight(props: HighlightProps) {
             </HighlightButton>
           </ContentWrapper>
           <ImageContainer>
-            <Image
-              layout="fill"
-              objectFit="cover"
-              src={props.image.url}
-              alt={props.image.alt}
-            />
+            <Image layout="fill" objectFit="cover" src={props.image.url} alt={props.image.alt} />
           </ImageContainer>
         </HighlightItem>
       </Container>

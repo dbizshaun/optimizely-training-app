@@ -29,3 +29,13 @@ export function resolveHomePath(url: string) {
   }
   return url;
 }
+
+type Fragment<TType> = {
+  __typename?: TType;
+  _type?: unknown;
+};
+
+export function getTypename<T>(fragment: Fragment<T> | undefined | null): T | undefined | null {
+  if (!fragment) return undefined;
+  return fragment._type as T;
+}

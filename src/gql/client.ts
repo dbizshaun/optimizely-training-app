@@ -229,6 +229,7 @@ export const NavListMenuItemDataFragmentDoc = gql`
   link: MenuLink {
     ...LinkData
   }
+  __typename
 }
     `;
 export const MenuItemDataFragmentDoc = gql`

@@ -1,5 +1,4 @@
 fragment NavListMenuItemData on MenuItem {
   label: MenuItemLabel
   link: MenuLink { ...LinkData }
-  # Add only the fields you want from MenuItemData
 }

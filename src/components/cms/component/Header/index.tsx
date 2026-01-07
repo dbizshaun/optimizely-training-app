@@ -1,21 +1,72 @@
-import { type CmsComponent } from "@remkoj/optimizely-cms-react";
-import { HeaderDataFragmentDoc, type HeaderDataFragment } from "@/gql/graphql";
+import { type CmsComponent } from '@remkoj/optimizely-cms-react';
+import {
+  HeaderDataFragmentDoc,
+  MenuItemDataFragmentDoc,
+  NavListMenuItemDataFragmentDoc,
+  type HeaderDataFragment,
+} from '@/gql/graphql';
+import { ExtractPropsFn } from '@/types/CmsTypes';
+import CmsDebugFallback from '@/components/cms/CmsDebugFallback';
+import Header from '@/components/ui/molecule/Header';
+import type { Props as HeaderProps } from '@/components/ui/molecule/Header';
+import { getFragmentData } from '@/gql';
+import { resolveLinkData } from '@/utils/CommonDataResolutions';
+import { getTypename } from '@/utils/CMSPitfallCompensations';
 
 /**
  * Header
  * Header
  */
-export const HeaderComponent : CmsComponent<HeaderDataFragment> = ({ data, children }) => {
-    const componentName = 'Header'
-    const componentInfo = 'Header'
-    return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">
-        <div className="font-bold italic">{ componentName }</div>
-        <div>{ componentInfo }</div>
-        { Object.getOwnPropertyNames(data).length > 0 && <pre className="w-full overflow-x-hidden font-mono text-sm bg-slate-200 p-2 rounded-sm border border-solid border-slate-900 text-slate-900">{ JSON.stringify(data, undefined, 4) }</pre> }
-        { children && <div className="mt-4 mx-4 flex flex-col">{ children }</div>}
-    </div>
-}
-HeaderComponent.displayName = "Header (Component/Header)"
-HeaderComponent.getDataFragment = () => ['HeaderData', HeaderDataFragmentDoc]
+const META = {
+  componentName: 'Header',
+  componentInfo: 'Header',
+};
 
-export default HeaderComponent
+const extractProps: ExtractPropsFn<HeaderDataFragment, HeaderProps> = data => {
+  const DEFAULT_BUTTON_TEXT = 'Register';
+  const navItems =
+    data.navMenuList
+      ?.map(item => {
+        if (getTypename(item) !== 'Banner') return null;
+        const { label, link } = getFragmentData(NavListMenuItemDataFragmentDoc, item as any);
+        const href = resolveLinkData(link);
+        if (!label) return null;
+        return {
+          label,
+          href,
+        };
+      })
+      .filter((item): item is NonNullable<typeof item> => Boolean(item)) ?? [];
+
+  const button = data.buttonsList?.[0];
+  if (!(getTypename(button) === 'MenuItem')) return { navItems, registerText: DEFAULT_BUTTON_TEXT };
+
+  const { label, link } = getFragmentData(MenuItemDataFragmentDoc, button as any);
+  const href = resolveLinkData(link);
+
+  return {
+    navItems,
+    registerText: label ?? DEFAULT_BUTTON_TEXT,
+    registerLink: href,
+  };
+};
+
+export const HeaderComponent: CmsComponent<HeaderDataFragment> = ({ data, children }) => {
+  const props = extractProps(data);
+
+  if (props) return <Header {...props} />;
+
+  return (
+    <CmsDebugFallback
+      componentName={META.componentName}
+      componentInfo={META.componentInfo}
+      data={data}
+    >
+      {children}
+    </CmsDebugFallback>
+  );
+};
+HeaderComponent.displayName = 'Header (Component/Header)';
+HeaderComponent.getDataFragment = () => ['HeaderData', HeaderDataFragmentDoc];
+
+export default HeaderComponent;

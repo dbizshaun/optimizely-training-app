@@ -16,19 +16,14 @@ import { ImageObj } from '@/types/ImageObj.types';
 export interface WorldOfAldarCardProps {
   bgImage: ImageObj;
   title: string;
-  virtualTourLink:string;
+  virtualTourLink: string;
 }
 export const WorldOfAldarCard: React.FC<WorldOfAldarCardProps> = React.memo(
   function WorldOfAldarCard(props: WorldOfAldarCardProps) {
     return (
       <Wrapper>
         <BgImageWrapper>
-          <Image
-            src={props.bgImage.url}
-            layout="fill"
-            objectFit="cover"
-            alt={props.bgImage.alt}
-          />
+          <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
         </BgImageWrapper>
         <ContentWrapper>
           <HeaderRow>
@@ -220,18 +215,8 @@ export const WorldOfAldarCard: React.FC<WorldOfAldarCardProps> = React.memo(
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <g id="elements">
-                    <path
-                      id="Vector"
-                      d="M17.6667 1H1V17.6667"
-                      stroke="white"
-                      stroke-width="2"
-                    />
-                    <path
-                      id="Vector_2"
-                      d="M17.6667 61H1V44.3334"
-                      stroke="white"
-                      stroke-width="2"
-                    />
+                    <path id="Vector" d="M17.6667 1H1V17.6667" stroke="white" stroke-width="2" />
+                    <path id="Vector_2" d="M17.6667 61H1V44.3334" stroke="white" stroke-width="2" />
                     <path
                       id="Vector_3"
                       d="M44.3335 1H61.0002V17.6667"

@@ -35,11 +35,7 @@ export function TrendingCommunities(props: Props) {
         <GradientBox />
         <ContentContainer>
           <Title>{props.title}</Title>
-          <ActionButton
-            variant="outlined"
-            component={Link}
-            href={props.buttonLink}
-          >
+          <ActionButton variant="outlined" component={Link} href={props.buttonLink}>
             {props.buttonLabel}
           </ActionButton>
         </ContentContainer>

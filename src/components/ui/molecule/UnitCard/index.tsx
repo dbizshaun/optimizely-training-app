@@ -70,21 +70,10 @@ export function UnitCard(props: UnitCardProps) {
         )}
         <CustomSlick>
           <SlickCarousel dots dotsClass="slick-dots">
-            {props.previewImages.map((imageOrImages) => {
-              if (
-                typeof imageOrImages === 'object' &&
-                !Array.isArray(imageOrImages)
-              ) {
+            {props.previewImages.map(imageOrImages => {
+              if (typeof imageOrImages === 'object' && !Array.isArray(imageOrImages)) {
                 const { src, alt, key } = imageOrImages;
-                return (
-                  <CardMedia
-                    key={key}
-                    component="img"
-                    height="200px"
-                    image={src}
-                    alt={alt}
-                  />
-                );
+                return <CardMedia key={key} component="img" height="200px" image={src} alt={alt} />;
               }
               return (
                 <MultiMediaContainer>
@@ -113,7 +102,7 @@ export function UnitCard(props: UnitCardProps) {
               <SvgIcon component={Location} />
             </span>
             <LocationLink
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault();
                 e.stopPropagation();
                 props.onLocation();
@@ -148,7 +137,7 @@ export function UnitCard(props: UnitCardProps) {
           </TagBlock>
           <RegisterBlock>
             <RegisterButton
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation();
                 e.preventDefault();
                 props.onRegister();
@@ -159,7 +148,7 @@ export function UnitCard(props: UnitCardProps) {
               {props.registerText}
             </RegisterButton>
             <IconButton
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation();
                 e.preventDefault();
                 props.onVirtualTour();
@@ -168,7 +157,7 @@ export function UnitCard(props: UnitCardProps) {
               <SvgIcon component={VirtualTour} />
             </IconButton>
             <IconButton
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation();
                 e.preventDefault();
                 props.onShare();

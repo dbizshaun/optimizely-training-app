@@ -11,7 +11,7 @@ export function Menu(props: Props) {
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef();
 
-  const toggleShow = () => setOpen((state) => !state);
+  const toggleShow = () => setOpen(state => !state);
 
   const Element = React.cloneElement(props.children, {
     ref: ref,

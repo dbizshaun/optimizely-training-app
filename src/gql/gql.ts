@@ -26,7 +26,7 @@ type Documents = {
     "fragment FooterData on Footer {\n  FooterSocialMediaTitle\n}": typeof types.FooterDataFragmentDoc,
     "fragment GraphqlListingData on GraphqlListing {\n  ID\n  Title\n  Category\n  SubCategory\n  Status\n}": typeof types.GraphqlListingDataFragmentDoc,
     "fragment HeaderData on Header {\n  logo: HeaderLogo {\n    ...PublicImageReferenceData\n  }\n  navMenuList: NavigationMenu {\n    ...IContentListItem\n    ...NavListMenuItemData\n  }\n  logoUrl: LogoURL {\n    ...LinkData\n  }\n  buttonsList: UtilityMenu {\n    ...IContentListItem\n    ...MenuItemData\n  }\n}": typeof types.HeaderDataFragmentDoc,
-    "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n}": typeof types.NavListMenuItemDataFragmentDoc,
+    "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  __typename\n}": typeof types.NavListMenuItemDataFragmentDoc,
     "fragment MenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  icon: MenuIcon {\n    ...PublicImageReferenceData\n  }\n}": typeof types.MenuItemDataFragmentDoc,
     "fragment MetadataPropertyData on MetadataProperty {\n  MetaDataTitle\n  MetaDataDescription\n  MetaDataKeyWords\n  MetaDataTags\n  OpenGraph {\n    ...OpenGraphPropertyData\n  }\n  Twitter {\n    ...TwitterPropertyData\n  }\n}": typeof types.MetadataPropertyDataFragmentDoc,
     "fragment OpenGraphPropertyData on OpenGraphProperty {\n  OGTitle\n  OGDescription\n  OGImage {\n    ...PublicImageReferenceData\n  }\n  OGType\n  OGSiteName\n  OGAdmin\n}": typeof types.OpenGraphPropertyDataFragmentDoc,
@@ -54,7 +54,7 @@ const documents: Documents = {
     "fragment FooterData on Footer {\n  FooterSocialMediaTitle\n}": types.FooterDataFragmentDoc,
     "fragment GraphqlListingData on GraphqlListing {\n  ID\n  Title\n  Category\n  SubCategory\n  Status\n}": types.GraphqlListingDataFragmentDoc,
     "fragment HeaderData on Header {\n  logo: HeaderLogo {\n    ...PublicImageReferenceData\n  }\n  navMenuList: NavigationMenu {\n    ...IContentListItem\n    ...NavListMenuItemData\n  }\n  logoUrl: LogoURL {\n    ...LinkData\n  }\n  buttonsList: UtilityMenu {\n    ...IContentListItem\n    ...MenuItemData\n  }\n}": types.HeaderDataFragmentDoc,
-    "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n}": types.NavListMenuItemDataFragmentDoc,
+    "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  __typename\n}": types.NavListMenuItemDataFragmentDoc,
     "fragment MenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  icon: MenuIcon {\n    ...PublicImageReferenceData\n  }\n}": types.MenuItemDataFragmentDoc,
     "fragment MetadataPropertyData on MetadataProperty {\n  MetaDataTitle\n  MetaDataDescription\n  MetaDataKeyWords\n  MetaDataTags\n  OpenGraph {\n    ...OpenGraphPropertyData\n  }\n  Twitter {\n    ...TwitterPropertyData\n  }\n}": types.MetadataPropertyDataFragmentDoc,
     "fragment OpenGraphPropertyData on OpenGraphProperty {\n  OGTitle\n  OGDescription\n  OGImage {\n    ...PublicImageReferenceData\n  }\n  OGType\n  OGSiteName\n  OGAdmin\n}": types.OpenGraphPropertyDataFragmentDoc,
@@ -135,7 +135,7 @@ export function gql(source: "fragment HeaderData on Header {\n  logo: HeaderLogo
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n}"): (typeof documents)["fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n}"];
+export function gql(source: "fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  __typename\n}"): (typeof documents)["fragment NavListMenuItemData on MenuItem {\n  label: MenuItemLabel\n  link: MenuLink {\n    ...LinkData\n  }\n  __typename\n}"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

@@ -31,10 +31,7 @@ export function Button({ sx, ...props }: ButtonProps) {
   });
   return (
     <ThemeProvider theme={theme}>
-      <B
-        sx={{ borderRadius: '21px', textTransform: 'none', ...sx }}
-        {...props}
-      />
+      <B sx={{ borderRadius: '21px', textTransform: 'none', ...sx }} {...props} />
     </ThemeProvider>
   );
 }

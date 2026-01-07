@@ -1,28 +1,15 @@
-import React from 'react';
+'use client';
 
+import React from 'react';
+import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import SvgIcon from '@mui/material/SvgIcon';
-
-import { Desktop, Mobile } from '@/components/atom/MediaTags/MediaTags';
-import { Menu } from '@/components/atom/Menu/Menu';
-
-import {
-  HeaderDrawerToggleButton,
-  HeaderAlignmentContainer,
-  HeaderPositionContainer,
-  NavItemWrapper,
-  NavLinks,
-  NavMenuItem,
-  DrawerContent,
-  DrawerLink,
-  AccordionWrapper,
-  AccordionLabel,
-  AccordionContent,
-  AccordionLinkItem,
-  DesktopContactButton,
-  MobileContactButton,
-  LogoLink,
-} from './styledComponents';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
 
 import Logo from './svg/Logo';
 import Contact from './svg/Contact';
@@ -30,7 +17,8 @@ import Hamburger from './svg/Hamburger';
 import Close from './svg/Close';
 import Expand from './svg/Expand';
 
-import { getScrollbarWidth } from '@/utils/getScrollbarWidth';
+import { Desktop, Mobile } from '../../atom/MediaTags/MediaTags';
+import { Menu } from '../../atom/Menu/Menu';
 
 type NavItem =
   | {
@@ -47,20 +35,17 @@ type NavItem =
 export type Props = {
   navItems: NavItem[];
   registerText: string;
-  onRegister: () => void;
-  scrollDistanceToActivateHeaderBackground?: number;
+  registerLink?: string;
 };
-export function Header(props: Props) {
+
+function Header(props: Props) {
   const [drawer, setDrawer] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const headerRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (
-        window.scrollY > (props.scrollDistanceToActivateHeaderBackground ?? 476)
-      ) {
-        // Adjust the scroll distance as needed
+      if (window.scrollY > 476) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -73,46 +58,105 @@ export function Header(props: Props) {
   }, []);
 
   const drawerTop = `${headerRef.current?.clientHeight ?? 0}px`;
-  const toggleDrawer = () => setDrawer((state) => !state);
-
-  const scrollBarWidth = React.useMemo(() => getScrollbarWidth(), []);
+  const toggleDrawer = () => setDrawer(state => !state);
 
   return (
-    <HeaderPositionContainer
+    <Box
+      component="header"
       sx={{
-        width: drawer ? `calc(100% - ${scrollBarWidth}px)` : '100%',
+        padding: 0,
+        position: 'fixed',
+        width: '100%',
+        top: 0,
+        left: 0,
+        zIndex: 100,
+        transition: 'background 0.2s ease-in',
         background: isScrolled ? '#141414' : 'transparent',
       }}
     >
-      <HeaderAlignmentContainer ref={headerRef}>
-        <LogoLink href="">
+      <Container
+        ref={headerRef}
+        sx={{
+          paddingInline: '24px',
+          paddingBlock: '27px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'min(110px, 10vw)',
+        }}
+      >
+        <Link
+          href="/"
+          sx={{
+            display: 'flex',
+          }}
+        >
           <Logo />
-        </LogoLink>
+        </Link>
         <Desktop>
-          <NavItemWrapper>
+          <Box
+            sx={{
+              flexGrow: 1,
+              flexShrink: 1,
+              flexBasis: 'auto',
+              display: 'inline-flex',
+              gap: '24px',
+            }}
+          >
             {props.navItems.map(({ href, label, children }) => {
               if (!children)
                 return (
-                  <NavLinks key={label} href={href}>
+                  <Link
+                    key={label}
+                    href={href}
+                    sx={{
+                      textDecoration: 'none',
+                      color: 'white',
+                      whiteSpace: 'nowrap',
+                      fontSize: '14px',
+                      fontWeight: 400,
+                      lineHeight: '15.4px',
+                      paddingBlock: '12px',
+                    }}
+                  >
                     {label}
-                  </NavLinks>
+                  </Link>
                 );
               return (
                 <Menu key={label} options={children}>
-                  <NavMenuItem key={label}>{label}</NavMenuItem>
+                  <Box
+                    key={label}
+                    sx={{
+                      textDecoration: 'none',
+                      color: 'white',
+                      whiteSpace: 'nowrap',
+                      fontSize: '14px',
+                      fontWeight: 400,
+                      lineHeight: '15.4px',
+                      paddingBlock: '12px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {label}
+                  </Box>
                 </Menu>
               );
             })}
-          </NavItemWrapper>
+          </Box>
         </Desktop>
         <Mobile>
-          <HeaderDrawerToggleButton onClick={toggleDrawer}>
-            {!drawer ? (
-              <SvgIcon component={Hamburger} />
-            ) : (
-              <SvgIcon component={Close} />
-            )}
-          </HeaderDrawerToggleButton>
+          <Box
+            sx={{
+              flexGrow: 1,
+              flexShrink: 1,
+              flexBasis: 'auto',
+              display: 'inline-flex',
+              justifyContent: 'center',
+              cursor: 'pointer',
+            }}
+            onClick={toggleDrawer}
+          >
+            {!drawer ? <SvgIcon component={Hamburger} /> : <SvgIcon component={Close} />}
+          </Box>
           <Drawer
             open={drawer}
             onClose={toggleDrawer}
@@ -120,59 +164,134 @@ export function Header(props: Props) {
             sx={{
               top: drawerTop,
             }}
-            hideBackdrop
-            PaperProps={{
-              sx: {
-                top: drawerTop,
-              },
-            }}
             elevation={0}
           >
-            <DrawerContent role="presentation">
+            <Box
+              sx={{
+                width: '100vw',
+                display: 'flex',
+                flexDirection: 'column',
+                paddingInline: '24px',
+                boxSizing: 'border-box',
+                '&>*': {
+                  minHeight: '48px',
+                },
+              }}
+              role="presentation"
+            >
               {props.navItems.map(({ href, label, children }) => {
                 if (!children)
                   return (
-                    <DrawerLink key={label} href={href}>
+                    <Link
+                      key={label}
+                      href={href}
+                      sx={{
+                        textDecoration: 'none',
+                        color: 'black',
+                        whiteSpace: 'nowrap',
+                        fontSize: '16px',
+                        fontWeight: 400,
+                        lineHeight: '15.4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        borderBottom: '1px solid #e9e9e9',
+                      }}
+                    >
                       {label}
-                    </DrawerLink>
+                    </Link>
                   );
                 return (
-                  <Accordion label={label}>
-                    {children.map(({ label, href }) => (
-                      <AccordionLinkItem key={label} href={href}>
-                        {label}
-                      </AccordionLinkItem>
-                    ))}
+                  <Accordion
+                    key={label}
+                    sx={{
+                      '&:before': { display: 'none' },
+                      borderBottom: '1px solid #e9e9e9',
+                    }}
+                    elevation={0}
+                  >
+                    <AccordionSummary
+                      expandIcon={<Expand />}
+                      sx={{
+                        textDecoration: 'none',
+                        color: 'black',
+                        whiteSpace: 'nowrap',
+                        fontSize: '16px',
+                        fontWeight: 400,
+                        lineHeight: '15.4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: 0,
+                      }}
+                    >
+                      {label}
+                    </AccordionSummary>
+                    <AccordionDetails sx={{ padding: 0 }}>
+                      {children.map(({ label, href }) => (
+                        <Link
+                          key={label}
+                          href={href}
+                          sx={{
+                            textDecoration: 'none',
+                            color: 'black',
+                            whiteSpace: 'nowrap',
+                            fontSize: '16px',
+                            fontWeight: 400,
+                            lineHeight: '15.4px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            minHeight: '48px',
+                          }}
+                        >
+                          {label}
+                        </Link>
+                      ))}
+                    </AccordionDetails>
                   </Accordion>
                 );
               })}
-            </DrawerContent>
+            </Box>
           </Drawer>
         </Mobile>
         <Desktop>
-          <DesktopContactButton
+          <Button
             variant="outlined"
             startIcon={<Contact />}
-            onClick={props.onRegister}
+            href={props.registerLink}
+            sx={{
+              color: '#fff',
+              borderColor: '#fff',
+              justifySelf: 'end',
+              backgroundColor: 'rgba(37, 37, 37, 0.2)',
+              fontSize: '12px',
+              lineHeight: '24px',
+              fontWeight: 500,
+              whiteSpace: 'nowrap',
+              height: '40px',
+              paddingInline: '24px',
+            }}
           >
             {props.registerText}
-          </DesktopContactButton>
+          </Button>
         </Desktop>
         <Mobile>
-          <MobileContactButton variant="outlined" onClick={props.onRegister}>
+          <Button
+            variant="outlined"
+            sx={{
+              color: '#fff',
+              borderColor: '#fff',
+              justifySelf: 'end',
+              backgroundColor: 'rgba(37, 37, 37, 0.2)',
+              width: '48px',
+              height: '40px',
+              minWidth: '48px',
+            }}
+          >
             <Contact />
-          </MobileContactButton>
+          </Button>
         </Mobile>
-      </HeaderAlignmentContainer>
-    </HeaderPositionContainer>
+      </Container>
+    </Box>
   );
 }
 
-function Accordion(props: { label: string; children: React.ReactNode }) {
-  return (
-    <AccordionWrapper elevation={0}>
-      <AccordionLabel expandIcon={<Expand />}>{props.label}</AccordionLabel>
-      <AccordionContent>{props.children}</AccordionContent>
-    </AccordionWrapper>
-  );
-}
+export default Header;

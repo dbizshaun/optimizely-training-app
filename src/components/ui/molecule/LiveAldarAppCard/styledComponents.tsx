@@ -23,8 +23,7 @@ const BgImageOverlay = styled('div')(({ theme }) => ({
   position: 'absolute',
   inset: 0,
   zIndex: 1,
-  background:
-    'linear-gradient(0deg, rgba(68, 46, 2, 0.60) 0%, rgba(68, 46, 2, 0.00) 100%)',
+  background: 'linear-gradient(0deg, rgba(68, 46, 2, 0.60) 0%, rgba(68, 46, 2, 0.00) 100%)',
   mixBlendMode: 'multiply',
   [theme.breakpoints.up('md')]: {
     background: 'none',

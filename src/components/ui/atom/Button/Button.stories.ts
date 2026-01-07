@@ -14,7 +14,7 @@ const meta: Meta<typeof Button> = {
     variant: {
       control: 'select',
       options: ['contained', 'outlined'],
-      defaultValue: 'contained'
+      defaultValue: 'contained',
     },
   },
 };
@@ -45,7 +45,7 @@ export const CustomColorWithVariantContained: Story = {
     sx: {
       color: 'white',
       backgroundColor: blue[900],
-    }
+    },
   },
 };
 export const CustomColorWithVariantOutline: Story = {
@@ -56,6 +56,6 @@ export const CustomColorWithVariantOutline: Story = {
     sx: {
       color: blue[900],
       borderColor: blue[900],
-    }
+    },
   },
 };

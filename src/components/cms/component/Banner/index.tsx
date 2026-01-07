@@ -1,21 +1,48 @@
-import { type CmsComponent } from "@remkoj/optimizely-cms-react";
-import { BannerDataFragmentDoc, type BannerDataFragment } from "@/gql/graphql";
+import { type CmsComponent } from '@remkoj/optimizely-cms-react';
+import { BannerDataFragmentDoc, type BannerDataFragment } from '@/gql/graphql';
+import { ExtractPropsFn } from '@/types/CmsTypes';
+import CmsDebugFallback from '@/components/cms/CmsDebugFallback';
+import { HomeBanner } from '@/components/ui/molecule/HomeBanner';
+import type { Props as HomeBannerProps } from '@/components/ui/molecule/HomeBanner';
+import { resolveImageData } from '@/utils/CommonDataResolutions';
 
 /**
  * Banner
  * Banner
  */
-export const BannerComponent : CmsComponent<BannerDataFragment> = ({ data, children }) => {
-    const componentName = 'Banner'
-    const componentInfo = 'Banner'
-    return <div className="w-full border-y border-y-solid border-y-slate-900 py-2 mb-4">
-        <div className="font-bold italic">{ componentName }</div>
-        <div>{ componentInfo }</div>
-        { Object.getOwnPropertyNames(data).length > 0 && <pre className="w-full overflow-x-hidden font-mono text-sm bg-slate-200 p-2 rounded-sm border border-solid border-slate-900 text-slate-900">{ JSON.stringify(data, undefined, 4) }</pre> }
-        { children && <div className="mt-4 mx-4 flex flex-col">{ children }</div>}
-    </div>
-}
-BannerComponent.displayName = "Banner (Component/Banner)"
-BannerComponent.getDataFragment = () => ['BannerData', BannerDataFragmentDoc]
+const META = {
+  componentName: 'Banner',
+  componentInfo: 'Banner',
+};
 
-export default BannerComponent
+const extractProps: ExtractPropsFn<BannerDataFragment, HomeBannerProps> = data => {
+  const DEFAULT_HEADING = 'Welcome';
+
+  const headingText = data.title ?? DEFAULT_HEADING;
+  const backgroundImage = resolveImageData(data.media);
+
+  return {
+    headingText,
+    backgroundImage,
+  };
+};
+
+export const BannerComponent: CmsComponent<BannerDataFragment> = ({ data, children }) => {
+  const props = extractProps(data);
+
+  if (props) return <HomeBanner {...props} />;
+
+  return (
+    <CmsDebugFallback
+      componentName={META.componentName}
+      componentInfo={META.componentInfo}
+      data={data}
+    >
+      {children}
+    </CmsDebugFallback>
+  );
+};
+BannerComponent.displayName = 'Banner (Component/Banner)';
+BannerComponent.getDataFragment = () => ['BannerData', BannerDataFragmentDoc];
+
+export default BannerComponent;

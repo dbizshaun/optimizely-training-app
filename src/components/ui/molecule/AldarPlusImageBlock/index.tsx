@@ -1,28 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
-
-import {
-  ImageBlockWrapper,
-  FirstBlock,
-  ColumWrapper,
-  RowWrapper,
-  SecondBlock,
-  ThirdBlock,
-  FourthBlock,
-  BlockImage,
-  BlockContent,
-  ColumnBlockContent,
-  FirstBlockLabel,
-  SecondBlockLabel,
-  ThirdBlockLabel,
-  FourthBlockLabel,
-  BlockLink,
-  BlockLinkLabel,
-  FirstBlockImageOverlay,
-  SecondBlockImageOverlay,
-  ThirdBlockImageOverlay,
-  FourthBlockImageOverlay,
-} from './styledComponents';
+import Link from 'next/link';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
 import { ImageObj } from '@/types/ImageObj.types';
 
 export type ImageBlock = {
@@ -33,25 +14,102 @@ export type ImageBlock = {
   hide?: boolean;
 };
 
-const FirstImageBlock: React.FC<ImageBlock> = (props) => {
+const FirstImageBlock: React.FC<ImageBlock> = props => {
+  const theme = useTheme();
   if (props.hide) return null;
   return (
-    <FirstBlock>
-      <BlockImage>
-        <FirstBlockImageOverlay />
-        <Image
-          src={props.bgImage.url}
-          layout="fill"
-          objectFit="cover"
-          alt={props.bgImage.alt}
+    <Box
+      sx={{
+        height: '400px',
+        overflow: 'hidden',
+        position: 'relative',
+        borderRadius: '16px',
+        display: 'flex',
+        [theme.breakpoints.up('md')]: {
+          flex: 1,
+          height: '584px',
+        },
+      }}
+    >
+      <Box
+        sx={{
+          height: '100%',
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 1,
+            opacity: 0.8,
+            background: 'linear-gradient(90deg, #6C828E 50%, rgba(226, 194, 174, 0.00) 100%)',
+            mixBlendMode: 'multiply',
+          }}
         />
-      </BlockImage>
-      <BlockContent>
-        <FirstBlockLabel>
-          <h2>{props.title}</h2>
-        </FirstBlockLabel>
-        <BlockLink href={props.buttonLink}>
-          <BlockLinkLabel>{props.buttonLabel}</BlockLinkLabel>
+        <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+      </Box>
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '24px',
+          [theme.breakpoints.up('md')]: {
+            padding: '40px',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            [theme.breakpoints.up('md')]: {
+              maxWidth: '90%',
+            },
+            '& h2': {
+              fontWeight: 400,
+              color: '#fff',
+              margin: '0',
+              lineHeight: '100%',
+              fontSize: '40px',
+              marginBottom: '32px',
+              [theme.breakpoints.up('md')]: {
+                fontSize: '56px',
+                marginBottom: '40px',
+              },
+            },
+          }}
+        >
+          <Typography variant="h2">{props.title}</Typography>
+        </Box>
+        <Link
+          href={props.buttonLink}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '100%',
+            maxWidth: '240px',
+            textDecoration: 'none',
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: '14px',
+              fontWeight: '500',
+              color: '#fff',
+              textDecoration: 'none',
+              [theme.breakpoints.up('md')]: {
+                fontSize: '16px',
+              },
+            }}
+          >
+            {props.buttonLabel}
+          </Typography>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,31 +124,108 @@ const FirstImageBlock: React.FC<ImageBlock> = (props) => {
               stroke="white"
             />
           </svg>
-        </BlockLink>
-      </BlockContent>
-    </FirstBlock>
+        </Link>
+      </Box>
+    </Box>
   );
 };
 
-const SecondImageBlock: React.FC<ImageBlock> = (props) => {
+const SecondImageBlock: React.FC<ImageBlock> = props => {
+  const theme = useTheme();
   if (props.hide) return null;
   return (
-    <SecondBlock>
-      <BlockImage>
-        <SecondBlockImageOverlay />
-        <Image
-          src={props.bgImage.url}
-          layout="fill"
-          objectFit="cover"
-          alt={props.bgImage.alt}
+    <Box
+      sx={{
+        flex: 1,
+        overflow: 'hidden',
+        position: 'relative',
+        height: '200px',
+        borderRadius: '16px',
+        [theme.breakpoints.up('md')]: {
+          height: '280px',
+        },
+      }}
+    >
+      <Box
+        sx={{
+          height: '100%',
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 1,
+            borderRadius: '16px',
+            opacity: 0.6,
+            background: 'linear-gradient(90deg, #7C6B60 50%, rgba(226, 194, 174, 0.00) 100%)',
+            mixBlendMode: 'multiply',
+          }}
         />
-      </BlockImage>
-      <ColumnBlockContent>
-        <SecondBlockLabel>
-          <h2>{props.title}</h2>
-        </SecondBlockLabel>
-        <BlockLink href={props.buttonLink}>
-          <BlockLinkLabel>{props.buttonLabel}</BlockLinkLabel>
+        <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+      </Box>
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '24px',
+          [theme.breakpoints.up('md')]: {
+            padding: '16px',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            [theme.breakpoints.up('md')]: {
+              maxWidth: '90%',
+            },
+            '& h2': {
+              fontWeight: 400,
+              color: '#fff',
+              margin: '0',
+              lineHeight: '100%',
+              fontSize: '24px',
+              marginBottom: '16px',
+              [theme.breakpoints.up('md')]: {
+                fontSize: '24px',
+                marginBottom: '24px',
+              },
+            },
+          }}
+        >
+          <Typography variant="h2">{props.title}</Typography>
+        </Box>
+        <Link
+          href={props.buttonLink}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '100%',
+            maxWidth: '240px',
+            textDecoration: 'none',
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: '14px',
+              fontWeight: '500',
+              color: '#fff',
+              textDecoration: 'none',
+              [theme.breakpoints.up('md')]: {
+                fontSize: '16px',
+              },
+            }}
+          >
+            {props.buttonLabel}
+          </Typography>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,30 +240,107 @@ const SecondImageBlock: React.FC<ImageBlock> = (props) => {
               stroke="white"
             />
           </svg>
-        </BlockLink>
-      </ColumnBlockContent>
-    </SecondBlock>
+        </Link>
+      </Box>
+    </Box>
   );
 };
-const ThirdImageBlock: React.FC<ImageBlock> = (props) => {
+const ThirdImageBlock: React.FC<ImageBlock> = props => {
+  const theme = useTheme();
   if (props.hide) return null;
   return (
-    <ThirdBlock>
-      <BlockImage>
-        <ThirdBlockImageOverlay />
-        <Image
-          src={props.bgImage.url}
-          layout="fill"
-          objectFit="cover"
-          alt={props.bgImage.alt}
+    <Box
+      sx={{
+        flex: 1,
+        overflow: 'hidden',
+        position: 'relative',
+        height: '200px',
+        borderRadius: '16px',
+        [theme.breakpoints.up('md')]: {
+          height: '280px',
+        },
+      }}
+    >
+      <Box
+        sx={{
+          height: '100%',
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 1,
+            borderRadius: '16px',
+            opacity: 0.6,
+            background: 'linear-gradient(90deg, #6C828E 50%, rgba(226, 194, 174, 0.00) 100%)',
+            mixBlendMode: 'multiply',
+          }}
         />
-      </BlockImage>
-      <ColumnBlockContent>
-        <ThirdBlockLabel>
-          <h2>{props.title}</h2>
-        </ThirdBlockLabel>
-        <BlockLink href={props.buttonLink}>
-          <BlockLinkLabel>{props.buttonLabel}</BlockLinkLabel>
+        <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+      </Box>
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '24px',
+          [theme.breakpoints.up('md')]: {
+            padding: '16px',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            [theme.breakpoints.up('md')]: {
+              maxWidth: '90%',
+            },
+            '& h2': {
+              fontWeight: 400,
+              color: '#fff',
+              margin: '0',
+              lineHeight: '100%',
+              fontSize: '24px',
+              marginBottom: '16px',
+              [theme.breakpoints.up('md')]: {
+                fontSize: '24px',
+                marginBottom: '24px',
+              },
+            },
+          }}
+        >
+          <Typography variant="h2">{props.title}</Typography>
+        </Box>
+        <Link
+          href={props.buttonLink}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '100%',
+            maxWidth: '240px',
+            textDecoration: 'none',
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: '14px',
+              fontWeight: '500',
+              color: '#fff',
+              textDecoration: 'none',
+              [theme.breakpoints.up('md')]: {
+                fontSize: '16px',
+              },
+            }}
+          >
+            {props.buttonLabel}
+          </Typography>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -143,30 +355,105 @@ const ThirdImageBlock: React.FC<ImageBlock> = (props) => {
               stroke="white"
             />
           </svg>
-        </BlockLink>
-      </ColumnBlockContent>
-    </ThirdBlock>
+        </Link>
+      </Box>
+    </Box>
   );
 };
-const FourthImageBlock: React.FC<ImageBlock> = (props) => {
+const FourthImageBlock: React.FC<ImageBlock> = props => {
+  const theme = useTheme();
   if (props.hide) return null;
   return (
-    <FourthBlock>
-      <BlockImage>
-        <FourthBlockImageOverlay />
-        <Image
-          src={props.bgImage.url}
-          layout="fill"
-          objectFit="cover"
-          alt={props.bgImage.alt}
+    <Box
+      sx={{
+        overflow: 'hidden',
+        position: 'relative',
+        height: '200px',
+        borderRadius: '16px',
+        [theme.breakpoints.up('md')]: {
+          flex: 1,
+        },
+      }}
+    >
+      <Box
+        sx={{
+          height: '100%',
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 1,
+            borderRadius: '16px',
+            background: 'rgba(87, 52, 46, 0.40)',
+            mixBlendMode: 'multiply',
+          }}
         />
-      </BlockImage>
-      <ColumnBlockContent>
-        <FourthBlockLabel>
-          <h2>{props.title}</h2>
-        </FourthBlockLabel>
-        <BlockLink href={props.buttonLink}>
-          <BlockLinkLabel>{props.buttonLabel}</BlockLinkLabel>
+        <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+      </Box>
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '24px',
+          [theme.breakpoints.up('md')]: {
+            padding: '16px',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            [theme.breakpoints.up('md')]: {
+              maxWidth: '90%',
+            },
+            '& h2': {
+              fontWeight: 400,
+              color: '#fff',
+              margin: '0',
+              lineHeight: '100%',
+              fontSize: '32px',
+              marginBottom: '16px',
+              [theme.breakpoints.up('md')]: {
+                fontSize: '32px',
+                marginBottom: '24px',
+              },
+            },
+          }}
+        >
+          <Typography variant="h2">{props.title}</Typography>
+        </Box>
+        <Link
+          href={props.buttonLink}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '100%',
+            maxWidth: '240px',
+            textDecoration: 'none',
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: '14px',
+              fontWeight: '500',
+              color: '#fff',
+              textDecoration: 'none',
+              [theme.breakpoints.up('md')]: {
+                fontSize: '16px',
+              },
+            }}
+          >
+            {props.buttonLabel}
+          </Typography>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -181,9 +468,9 @@ const FourthImageBlock: React.FC<ImageBlock> = (props) => {
               stroke="white"
             />
           </svg>
-        </BlockLink>
-      </ColumnBlockContent>
-    </FourthBlock>
+        </Link>
+      </Box>
+    </Box>
   );
 };
 
@@ -195,18 +482,54 @@ export interface AldarPlusImageBlockProps {
     fourth: ImageBlock;
   };
 }
-export const AldarPlusImageBlock: React.FC<AldarPlusImageBlockProps> =
-  React.memo(function AldarPlusImageBlock(props: AldarPlusImageBlockProps) {
+export const AldarPlusImageBlock: React.FC<AldarPlusImageBlockProps> = React.memo(
+  function AldarPlusImageBlock(props: AldarPlusImageBlockProps) {
+    const theme = useTheme();
     return (
-      <ImageBlockWrapper>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: '16px',
+          flexDirection: 'column',
+          zIndex: 0,
+          [theme.breakpoints.up('md')]: {
+            gap: '24px',
+            flexDirection: 'row',
+          },
+        }}
+      >
         <FirstImageBlock {...props.imageBlocks.first} />
-        <ColumWrapper>
-          <RowWrapper>
+        <Box
+          sx={{
+            height: '400px',
+            flex: 1,
+            overflow: 'hidden',
+            position: 'relative',
+            borderRadius: '16px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            [theme.breakpoints.up('md')]: {
+              height: '584px',
+              gap: '24px',
+            },
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              gap: '16px',
+              [theme.breakpoints.up('md')]: {
+                gap: '24px',
+              },
+            }}
+          >
             <SecondImageBlock {...props.imageBlocks.second} />
             <ThirdImageBlock {...props.imageBlocks.third} />
-          </RowWrapper>
+          </Box>
           <FourthImageBlock {...props.imageBlocks.fourth} />
-        </ColumWrapper>
-      </ImageBlockWrapper>
+        </Box>
+      </Box>
     );
-  });
+  }
+);

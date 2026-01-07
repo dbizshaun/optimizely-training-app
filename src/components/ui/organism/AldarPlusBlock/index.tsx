@@ -22,21 +22,21 @@ export interface AldarPlusBlockProps {
   title: string;
   description: string;
 }
-export const AldarPlusBlock: React.FC<AldarPlusBlockProps> = React.memo(
-  function AldarPlusBlock(props: AldarPlusBlockProps) {
-    return (
-      <Wrapper>
-        <WorldOfAldarCard {...props.worldOfAldarCardProps} />
-        <AldarPlusWrapper>
-          <AldarPlusInnerWrapper>
-            <ContentWrapper>
-              <Title>{ReactHtmlParser(props.title)}</Title>
-              <Description>{ReactHtmlParser(props.description)}</Description>
-            </ContentWrapper>
-            <AldarPlusImageBlock {...props.imageBlockProps} />
-          </AldarPlusInnerWrapper>
-        </AldarPlusWrapper>
-      </Wrapper>
-    );
-  }
-);
+export const AldarPlusBlock: React.FC<AldarPlusBlockProps> = React.memo(function AldarPlusBlock(
+  props: AldarPlusBlockProps
+) {
+  return (
+    <Wrapper>
+      <WorldOfAldarCard {...props.worldOfAldarCardProps} />
+      <AldarPlusWrapper>
+        <AldarPlusInnerWrapper>
+          <ContentWrapper>
+            <Title>{ReactHtmlParser(props.title)}</Title>
+            <Description>{ReactHtmlParser(props.description)}</Description>
+          </ContentWrapper>
+          <AldarPlusImageBlock {...props.imageBlockProps} />
+        </AldarPlusInnerWrapper>
+      </AldarPlusWrapper>
+    </Wrapper>
+  );
+});

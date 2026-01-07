@@ -26,8 +26,7 @@ export const GradientBox = styled('div')(({ theme }) => ({
   width: '100%',
   top: 0,
   left: 0,
-  background:
-    ' linear-gradient(360deg, rgba(68, 46, 2, 0.6) 0%, rgba(68, 46, 2, 0) 100%)',
+  background: ' linear-gradient(360deg, rgba(68, 46, 2, 0.6) 0%, rgba(68, 46, 2, 0) 100%)',
   mixBlendMode: 'multiply',
   zIndex: -1,
 }));

@@ -42,11 +42,4 @@ const MoreUnitsLinkLabel = styled('span')(({ theme }) => ({
   lineHeight: '110%',
 }));
 
-export {
-  Wrapper,
-  Title,
-  UnitListWrapper,
-  UnitWrapper,
-  MoreUnitsLink,
-  MoreUnitsLinkLabel,
-};
+export { Wrapper, Title, UnitListWrapper, UnitWrapper, MoreUnitsLink, MoreUnitsLinkLabel };
