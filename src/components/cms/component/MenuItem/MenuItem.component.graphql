@@ -7,5 +7,4 @@ fragment MenuItemData on MenuItem {
   # Class
   # SubMenu { ...IContentListItem }
   # VideoURL { ...ReferenceData }
-  __typename: _type
 }

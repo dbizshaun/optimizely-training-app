@@ -27,7 +27,6 @@ const extractProps: ExtractPropsFn<
   const communities =
     data.bannerList
       ?.map(item => {
-        console.log('ITT', item);
         const { title, buttonLabel, media, buttonLink, icon } = getFragmentData(
           BannerListItemDataFragmentDoc,
           item as any
@@ -48,8 +47,6 @@ const extractProps: ExtractPropsFn<
         };
       })
       .filter((item): item is NonNullable<typeof item> => Boolean(item)) ?? [];
-
-  console.log('commies', communities);
 
   return {
     communities,

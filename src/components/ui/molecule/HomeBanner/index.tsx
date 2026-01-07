@@ -3,7 +3,6 @@
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
 import { useIsMobile } from '@/hooks/mediaQuery';
 import Image from 'next/image';
 import { ImgObject } from '@/types/ImgObject';

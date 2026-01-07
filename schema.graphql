@@ -12122,7 +12122,7 @@ type Query {
   Redirect(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RedirectOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RedirectWhereInput): RedirectOutput
   Restaurant(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantWhereInput): RestaurantOutput
   RestaurantDetails(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantDetailsOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantDetailsWhereInput): RestaurantDetailsOutput
-  RestaurantTypeFilter(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantTypeFilterOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantTypeFilterWhereInput): RestaurantTypeFilterOutput
+  RestaurantFilter(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantFilterOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantFilterWhereInput): RestaurantFilterOutput
   RestaurantsList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantsListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantsListWhereInput): RestaurantsListOutput
   RetailMallDetailsPage(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RetailMallDetailsPageOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RetailMallDetailsPageWhereInput): RetailMallDetailsPageOutput
   RichTextElement(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RichTextElementOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RichTextElementWhereInput): RichTextElementOutput
@@ -12340,7 +12340,7 @@ type QueryRef {
   Redirect(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RedirectOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RedirectWhereInput): RedirectOutput
   Restaurant(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantWhereInput): RestaurantOutput
   RestaurantDetails(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantDetailsOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantDetailsWhereInput): RestaurantDetailsOutput
-  RestaurantTypeFilter(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantTypeFilterOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantTypeFilterWhereInput): RestaurantTypeFilterOutput
+  RestaurantFilter(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantFilterOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantFilterWhereInput): RestaurantFilterOutput
   RestaurantsList(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RestaurantsListOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RestaurantsListWhereInput): RestaurantsListOutput
   RetailMallDetailsPage(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RetailMallDetailsPageOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RetailMallDetailsPageWhereInput): RetailMallDetailsPageOutput
   RichTextElement(cursor: String, ids: [String], limit: Int! = 20, locale: [Locales], orderBy: RichTextElementOrderByInput, pinned: PinnedInput, skip: Int! = 0, variation: VariationInput, where: RichTextElementWhereInput): RichTextElementOutput
@@ -12484,7 +12484,7 @@ input RedirectWhereInput {
 }
 
 type Restaurant implements IData & _IComponent & _IContent & _IItem {
-  CTA: CallToActionProperty
+  CTA: [_IContent]
   Contents: [_IContent]
   Description: RichText
   FoodType: String
@@ -12505,7 +12505,7 @@ type Restaurant implements IData & _IComponent & _IContent & _IItem {
 }
 
 type RestaurantAutocomplete {
-  CTA: CallToActionPropertyAutocomplete
+  CTA: _IContentAutocomplete
   Contents: _IContentAutocomplete
   Description: RichTextAutocomplete
   Images: ContentReferenceAutocomplete
@@ -12517,7 +12517,6 @@ type RestaurantAutocomplete {
 }
 
 type RestaurantDetails implements IData & _IContent & _IExperience & _IItem & _IPage {
-  Retaurant: [_IContent]
   _children: QueryRef @deprecated(reason: "Use `_link` field instead")
   _deleted: Bool
   _fulltext(highlight: HighlightOptions): [String]
@@ -12532,21 +12531,18 @@ type RestaurantDetails implements IData & _IContent & _IExperience & _IItem & _I
 }
 
 type RestaurantDetailsAutocomplete {
-  Retaurant: _IContentAutocomplete
   _itemMetadata: _MetadataAutocomplete
   _metadata: IContentMetadataAutocomplete
   composition: CompositionStructureNodeAutocomplete
 }
 
 type RestaurantDetailsFacet {
-  Retaurant: _IContentFacet
   _itemMetadata: _MetadataFacet
   _metadata: IContentMetadataFacet
   composition: CompositionStructureNodeFacet
 }
 
 input RestaurantDetailsOrderByInput {
-  Retaurant: _IContentOrderByInput
   _itemMetadata: _MetadataOrderByInput
   _metadata: IContentMetadataOrderByInput
   _minimumScore: Float
@@ -12569,7 +12565,6 @@ type RestaurantDetailsOutput {
 }
 
 input RestaurantDetailsWhereInput {
-  Retaurant: _IContentWhereInput
   _and: [RestaurantDetailsWhereInput]
   _fulltext: SearchableStringFilterInput
   _itemMetadata: _MetadataWhereInput
@@ -12581,7 +12576,7 @@ input RestaurantDetailsWhereInput {
 }
 
 type RestaurantFacet {
-  CTA: CallToActionPropertyFacet
+  CTA: _IContentFacet
   Contents: _IContentFacet
   Description: RichTextFacet
   Images: ContentReferenceFacet
@@ -12592,8 +12587,74 @@ type RestaurantFacet {
   _metadata: IContentMetadataFacet
 }
 
+type RestaurantFilter implements IData & _IComponent & _IContent & _IItem {
+  AllDining: String
+  AllHotels: String
+  RestaurantLocation: [String]
+  RestaurantType: [String]
+  _children: QueryRef @deprecated(reason: "Use `_link` field instead")
+  _deleted: Bool
+  _fulltext(highlight: HighlightOptions): [String]
+  _id: String
+  _itemMetadata: _Metadata
+  _json: JSON
+  _link(type: LinkTypes): QueryRef
+  _metadata: IContentMetadata
+  _modified: Date
+  _score: Float
+}
+
+type RestaurantFilterAutocomplete {
+  RestaurantLocation(limit: Int! = 10, value: String!): [String]
+  RestaurantType(limit: Int! = 10, value: String!): [String]
+  _itemMetadata: _MetadataAutocomplete
+  _metadata: IContentMetadataAutocomplete
+}
+
+type RestaurantFilterFacet {
+  RestaurantLocation(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
+  RestaurantType(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
+  _itemMetadata: _MetadataFacet
+  _metadata: IContentMetadataFacet
+}
+
+input RestaurantFilterOrderByInput {
+  RestaurantLocation: OrderBy
+  RestaurantType: OrderBy
+  _itemMetadata: _MetadataOrderByInput
+  _metadata: IContentMetadataOrderByInput
+  _minimumScore: Float
+  _modified: OrderBy
+  _ranking: Ranking
+  """
+  The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled.
+  """
+  _semanticWeight: Float
+}
+
+type RestaurantFilterOutput {
+  autocomplete: RestaurantFilterAutocomplete
+  cursor: String
+  facets: RestaurantFilterFacet
+  item: RestaurantFilter
+  items: [RestaurantFilter]
+  total(all: Boolean): Int
+}
+
+input RestaurantFilterWhereInput {
+  RestaurantLocation: StringFilterInput
+  RestaurantType: StringFilterInput
+  _and: [RestaurantFilterWhereInput]
+  _fulltext: SearchableStringFilterInput
+  _itemMetadata: _MetadataWhereInput
+  _metadata: IContentMetadataWhereInput
+  _modified: DateFilterInput
+  _not: [RestaurantFilterWhereInput]
+  _or: [RestaurantFilterWhereInput]
+}
+
 input RestaurantOrderByInput {
-  CTA: CallToActionPropertyOrderByInput
+  CTA: _IContentOrderByInput
   Contents: _IContentOrderByInput
   Description: RichTextOrderByInput
   Images: ContentReferenceOrderByInput
@@ -12620,67 +12681,8 @@ type RestaurantOutput {
   total(all: Boolean): Int
 }
 
-type RestaurantTypeFilter implements IData & _IComponent & _IContent & _IItem {
-  RestaurantType: [String]
-  _children: QueryRef @deprecated(reason: "Use `_link` field instead")
-  _deleted: Bool
-  _fulltext(highlight: HighlightOptions): [String]
-  _id: String
-  _itemMetadata: _Metadata
-  _json: JSON
-  _link(type: LinkTypes): QueryRef
-  _metadata: IContentMetadata
-  _modified: Date
-  _score: Float
-}
-
-type RestaurantTypeFilterAutocomplete {
-  RestaurantType(limit: Int! = 10, value: String!): [String]
-  _itemMetadata: _MetadataAutocomplete
-  _metadata: IContentMetadataAutocomplete
-}
-
-type RestaurantTypeFilterFacet {
-  RestaurantType(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
-  _itemMetadata: _MetadataFacet
-  _metadata: IContentMetadataFacet
-}
-
-input RestaurantTypeFilterOrderByInput {
-  RestaurantType: OrderBy
-  _itemMetadata: _MetadataOrderByInput
-  _metadata: IContentMetadataOrderByInput
-  _minimumScore: Float
-  _modified: OrderBy
-  _ranking: Ranking
-  """
-  The value needs to be a positive value, but cannot exceed the maximum value of an integer. In case it is exceeded, the maximum of an integer is used. In case of a negative value, semantic search will be disabled.
-  """
-  _semanticWeight: Float
-}
-
-type RestaurantTypeFilterOutput {
-  autocomplete: RestaurantTypeFilterAutocomplete
-  cursor: String
-  facets: RestaurantTypeFilterFacet
-  item: RestaurantTypeFilter
-  items: [RestaurantTypeFilter]
-  total(all: Boolean): Int
-}
-
-input RestaurantTypeFilterWhereInput {
-  RestaurantType: StringFilterInput
-  _and: [RestaurantTypeFilterWhereInput]
-  _fulltext: SearchableStringFilterInput
-  _itemMetadata: _MetadataWhereInput
-  _metadata: IContentMetadataWhereInput
-  _modified: DateFilterInput
-  _not: [RestaurantTypeFilterWhereInput]
-  _or: [RestaurantTypeFilterWhereInput]
-}
-
 input RestaurantWhereInput {
-  CTA: CallToActionPropertyWhereInput
+  CTA: _IContentWhereInput
   Contents: _IContentWhereInput
   Description: RichTextWhereInput
   Images: ContentReferenceWhereInput
@@ -12697,7 +12699,7 @@ input RestaurantWhereInput {
 }
 
 type RestaurantsList implements IData & _IComponent & _IContent & _IItem {
-  CTA: [CallToActionProperty]
+  CTA: [_IContent]
   Description: RichText
   List: [_IContent]
   Title: String
@@ -12715,7 +12717,7 @@ type RestaurantsList implements IData & _IComponent & _IContent & _IItem {
 }
 
 type RestaurantsListAutocomplete {
-  CTA: CallToActionPropertyAutocomplete
+  CTA: _IContentAutocomplete
   Description: RichTextAutocomplete
   List: _IContentAutocomplete
   Title(limit: Int! = 10, value: String!): [String]
@@ -12725,7 +12727,7 @@ type RestaurantsListAutocomplete {
 }
 
 type RestaurantsListFacet {
-  CTA: CallToActionPropertyFacet
+  CTA: _IContentFacet
   Description: RichTextFacet
   List: _IContentFacet
   Title(filters: [String!], limit: Int! = 10, orderBy: OrderBy = DESC, orderType: OrderByFacetType = COUNT): [StringFacet]
@@ -12735,7 +12737,7 @@ type RestaurantsListFacet {
 }
 
 input RestaurantsListOrderByInput {
-  CTA: CallToActionPropertyOrderByInput
+  CTA: _IContentOrderByInput
   Description: RichTextOrderByInput
   List: _IContentOrderByInput
   Title: OrderBy
@@ -12761,7 +12763,7 @@ type RestaurantsListOutput {
 }
 
 input RestaurantsListWhereInput {
-  CTA: CallToActionPropertyWhereInput
+  CTA: _IContentWhereInput
   Description: RichTextWhereInput
   List: _IContentWhereInput
   Title: StringFilterInput

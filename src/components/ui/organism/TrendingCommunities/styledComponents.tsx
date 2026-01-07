@@ -2,8 +2,8 @@
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Button } from '@/components/atom/Button/Button';
-import { desktopMediaQuery, mobileMediaQuery } from '@/hooks/mediaQuery';
+import { Button } from '@/components/ui/atom/Button/Button';
+// import { desktopMediaQuery, mobileMediaQuery } from '@/hooks/mediaQuery';
 
 export const BackgroundWrapper = styled('div')(({ theme }) => ({
   backgroundRepeat: 'no-repeat',
@@ -12,12 +12,12 @@ export const BackgroundWrapper = styled('div')(({ theme }) => ({
   boxSizing: 'border-box',
   position: 'relative',
   zIndex: 2,
-  [`@media ${desktopMediaQuery}`]: {
-    height: '720px',
-  },
-  [`@media ${mobileMediaQuery}`]: {
-    paddingTop: '64px',
-  },
+  // [`@media ${desktopMediaQuery}`]: {
+  //   height: '720px',
+  // },
+  // [`@media ${mobileMediaQuery}`]: {
+  //   paddingTop: '64px',
+  // },
 }));
 
 export const GradientBox = styled('div')(({ theme }) => ({
@@ -50,16 +50,16 @@ export const Title = styled(Typography)(({ theme }) => ({
   lineHeight: '80px',
   textAlign: 'left',
   color: '#FFF',
-  [`@media ${desktopMediaQuery}`]: {
-    width: '80%',
-  },
-  [`@media ${mobileMediaQuery}`]: {
-    fontSize: '40px',
-    fontWeight: 400,
-    lineHeight: '48px',
-    wordWrap: 'break-word',
-    wordBreak: 'break-word',
-  },
+  // [`@media ${desktopMediaQuery}`]: {
+  //   width: '80%',
+  // },
+  // [`@media ${mobileMediaQuery}`]: {
+  //   fontSize: '40px',
+  //   fontWeight: 400,
+  //   lineHeight: '48px',
+  //   wordWrap: 'break-word',
+  //   wordBreak: 'break-word',
+  // },
 }));
 
 export const ActionButton = styled(Button)(({ theme }) => ({

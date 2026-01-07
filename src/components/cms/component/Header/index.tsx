@@ -11,7 +11,6 @@ import Header from '@/components/ui/molecule/Header';
 import type { Props as HeaderProps } from '@/components/ui/molecule/Header';
 import { getFragmentData } from '@/gql';
 import { resolveLinkData } from '@/utils/CommonDataResolutions';
-import { getTypename } from '@/utils/CMSPitfallCompensations';
 
 /**
  * Header
@@ -27,7 +26,6 @@ const extractProps: ExtractPropsFn<HeaderDataFragment, HeaderProps> = data => {
   const navItems =
     data.navMenuList
       ?.map(item => {
-        if (getTypename(item) !== 'Banner') return null;
         const { label, link } = getFragmentData(NavListMenuItemDataFragmentDoc, item as any);
         const href = resolveLinkData(link);
         if (!label) return null;
@@ -39,7 +37,6 @@ const extractProps: ExtractPropsFn<HeaderDataFragment, HeaderProps> = data => {
       .filter((item): item is NonNullable<typeof item> => Boolean(item)) ?? [];
 
   const button = data.buttonsList?.[0];
-  if (!(getTypename(button) === 'MenuItem')) return { navItems, registerText: DEFAULT_BUTTON_TEXT };
 
   const { label, link } = getFragmentData(MenuItemDataFragmentDoc, button as any);
   const href = resolveLinkData(link);

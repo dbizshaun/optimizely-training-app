@@ -8,7 +8,7 @@ import {
   MoreUnitsLink,
   MoreUnitsLinkLabel,
 } from './styledComponents';
-import { UnitCard, UnitCardProps } from '@/components/molecule/UnitCard';
+import { UnitCard, UnitCardProps } from '@/components/ui/molecule/UnitCard';
 
 export interface FeaturedUnitsProps {
   title: string;

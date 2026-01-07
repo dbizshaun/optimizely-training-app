@@ -22,7 +22,7 @@ export function Menu(props: Props) {
       {Element}
       <MMenu open={open} anchorEl={ref.current} onClose={toggleShow}>
         {props.options.map(({ label, href }) => (
-          <MMenuItem href={href} component={Link}>
+          <MMenuItem key={label} href={href} component={Link}>
             {label}
           </MMenuItem>
         ))}

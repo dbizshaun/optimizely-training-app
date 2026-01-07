@@ -1,9 +1,9 @@
-import { Button } from '@/components/atom/Button/Button';
+import { Button } from '@/components/ui/atom/Button/Button';
 import Typography from '@mui/material/Typography';
-import { SlickCarousel } from '@/components/atom/SlickCarousel';
+import { SlickCarousel } from '@/components/ui/atom/SlickCarousel';
 
 import { styled } from '@mui/material/styles';
-import { mobileMediaQuery } from '@/hooks/mediaQuery';
+// import { mobileMediaQuery } from '@/hooks/mediaQuery';
 
 export const CustomCarousel = styled(SlickCarousel)(({ theme }) => ({
   overflow: 'hidden',
@@ -37,10 +37,10 @@ export const HighlightItem = styled('div')(({ theme }) => ({
   gridTemplateColumns: '1fr 1fr',
   gap: '24px',
   boxSizing: 'border-box',
-  [`@media ${mobileMediaQuery}`]: {
-    gridTemplateColumns: '1fr',
-    gap: '42px',
-  },
+  // [`@media ${mobileMediaQuery}`]: {
+  //   gridTemplateColumns: '1fr',
+  //   gap: '42px',
+  // },
 }));
 
 export const ContentWrapper = styled('div')(({ theme }) => ({

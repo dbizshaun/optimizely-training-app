@@ -4,11 +4,11 @@ import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
-import { ImageObj } from '@/types/ImageObj.types';
+import { ImgObject } from '@/types/ImgObject';
 
 export type ImageBlock = {
   title: string;
-  bgImage: ImageObj;
+  bgImage: ImgObject;
   buttonLabel: string;
   buttonLink: string;
   hide?: boolean;
@@ -48,7 +48,7 @@ const FirstImageBlock: React.FC<ImageBlock> = props => {
             mixBlendMode: 'multiply',
           }}
         />
-        <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+        <Image src={props.bgImage.src} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
       </Box>
       <Box
         sx={{
@@ -164,7 +164,7 @@ const SecondImageBlock: React.FC<ImageBlock> = props => {
             mixBlendMode: 'multiply',
           }}
         />
-        <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+        <Image src={props.bgImage.src} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
       </Box>
       <Box
         sx={{
@@ -279,7 +279,7 @@ const ThirdImageBlock: React.FC<ImageBlock> = props => {
             mixBlendMode: 'multiply',
           }}
         />
-        <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+        <Image src={props.bgImage.src} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
       </Box>
       <Box
         sx={{
@@ -392,7 +392,7 @@ const FourthImageBlock: React.FC<ImageBlock> = props => {
             mixBlendMode: 'multiply',
           }}
         />
-        <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+        <Image src={props.bgImage.src} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
       </Box>
       <Box
         sx={{

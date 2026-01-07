@@ -1,12 +1,12 @@
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
-import { Button } from '@/components/atom/Button/Button';
+import { Button } from '@/components/ui/atom/Button/Button';
 
 import {
   TrendingHighlights,
   Props as TrendingHighlightsProps,
-} from '@/components/molecule/TrendingHighlights';
+} from '@/components/ui/molecule/TrendingHighlights';
 
 import Link from 'next/link';
 import {

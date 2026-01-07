@@ -10,11 +10,11 @@ import {
   WorldOfAldarLogo,
   ExpandLink,
 } from './styledComponents';
-import { Desktop, Mobile } from '@/components/atom/MediaTags/MediaTags';
-import { ImageObj } from '@/types/ImageObj.types';
+import { Desktop, Mobile } from '@/components/ui/atom/MediaTags/MediaTags';
+import { ImgObject } from '@/types/ImgObject';
 
 export interface WorldOfAldarCardProps {
-  bgImage: ImageObj;
+  bgImage: ImgObject;
   title: string;
   virtualTourLink: string;
 }
@@ -23,7 +23,7 @@ export const WorldOfAldarCard: React.FC<WorldOfAldarCardProps> = React.memo(
     return (
       <Wrapper>
         <BgImageWrapper>
-          <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+          <Image src={props.bgImage.src} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
         </BgImageWrapper>
         <ContentWrapper>
           <HeaderRow>

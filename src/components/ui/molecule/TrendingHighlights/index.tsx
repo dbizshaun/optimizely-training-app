@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Container from '@mui/material/Container';
 
-import { ImageObj } from '@/types/ImageObj.types';
+import { ImgObject } from '@/types/ImgObject';
 
-import ReactHtmlParser from 'react-html-parser';
+// import ReactHtmlParser from 'react-html-parser';
 
 import {
   BackgroundWrapper,
@@ -21,7 +21,7 @@ type HighlightProps = {
   description: string;
   buttonLink: string;
   buttonLabel: string;
-  image: ImageObj;
+  image: ImgObject;
 };
 export type Props = {
   highlights: HighlightProps[];
@@ -33,7 +33,7 @@ export function TrendingHighlights(props: Props) {
   return (
     <CustomCarousel dots dotsClass="slick-dots" autoplay autoplaySpeed={4000}>
       {props.highlights.map((data: HighlightProps) => (
-        <Highlight {...data} />
+        <Highlight key={data.tagLine} {...data} />
       ))}
     </CustomCarousel>
   );
@@ -45,14 +45,14 @@ function Highlight(props: HighlightProps) {
       <Container>
         <HighlightItem>
           <ContentWrapper>
-            <TagLine>{ReactHtmlParser(props.tagLine)}</TagLine>
-            <Description>{ReactHtmlParser(props.description)}</Description>
+            {/* <TagLine>{ReactHtmlParser(props.tagLine)}</TagLine>
+            <Description>{ReactHtmlParser(props.description)}</Description> */}
             <HighlightButton variant="outlined" href={props.buttonLink}>
               {props.buttonLabel}
             </HighlightButton>
           </ContentWrapper>
           <ImageContainer>
-            <Image layout="fill" objectFit="cover" src={props.image.url} alt={props.image.alt} />
+            <Image layout="fill" objectFit="cover" src={props.image.src} alt={props.image.alt} />
           </ImageContainer>
         </HighlightItem>
       </Container>

@@ -2,8 +2,8 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import MCardContent from '@mui/material/CardContent';
 import MCard from '@mui/material/Card';
-import { Button } from '@/components/atom/Button/Button';
-import { Tag } from '@/components/atom/Tag/Tag';
+import { Button } from '@/components/ui/atom/Button/Button';
+import { Tag } from '@/components/ui/atom/Tag/Tag';
 import { styled } from '@mui/material/styles';
 import React from 'react';
 

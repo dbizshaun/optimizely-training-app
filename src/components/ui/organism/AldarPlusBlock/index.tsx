@@ -13,8 +13,8 @@ import { WorldOfAldarCard, WorldOfAldarCardProps } from '../../molecule/WorldOfA
 import {
   AldarPlusImageBlock,
   AldarPlusImageBlockProps,
-} from '@/components/molecule/AldarPlusImageBlock';
-import ReactHtmlParser from 'react-html-parser';
+} from '@/components/ui/molecule/AldarPlusImageBlock';
+// import ReactHtmlParser from 'react-html-parser';
 
 export interface AldarPlusBlockProps {
   worldOfAldarCardProps: WorldOfAldarCardProps;
@@ -31,8 +31,8 @@ export const AldarPlusBlock: React.FC<AldarPlusBlockProps> = React.memo(function
       <AldarPlusWrapper>
         <AldarPlusInnerWrapper>
           <ContentWrapper>
-            <Title>{ReactHtmlParser(props.title)}</Title>
-            <Description>{ReactHtmlParser(props.description)}</Description>
+            {/* <Title>{ReactHtmlParser(props.title)}</Title>
+            <Description>{ReactHtmlParser(props.description)}</Description> */}
           </ContentWrapper>
           <AldarPlusImageBlock {...props.imageBlockProps} />
         </AldarPlusInnerWrapper>

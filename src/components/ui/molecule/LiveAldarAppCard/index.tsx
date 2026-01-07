@@ -13,14 +13,14 @@ import {
   WebAppQR,
   BgImageOverlay,
 } from './styledComponents';
-import { Desktop, Mobile } from '@/components/atom/MediaTags/MediaTags';
-import { ImageObj } from '@/types/ImageObj.types';
+import { Desktop, Mobile } from '@/components/ui/atom/MediaTags/MediaTags';
+import { ImgObject } from '@/types/ImgObject';
 
 type Title = string | { mobile: string; desktop: string };
 
 export interface LiveAldarAppCardProps {
   title: Title;
-  bgImage: ImageObj;
+  bgImage: ImgObject;
   androidAppLink: string;
   iosAppLink: string;
 }
@@ -77,7 +77,7 @@ export const LiveAldarAppCard: React.FC<LiveAldarAppCardProps> = React.memo(
               </svg>
             </Desktop>
           </BgImageOverlay>
-          <Image src={props.bgImage.url} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
+          <Image src={props.bgImage.src} layout="fill" objectFit="cover" alt={props.bgImage.alt} />
         </BgImageWrapper>
         <ContentWrapper>
           <Caption>

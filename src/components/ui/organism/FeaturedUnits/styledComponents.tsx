@@ -1,4 +1,4 @@
-import { Grid2 } from '@mui/material';
+import { Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import Container from '@mui/material/Container';
@@ -20,9 +20,9 @@ const Title = styled('div')(({ theme }) => ({
   lineHeight: '120%',
 }));
 
-const UnitListWrapper = styled(Grid2)(({ theme }) => ({}));
+const UnitListWrapper = styled(Grid)(({ theme }) => ({}));
 
-const UnitWrapper = styled(Grid2)(({ theme }) => ({}));
+const UnitWrapper = styled(Grid)(({ theme }) => ({}));
 
 const MoreUnitsLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',

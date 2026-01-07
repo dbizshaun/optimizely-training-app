@@ -32,7 +32,7 @@ import VirtualTour from './svg/VirtualTour';
 import Share from './svg/Share';
 import ArrowRight from './svg/ArrowRight';
 
-import { SlickCarousel } from '@/components/atom/SlickCarousel';
+import { SlickCarousel } from '@/components/ui/atom/SlickCarousel';
 
 type carouselImageType = {
   key: string | number;
@@ -76,7 +76,7 @@ export function UnitCard(props: UnitCardProps) {
                 return <CardMedia key={key} component="img" height="200px" image={src} alt={alt} />;
               }
               return (
-                <MultiMediaContainer>
+                <MultiMediaContainer key={imageOrImages[0].key}>
                   {imageOrImages.map(({ src, alt, key }, index) => (
                     <CardMedia
                       key={key}
@@ -136,7 +136,7 @@ export function UnitCard(props: UnitCardProps) {
             <SaleType>{props.saleType}</SaleType>
           </TagBlock>
           <RegisterBlock>
-            <RegisterButton
+            {/* <RegisterButton
               onClick={e => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -164,7 +164,7 @@ export function UnitCard(props: UnitCardProps) {
               }}
             >
               <SvgIcon component={Share} />
-            </IconButton>
+            </IconButton> */}
           </RegisterBlock>
         </CardContent>
       </CardActionArea>
